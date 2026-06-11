@@ -5,13 +5,22 @@ theme = "PaperMod"
 
 [params]
   author = "hantaikeju"
-  description = "记录"
+  description = "记录技术成长，分享开发经验"
   defaultTheme = "auto"
   showToc = true
   showReadingTime = true
   showPostNavLinks = true
   enableGitInfo = true
-  mainSections = ["posts"]
+  
+  # 首页信息
+  [params.homeInfoParams]
+    Title = "👋 欢迎来到 hantaikeju 的技术博客"
+    Content = "这里记录了我的技术学习笔记、项目经验和个人思考。主要关注 Unity 开发、C# 编程、前端技术等领域。"
+
+  # 社交链接
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/hantaikeju"
 
 [menu]
   [[menu.main]]
@@ -20,9 +29,9 @@ theme = "PaperMod"
     url = "/"
     weight = 1
   [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
+    identifier = "posts"
+    name = "文章"
+    url = "/csharp/"
     weight = 2
   [[menu.main]]
     identifier = "tags"

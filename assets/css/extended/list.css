@@ -1,0 +1,6 @@
+/* ===== 列表页分类条目样式 ===== */
+
+/* 分类条目的整体样式微调 - 左边框高亮 */
+.post-entry.is-section {
+    border-left: 3px solid var(--primary);
+}

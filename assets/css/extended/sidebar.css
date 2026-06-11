@@ -1,0 +1,360 @@
+/* ===== 侧边栏样式 ===== */
+
+/* 容器布局 - 带侧边栏时使用 flex */
+.container {
+    display: flex;
+    max-width: calc(var(--nav-width) + var(--gap) * 2 + 280px);
+    margin: 0 auto;
+    padding: 0 var(--gap);
+    gap: var(--gap);
+    position: relative;
+    align-items: flex-start;
+}
+
+/* 首页容器 - 居中显示 */
+.container.home-container {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    justify-content: center;
+}
+
+.container.home-container .main {
+    max-width: var(--main-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 侧边栏主体 */
+.sidebar {
+    flex: 0 0 260px;
+    min-width: 260px;
+    position: sticky;
+    top: calc(var(--header-height) + var(--gap));
+    align-self: flex-start;
+    max-height: calc(100vh - var(--header-height) - var(--gap) - var(--footer-height));
+    overflow-y: auto;
+    padding: 0;
+    border-radius: var(--radius);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    scrollbar-width: thin;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--tertiary);
+    border-radius: 2px;
+}
+
+.sidebar-inner {
+    padding: 12px 0;
+}
+
+/* 搜索框 */
+.sidebar-search {
+    padding: 0 12px 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+}
+
+.sidebar-search-box {
+    display: flex;
+    align-items: center;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 10px;
+    transition: border-color 0.15s ease;
+}
+
+.sidebar-search-box:focus-within {
+    border-color: var(--primary);
+}
+
+.sidebar-search-icon {
+    flex-shrink: 0;
+    color: var(--secondary);
+    margin-right: 8px;
+}
+
+.sidebar-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--primary);
+    outline: none;
+    width: 100%;
+}
+
+.sidebar-search-input::placeholder {
+    color: var(--tertiary);
+}
+
+/* 搜索结果 */
+.sidebar-search-results {
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 8px;
+}
+
+.sidebar-search-results.active {
+    display: block;
+}
+
+.sidebar-search-item {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.sidebar-search-item:hover {
+    background: var(--tertiary);
+}
+
+.sidebar-search-item-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+    line-height: 1.3;
+}
+
+.sidebar-search-item-summary {
+    display: block;
+    font-size: 11px;
+    color: var(--secondary);
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.sidebar-search-empty {
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+/* 侧边栏头部 */
+.sidebar-header {
+    padding: 0 16px 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* 侧边栏头部操作按钮 */
+.sidebar-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.sidebar-collapse-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 7px;
+    font-size: 11px;
+    color: var(--secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.sidebar-collapse-btn:hover {
+    color: var(--primary);
+    background: var(--tertiary);
+    border-color: var(--tertiary);
+}
+
+.sidebar-collapse-btn svg {
+    flex-shrink: 0;
+}
+
+/* 导航 */
+.sidebar-nav {
+    padding: 0 4px;
+}
+
+.sidebar-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-category {
+    margin: 0;
+}
+
+/* 分类链接（根节点列表） */
+.sidebar-category-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.sidebar-category-link:hover {
+    background: var(--tertiary);
+}
+
+.sidebar-category-link.active {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+.sidebar-category-link.active .sidebar-count {
+    background: var(--theme);
+    color: var(--primary);
+}
+
+.sidebar-category-name {
+    flex: 1;
+}
+
+/* 文章数量标记 */
+.sidebar-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 10px;
+    background: var(--code-bg);
+    color: var(--secondary);
+    line-height: 1;
+}
+
+/* details 样式覆盖 */
+.sidebar-details {
+    interpolate-size: allow-keywords;
+}
+
+.sidebar-details summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.sidebar-details summary::before {
+    content: "▶";
+    font-size: 10px;
+    margin-right: 6px;
+    color: var(--secondary);
+    transition: transform 0.2s ease;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.sidebar-details[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+/* 侧边栏底部 - 标签 */
+.sidebar-footer {
+    padding: 12px 16px 0;
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.sidebar-tags h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.sidebar-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.sidebar-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: var(--secondary);
+    background: var(--code-bg);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.sidebar-tag:hover {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+/* 主内容区域调整 - 用于带侧边栏的页面 */
+.main {
+    flex: 1;
+    min-width: 0;
+    max-width: var(--main-width);
+    margin: 0;
+    padding: var(--gap) 0;
+}
+
+/* 响应式 - 小屏幕隐藏侧边栏 */
+@media screen and (max-width: 1024px) {
+    .container {
+        max-width: var(--nav-width);
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .main {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+/* 移动端 */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0;
+    }
+    
+    .main {
+        padding: var(--gap);
+    }
+}

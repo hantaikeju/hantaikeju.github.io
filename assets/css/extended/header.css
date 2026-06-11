@@ -1,0 +1,93 @@
+/* ===== Header 布局优化 ===== */
+
+/* 确保 header 导航正确居中 */
+.header-nav {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--gap);
+}
+
+/* Logo 区域 - 标题和开关按钮 */
+.logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+}
+
+.logo a {
+    font-size: 22px;
+    font-weight: 700;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+/* 主题切换按钮和语言切换 */
+.logo-switches {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+/* 导航菜单 */
+.menu {
+    display: flex;
+    list-style: none;
+    gap: var(--gap);
+    white-space: nowrap;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    font-size: 15px;
+    padding: 0 0.2rem;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.menu a:hover {
+    color: var(--primary);
+}
+
+.menu .active {
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 2px;
+}
+
+/* 响应式 - 小屏幕 */
+@media screen and (max-width: 768px) {
+    .header-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+    
+    .logo {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .menu {
+        width: 100%;
+        overflow-x: auto;
+        padding: 0 0 4px 0;
+        gap: 0.8rem;
+    }
+}

@@ -1,0 +1,74 @@
+{{- define "main" }}
+
+{{- $pages := where site.RegularPages "Section" "not in" (slice "search" "archives") }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+
+{{- if site.Params.homeInfoParams }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+<!-- 分类快速入口 -->
+{{- $allSections := where site.Sections "Kind" "section" }}
+{{- $allSections = where $allSections "Section" "not in" (slice "search" "archives" "posts") }}
+<div class="home-section">
+    <h2 class="home-section-title">📂 分类快速入口</h2>
+    <div class="home-categories">
+        {{- range $allSections }}
+        {{- $sectionPages := .RegularPages }}
+        {{- $sectionTitle := .Title }}
+        {{- $sectionPath := .RelPermalink }}
+        {{- $sectionDesc := .Description }}
+        {{- $icon := substr $sectionTitle 0 1 }}
+        {{- $displayDesc := $sectionDesc | default (printf "%s 相关文章" $sectionTitle) }}
+        <a href="{{ $sectionPath }}" class="home-category-card">
+            <div class="home-category-icon">{{ $icon }}</div>
+            <div class="home-category-info">
+                <h3 class="home-category-name">{{ $sectionTitle }}</h3>
+                <p class="home-category-desc">{{ $displayDesc }}</p>
+            </div>
+            <div class="home-category-meta">
+                <span class="home-category-count">{{ len $sectionPages }} 篇文章</span>
+            </div>
+        </a>
+        {{- end }}
+    </div>
+</div>
+
+<!-- 最新文章 -->
+<div class="home-section">
+    <h2 class="home-section-title">📌 最新文章</h2>
+    <div class="home-posts">
+        {{- range first 6 $pages }}
+        <article class="home-post-card">
+            <div class="home-post-card-body">
+                <div class="home-post-category">
+                    {{- with .Parent }}
+                    <span>{{ .Title }}</span>
+                    {{- end }}
+                </div>
+                <h3 class="home-post-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                <p class="home-post-summary">{{ .Summary | plainify | htmlUnescape | truncate 80 }}</p>
+                <div class="home-post-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+                </div>
+            </div>
+        </article>
+        {{- end }}
+    </div>
+</div>
+
+<!-- 热门标签 -->
+<div class="home-section">
+    <h2 class="home-section-title">🏷️ 热门标签</h2>
+    <div class="home-tags">
+        {{- range first 20 site.Taxonomies.tags.ByCount }}
+        <a href="{{ .Page.RelPermalink }}" class="home-tag" style="font-size: {{ add 0.8 (mul (div (float .Count) 3) 0.4) }}em;">
+            {{ .Page.Title }} ({{ .Count }})
+        </a>
+        {{- end }}
+    </div>
+</div>
+
+{{- end }}{{- /* end main */ -}}

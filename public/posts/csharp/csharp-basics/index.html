@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>C# 基础语法速览 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="C#, 编程基础, .NET">
+<meta name="description" content="C# 简介
+C# 是微软推出的一种现代、面向对象的编程语言，运行于 .NET 平台之上。
+基本语法
+变量与类型
+int number = 42;
+string message = &#34;Hello&#34;;
+bool isActive = true;
+var inferred = &#34;自动推断类型&#34;;
+面向对象
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    
+    public void SayHello()
+    {
+        Console.WriteLine($&#34;你好，我是 {Name}&#34;);
+    }
+}
+异步编程
+public async Task&lt;string&gt; FetchDataAsync()
+{
+    using var client = new HttpClient();
+    return await client.GetStringAsync(&#34;https://api.example.com/data&#34;);
+}
+总结
+C# 是一门功能强大且不断进化的语言，在游戏开发、企业应用等领域都有广泛应用。">
+<meta name="author" content="hantaikeju">
+<link rel="canonical" href="http://localhost:1313/posts/csharp/csharp-basics/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cf84340fafc6d31a2fe2370dd003506e79088acfc751ed22575638f1354f1bda.css" integrity="sha256-z4Q0D6/G0xov4jcN0ANQbnkIis/HUe0iV1Y48TVPG9o=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/csharp/csharp-basics/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="hantaikeju 的技术博客 (Alt + H)">hantaikeju 的技术博客</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="sidebar-search">
+            <div class="sidebar-search-box">
+                <svg class="sidebar-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="sidebarSearchInput" class="sidebar-search-input" type="search" placeholder="搜索文章..." autocomplete="off" maxlength="64">
+            </div>
+            <div id="sidebarSearchResults" class="sidebar-search-results"></div>
+        </div>
+
+        
+        <div class="sidebar-header">
+            <h3>📂 文章分类</h3>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <ul class="sidebar-categories">
+                <li class="sidebar-category">
+                    <a href="/posts/devops/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">DevOps</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/posts/frontend/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">前端开发</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/posts/csharp/" class="sidebar-category-link active">
+                        <span class="sidebar-category-name">C#开发</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/posts/unity/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">Unity开发</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/posts/notes/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">学习笔记</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+<script>
+window.__sidebarPosts = [
+    {
+        title: "Git 工作流最佳实践",
+        permalink: "/posts/devops/git-workflow/",
+        summary: "常用的 Git 工作流 集中式工作流 适合小团队，所有成员在同一个分支上工作。\nFeature Branch 工作流 每个功能在独立的分支上开发，完成后合并到主分支。\n# 创建功能分支 git checkout -b feature/new-feature # 开发完成后合并 git checkout main git merge feature/new-feature Git Flow 工作流 适用于大型项目，包含多个长期分支：\nmain：生产分支 develop：开发分支 feature/*：功能分支 release/*：发布分支 hotfix/*：热修复分支 提交信息规范 推荐使用 Conventional Commits 规范：\nfeat: 添加新功能\rfix: 修复bug\rdocs: 更新文档\rrefactor: 重构代码 ",
+        tags: ["Git","版本控制","DevOps"],
+        categories: ["DevOps"]
+    },
+    {
+        title: "Vue 3 Composition API 入门",
+        permalink: "/posts/frontend/vue3-setup/",
+        summary: "Vue 3 的新特性 Vue 3 带来了 Composition API，让逻辑复用变得更加简单。\n基础示例 \u0026lt;script setup\u0026gt; import { ref, computed } from \u0026#39;vue\u0026#39; const count = ref(0) const doubleCount = computed(() =\u0026gt; count.value * 2) function increment() { count.value++ } \u0026lt;/script\u0026gt; \u0026lt;template\u0026gt; \u0026lt;div\u0026gt; \u0026lt;p\u0026gt;计数: {{ count }}\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;两倍: {{ doubleCount }}\u0026lt;/p\u0026gt; \u0026lt;button @click=\u0026#34;increment\u0026#34;\u0026gt;+1\u0026lt;/button\u0026gt; \u0026lt;/div\u0026gt; \u0026lt;/template\u0026gt; 为什么使用 Composition API？ 更好的逻辑复用 更灵活的代码组织 更好的 TypeScript 支持 ",
+        tags: ["Vue","前端","JavaScript"],
+        categories: ["前端开发"]
+    },
+    {
+        title: "C# 基础语法速览",
+        permalink: "/posts/csharp/csharp-basics/",
+        summary: "C# 简介 C# 是微软推出的一种现代、面向对象的编程语言，运行于 .NET 平台之上。\n基本语法 变量与类型 int number = 42; string message = \u0026#34;Hello\u0026#34;; bool isActive = true; var inferred = \u0026#34;自动推断类型\u0026#34;; 面向对象 public class Person { public string Name { get; set; } public int Age { get; set; } public void SayHello() { Console.WriteLine($\u0026#34;你好，我是 {Name}\u0026#34;); } } 异步编程 public async Task\u0026lt;string\u0026gt; FetchDataAsync() { using var client = new HttpClient(); return await client.GetStringAsync(\u0026#34;https://api.example.com/data\u0026#34;); } 总结 C# 是一门功能强大且不断进化的语言，在游戏开发、企业应用等领域都有广泛应用。\n",
+        tags: ["C#","编程基础",".NET"],
+        categories: ["C#开发"]
+    },
+    {
+        title: "Unity Shader 入门",
+        permalink: "/posts/unity/graphics/unity-shader/",
+        summary: "什么是 Shader？ Shader 是运行在 GPU 上的小程序，用于控制渲染管线的各个阶段。\n基本 Shader 结构 Shader \u0026#34;Custom/SimpleShader\u0026#34; { Properties { _MainTex (\u0026#34;Texture\u0026#34;, 2D) = \u0026#34;white\u0026#34; {} } SubShader { Pass { CGPROGRAM #pragma vertex vert #pragma fragment frag struct appdata { float4 vertex : POSITION; float2 uv : TEXCOORD0; }; struct v2f { float2 uv : TEXCOORD0; float4 vertex : SV_POSITION; }; v2f vert (appdata v) { v2f o; o.vertex = UnityObjectToClipPos(v.vertex); o.uv = v.uv; return o; } fixed4 frag (v2f i) : SV_Target { return tex2D(_MainTex, i.uv); } ENDCG } } } ",
+        tags: ["Unity","Shader","图形学"],
+        categories: ["Unity开发"]
+    },
+    {
+        title: "Unity 脚本编程基础",
+        permalink: "/posts/unity/scripting/unity-scripting/",
+        summary: "MonoBehaviour 生命周期 Unity 脚本继承自 MonoBehaviour，拥有完整的生命周期方法：\npublic class Example : MonoBehaviour { void Awake() { } // 场景加载时调用 void Start() { } // 第一帧之前调用 void Update() { } // 每帧调用 void FixedUpdate() { } // 固定时间间隔调用 void LateUpdate() { } // Update 之后调用 } 常用组件操作 // 获取组件 var rigidbody = GetComponent\u0026lt;Rigidbody\u0026gt;(); var renderer = GetComponentInChildren\u0026lt;Renderer\u0026gt;(); // 添加组件 gameObject.AddComponent\u0026lt;Rigidbody\u0026gt;(); ",
+        tags: ["Unity","C#","脚本"],
+        categories: ["Unity开发"]
+    },
+    {
+        title: "Unity 入门指南",
+        permalink: "/posts/unity/unity-basics/",
+        summary: "什么是 Unity？ Unity 是一款跨平台的游戏引擎，广泛应用于游戏开发、VR/AR、影视动画等领域。\n安装与配置 下载 Unity Hub 安装 Unity Editor 创建第一个项目 基础概念 场景 (Scene)：游戏世界的容器 游戏对象 (GameObject)：场景中的每个实体 组件 (Component)：附加在游戏对象上的功能模块 脚本 (Script)：控制游戏逻辑的代码 第一个脚本 using UnityEngine; public class HelloWorld : MonoBehaviour { void Start() { Debug.Log(\u0026#34;Hello, Unity!\u0026#34;); } } 总结 Unity 的学习曲线相对平缓，适合初学者入门游戏开发。\n",
+        tags: ["Unity","游戏开发","入门"],
+        categories: ["Unity开发"]
+    },
+    {
+        title: "🎉 Hello World！我的第一篇博客",
+        permalink: "/posts/notes/hello-world/",
+        summary: "大家好！欢迎来到我的技术博客。\n这是我用 Hugo + PaperMod 搭建的个人博客，折腾了好几天，终于上线啦！以后会在这里分享一些学习笔记、踩坑记录和生活碎片。\n如果你也想搭一个自己的博客，这个过程虽然有点曲折，但真的很有成就感！\n",
+        tags: ["日常","分享","Hugo"],
+        categories: ["生活记录"]
+    },
+];
+</script>
+
+        <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      C# 基础语法速览
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-06-10 21:10:00 +0800 CST'>June 10, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
+
+</div>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#c-%e7%ae%80%e4%bb%8b" aria-label="C# 简介">C# 简介</a></li>
+            <li>
+                <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" aria-label="基本语法">基本语法</a><ul>
+                    
+            <li>
+                <a href="#%e5%8f%98%e9%87%8f%e4%b8%8e%e7%b1%bb%e5%9e%8b" aria-label="变量与类型">变量与类型</a></li>
+            <li>
+                <a href="#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1" aria-label="面向对象">面向对象</a></li>
+            <li>
+                <a href="#%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b" aria-label="异步编程">异步编程</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e6%80%bb%e7%bb%93" aria-label="总结">总结</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h2 id="c-简介">C# 简介<a hidden class="anchor" aria-hidden="true" href="#c-简介">#</a></h2>
+<p>C# 是微软推出的一种现代、面向对象的编程语言，运行于 .NET 平台之上。</p>
+<h2 id="基本语法">基本语法<a hidden class="anchor" aria-hidden="true" href="#基本语法">#</a></h2>
+<h3 id="变量与类型">变量与类型<a hidden class="anchor" aria-hidden="true" href="#变量与类型">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> number = <span style="color:#ae81ff">42</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">string</span> message = <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> isActive = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> inferred = <span style="color:#e6db74">&#34;自动推断类型&#34;</span>;
+</span></span></code></pre></div><h3 id="面向对象">面向对象<a hidden class="anchor" aria-hidden="true" href="#面向对象">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Age { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SayHello()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">$&#34;你好，我是 {Name}&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="异步编程">异步编程<a hidden class="anchor" aria-hidden="true" href="#异步编程">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;<span style="color:#66d9ef">string</span>&gt; FetchDataAsync()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> var client = <span style="color:#66d9ef">new</span> HttpClient();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> client.GetStringAsync(<span style="color:#e6db74">&#34;https://api.example.com/data&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
+<p>C# 是一门功能强大且不断进化的语言，在游戏开发、企业应用等领域都有广泛应用。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/c%23/">C#</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a></li>
+      <li><a href="http://localhost:1313/tags/.net/">.NET</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/frontend/vue3-setup/">
+    <span class="title">« Prev</span>
+    <span>Vue 3 Composition API 入门</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/unity/graphics/unity-shader/">
+    <span class="title">Next »</span>
+    <span>Unity Shader 入门</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+        </main>
+    </div>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">hantaikeju 的技术博客</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+    <script defer src="/js/sidebar-search.min.js"></script>
+</body>
+
+</html>

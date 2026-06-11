@@ -1,0 +1,59 @@
+ {{- $currentPage := . }}
+{{- $allPages := where site.RegularPages "Section" "not in" (slice "search" "archives") }}
+{{- $allSections := where site.Sections "Kind" "section" }}
+{{- $allSections = where $allSections "Section" "not in" (slice "search" "archives" "posts") }}
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        <!-- 搜索框 -->
+        <div class="sidebar-search">
+            <div class="sidebar-search-box">
+                <svg class="sidebar-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="sidebarSearchInput" class="sidebar-search-input" type="search" placeholder="搜索文章..." autocomplete="off" maxlength="64">
+            </div>
+            <div id="sidebarSearchResults" class="sidebar-search-results"></div>
+        </div>
+
+        <!-- 分类列表 -->
+        <div class="sidebar-header">
+            <h3>📂 文章分类</h3>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <ul class="sidebar-categories">
+                {{- range $allSections }}
+                <li class="sidebar-category">
+                    {{- $categoryName := .Title }}
+                    {{- $categoryPath := .RelPermalink }}
+                    {{- /* 统计该分类下的所有文章（包括子分类中的文章）*/}}
+                    {{- $postCount := len .RegularPages }}
+                    {{- range .Sections }}
+                        {{- $postCount = add $postCount (len .RegularPages) }}
+                    {{- end }}
+                    {{- $isActive := or (eq $currentPage.RelPermalink $categoryPath) (strings.HasPrefix $currentPage.RelPermalink $categoryPath) }}
+                    <a href="{{ $categoryPath }}" class="sidebar-category-link {{ if $isActive }}active{{ end }}">
+                        <span class="sidebar-category-name">{{ $categoryName }}</span>
+                        <span class="sidebar-count">{{ $postCount }}</span>
+                    </a>
+                </li>
+                {{- end }}
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+<!-- 注入文章数据供搜索使用 -->
+<script>
+window.__sidebarPosts = [
+{{- range $allPages }}
+    {
+        title: {{ .Title | jsonify | safeJS }},
+        permalink: {{ .RelPermalink | jsonify | safeJS }},
+        summary: {{ .Summary | plainify | jsonify | safeJS }},
+        tags: {{ .Params.tags | jsonify | safeJS }},
+        categories: {{ .Params.categories | jsonify | safeJS }}
+    },
+{{- end }}
+];
+</script>
