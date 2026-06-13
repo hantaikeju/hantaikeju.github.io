@@ -2,65 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>C#开发 on hantaikeju 的技术博客</title>
-    <link>http://localhost:60397/csharp/</link>
+    <link>http://localhost:1313/csharp/</link>
     <description>Recent content in C#开发 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Jun 2026 00:52:58 +0800</lastBuildDate>
-    <atom:link href="http://localhost:60397/csharp/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>文章 3</title>
-      <link>http://localhost:60397/csharp/%E6%96%87%E7%AB%A0-3/</link>
-      <pubDate>Fri, 12 Jun 2026 00:52:58 +0800</pubDate>
-      <guid>http://localhost:60397/csharp/%E6%96%87%E7%AB%A0-3/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>文章 2</title>
-      <link>http://localhost:60397/csharp/%E6%96%87%E7%AB%A0-2/</link>
-      <pubDate>Fri, 12 Jun 2026 00:52:57 +0800</pubDate>
-      <guid>http://localhost:60397/csharp/%E6%96%87%E7%AB%A0-2/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>文章 1</title>
-      <link>http://localhost:60397/csharp/%E6%96%87%E7%AB%A0-1/</link>
-      <pubDate>Fri, 12 Jun 2026 00:52:56 +0800</pubDate>
-      <guid>http://localhost:60397/csharp/%E6%96%87%E7%AB%A0-1/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C# 基础语法速览</title>
-      <link>http://localhost:60397/csharp/csharp-basics/</link>
-      <pubDate>Wed, 10 Jun 2026 21:10:00 +0800</pubDate>
-      <guid>http://localhost:60397/csharp/csharp-basics/</guid>
-      <description>&lt;h2 id=&#34;c-简介&#34;&gt;C# 简介&lt;/h2&gt;
-&lt;p&gt;C# 是微软推出的一种现代、面向对象的编程语言，运行于 .NET 平台之上。&lt;/p&gt;
-&lt;h2 id=&#34;基本语法&#34;&gt;基本语法&lt;/h2&gt;
-&lt;h3 id=&#34;变量与类型&#34;&gt;变量与类型&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; number = &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; message = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; isActive = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; inferred = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;自动推断类型&amp;#34;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;面向对象&#34;&gt;面向对象&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Person&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; Name { &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; Age { &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; SayHello()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Console.WriteLine(&lt;span style=&#34;color:#e6db74&#34;&gt;$&amp;#34;你好，我是 {Name}&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;异步编程&#34;&gt;异步编程&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; Task&amp;lt;&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;&amp;gt; FetchDataAsync()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; var client = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HttpClient();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; client.GetStringAsync(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://api.example.com/data&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-&lt;p&gt;C# 是一门功能强大且不断进化的语言，在游戏开发、企业应用等领域都有广泛应用。&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/csharp/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,5 +2,7 @@
 date: '{{ .Date }}'
 draft: true
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
-index: 1
+weight: 1
+tags: []
+categories: []
 ---

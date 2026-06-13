@@ -2,44 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Unity开发 on hantaikeju 的技术博客</title>
-    <link>http://localhost:60397/unity/</link>
+    <link>http://localhost:1313/unity/</link>
     <description>Recent content in Unity开发 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Jun 2026 21:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:60397/unity/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Unity 入门指南</title>
-      <link>http://localhost:60397/unity/unity-basics/</link>
-      <pubDate>Wed, 10 Jun 2026 21:00:00 +0800</pubDate>
-      <guid>http://localhost:60397/unity/unity-basics/</guid>
-      <description>&lt;h2 id=&#34;什么是-unity&#34;&gt;什么是 Unity？&lt;/h2&gt;
-&lt;p&gt;Unity 是一款跨平台的游戏引擎，广泛应用于游戏开发、VR/AR、影视动画等领域。&lt;/p&gt;
-&lt;h2 id=&#34;安装与配置&#34;&gt;安装与配置&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;下载 Unity Hub&lt;/li&gt;
-&lt;li&gt;安装 Unity Editor&lt;/li&gt;
-&lt;li&gt;创建第一个项目&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;基础概念&#34;&gt;基础概念&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;场景 (Scene)&lt;/strong&gt;：游戏世界的容器&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;游戏对象 (GameObject)&lt;/strong&gt;：场景中的每个实体&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;组件 (Component)&lt;/strong&gt;：附加在游戏对象上的功能模块&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;脚本 (Script)&lt;/strong&gt;：控制游戏逻辑的代码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;第一个脚本&#34;&gt;第一个脚本&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; UnityEngine;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;HelloWorld&lt;/span&gt; : MonoBehaviour
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Start()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Debug.Log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello, Unity!&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-&lt;p&gt;Unity 的学习曲线相对平缓，适合初学者入门游戏开发。&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/unity/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

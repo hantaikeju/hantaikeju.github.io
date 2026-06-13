@@ -2,44 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>DevOps on hantaikeju 的技术博客</title>
-    <link>http://localhost:60397/devops/</link>
+    <link>http://localhost:1313/devops/</link>
     <description>Recent content in DevOps on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Jun 2026 21:30:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:60397/devops/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Git 工作流最佳实践</title>
-      <link>http://localhost:60397/devops/git-workflow/</link>
-      <pubDate>Wed, 10 Jun 2026 21:30:00 +0800</pubDate>
-      <guid>http://localhost:60397/devops/git-workflow/</guid>
-      <description>&lt;h2 id=&#34;常用的-git-工作流&#34;&gt;常用的 Git 工作流&lt;/h2&gt;
-&lt;h3 id=&#34;集中式工作流&#34;&gt;集中式工作流&lt;/h3&gt;
-&lt;p&gt;适合小团队，所有成员在同一个分支上工作。&lt;/p&gt;
-&lt;h3 id=&#34;feature-branch-工作流&#34;&gt;Feature Branch 工作流&lt;/h3&gt;
-&lt;p&gt;每个功能在独立的分支上开发，完成后合并到主分支。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建功能分支&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout -b feature/new-feature
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 开发完成后合并&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout main
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git merge feature/new-feature
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-flow-工作流&#34;&gt;Git Flow 工作流&lt;/h3&gt;
-&lt;p&gt;适用于大型项目，包含多个长期分支：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;main&lt;/code&gt;：生产分支&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;develop&lt;/code&gt;：开发分支&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;feature/*&lt;/code&gt;：功能分支&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;release/*&lt;/code&gt;：发布分支&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;hotfix/*&lt;/code&gt;：热修复分支&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;提交信息规范&#34;&gt;提交信息规范&lt;/h2&gt;
-&lt;p&gt;推荐使用 Conventional Commits 规范：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;feat: 添加新功能
-fix: 修复bug
-docs: 更新文档
-refactor: 重构代码
-&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/devops/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

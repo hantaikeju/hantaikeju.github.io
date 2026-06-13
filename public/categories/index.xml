@@ -2,52 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on hantaikeju 的技术博客</title>
-    <link>http://localhost:60397/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Jun 2026 21:30:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:60397/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jun 2026 18:23:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DevOps</title>
-      <link>http://localhost:60397/categories/devops/</link>
-      <pubDate>Wed, 10 Jun 2026 21:30:00 +0800</pubDate>
-      <guid>http://localhost:60397/categories/devops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>前端开发</title>
-      <link>http://localhost:60397/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Wed, 10 Jun 2026 21:20:00 +0800</pubDate>
-      <guid>http://localhost:60397/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Csharp</title>
-      <link>http://localhost:60397/categories/csharp/</link>
-      <pubDate>Wed, 10 Jun 2026 21:10:00 +0800</pubDate>
-      <guid>http://localhost:60397/categories/csharp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Unity开发</title>
-      <link>http://localhost:60397/categories/unity%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Wed, 10 Jun 2026 21:06:00 +0800</pubDate>
-      <guid>http://localhost:60397/categories/unity%E5%BC%80%E5%8F%91/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Unity</title>
-      <link>http://localhost:60397/categories/unity/</link>
-      <pubDate>Wed, 10 Jun 2026 21:05:00 +0800</pubDate>
-      <guid>http://localhost:60397/categories/unity/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>生活记录</title>
-      <link>http://localhost:60397/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 10 Jun 2026 20:00:00 +0800</pubDate>
-      <guid>http://localhost:60397/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</guid>
+      <title>Dev-Env</title>
+      <link>http://localhost:1313/categories/dev-env/</link>
+      <pubDate>Sat, 13 Jun 2026 18:23:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/dev-env/</guid>
       <description></description>
     </item>
   </channel>

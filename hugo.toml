@@ -1,12 +1,12 @@
 baseURL = "https://hantaikeju.github.io/"
-languageCode = "zh-cn"
+locale = "zh-cn"
 title = "hantaikeju 的技术博客"
 theme = "PaperMod"
 
 [params]
   author = "hantaikeju"
   description = "记录技术成长，分享开发经验"
-  defaultTheme = "auto"
+  defaultTheme = "dark"
   showToc = true
   showReadingTime = true
   showPostNavLinks = true

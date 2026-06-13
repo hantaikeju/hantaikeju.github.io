@@ -2,35 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>脚本编程 on hantaikeju 的技术博客</title>
-    <link>http://localhost:60397/unity/scripting/</link>
+    <link>http://localhost:1313/unity/scripting/</link>
     <description>Recent content in 脚本编程 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Jun 2026 21:05:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:60397/unity/scripting/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Unity 脚本编程基础</title>
-      <link>http://localhost:60397/unity/scripting/unity-scripting/</link>
-      <pubDate>Wed, 10 Jun 2026 21:05:00 +0800</pubDate>
-      <guid>http://localhost:60397/unity/scripting/unity-scripting/</guid>
-      <description>&lt;h2 id=&#34;monobehaviour-生命周期&#34;&gt;MonoBehaviour 生命周期&lt;/h2&gt;
-&lt;p&gt;Unity 脚本继承自 MonoBehaviour，拥有完整的生命周期方法：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Example&lt;/span&gt; : MonoBehaviour
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Awake() { }    &lt;span style=&#34;color:#75715e&#34;&gt;// 场景加载时调用&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Start() { }    &lt;span style=&#34;color:#75715e&#34;&gt;// 第一帧之前调用&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Update() { }   &lt;span style=&#34;color:#75715e&#34;&gt;// 每帧调用&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; FixedUpdate() { } &lt;span style=&#34;color:#75715e&#34;&gt;// 固定时间间隔调用&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; LateUpdate() { }  &lt;span style=&#34;color:#75715e&#34;&gt;// Update 之后调用&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;常用组件操作&#34;&gt;常用组件操作&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 获取组件&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; rigidbody = GetComponent&amp;lt;Rigidbody&amp;gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; renderer = GetComponentInChildren&amp;lt;Renderer&amp;gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 添加组件&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gameObject.AddComponent&amp;lt;Rigidbody&amp;gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/unity/scripting/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
