@@ -15,5 +15,12 @@
       <guid>http://localhost:1313/categories/dev-env/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Unity</title>
+      <link>http://localhost:1313/categories/unity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/unity/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -16,7 +16,48 @@
             <div id="sidebarSearchResults" class="sidebar-search-results"></div>
         </div>
 
-        <!-- 分类列表 -->
+        {{- if .IsPage }}
+        <!-- 文章页面：面包屑导航（完整层级路径） -->
+        {{- $ancestors := slice }}
+        {{- $s := .CurrentSection }}
+        {{- /* 从当前分类向上收集所有祖先分类（不含首页） */}}
+        {{- range seq 10 }}
+            {{- if and $s (ne $s site.Home) }}
+                {{- $ancestors = $ancestors | append $s }}
+                {{- $s = $s.Parent }}
+            {{- end }}
+        {{- end }}
+        <div class="sidebar-breadcrumb">
+            <a href="{{ site.Home.RelPermalink }}" class="sidebar-breadcrumb-link" title="返回首页">🏠</a>
+            {{- /* 反向遍历：从顶层分类到当前分类 */}}
+            {{- range $i := seq (len $ancestors) }}
+                {{- $idx := sub (len $ancestors) $i }}
+                {{- $section := index $ancestors $idx }}
+                {{- if ge $idx 0 }}
+                <span class="sidebar-breadcrumb-sep">›</span>
+                <a href="{{ $section.RelPermalink }}" class="sidebar-breadcrumb-link" title="返回 {{ $section.Title }}">{{ $section.Title }}</a>
+                {{- end }}
+            {{- end }}
+        </div>
+
+        <!-- 文章页面：显示标题目录 -->
+        {{- if .TableOfContents }}
+        <div class="sidebar-header">
+            <h3>📑 文章目录</h3>
+        </div>
+        <nav class="sidebar-nav sidebar-toc" id="sidebarNav">
+            {{ .TableOfContents }}
+        </nav>
+        {{- else }}
+        <div class="sidebar-header">
+            <h3>📑 文章目录</h3>
+        </div>
+        <div class="sidebar-toc-empty">
+            <p>本文暂无标题</p>
+        </div>
+        {{- end }}
+        {{- else }}
+        <!-- 列表页面：显示分类列表 -->
         <div class="sidebar-header">
             <h3>📂 文章分类</h3>
         </div>
@@ -40,6 +81,7 @@
                 {{- end }}
             </ul>
         </nav>
+        {{- end }}
     </div>
 </aside>
 

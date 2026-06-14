@@ -8,6 +8,7 @@ theme = "PaperMod"
   description = "记录技术成长，分享开发经验"
   defaultTheme = "dark"
   showToc = true
+  TocOpen = true
   showReadingTime = true
   showPostNavLinks = true
   enableGitInfo = true

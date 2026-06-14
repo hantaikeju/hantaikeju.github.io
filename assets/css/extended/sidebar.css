@@ -52,6 +52,45 @@
     padding: 12px 0;
 }
 
+/* ===== 面包屑导航（文章页）===== */
+.sidebar-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 12px 10px;
+    margin: 0 12px 10px;
+    border-bottom: 1px solid var(--border);
+    gap: 4px;
+}
+
+.sidebar-breadcrumb-link {
+    font-size: 12px;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    white-space: nowrap;
+}
+
+.sidebar-breadcrumb-link:hover {
+    color: var(--primary);
+}
+
+.sidebar-breadcrumb-sep {
+    font-size: 12px;
+    color: var(--tertiary);
+    margin: 0 2px;
+}
+
+.sidebar-breadcrumb-current {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
 /* 搜索框 */
 .sidebar-search {
     padding: 0 12px 12px;
@@ -330,6 +369,80 @@
     max-width: var(--main-width);
     margin: 0;
     padding: var(--gap) 0;
+}
+
+/* ===== 侧边栏 TOC（文章标题目录）===== */
+.sidebar-toc {
+    padding: 0 8px;
+}
+
+.sidebar-toc nav#TableOfContents > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-toc nav#TableOfContents > ul > li {
+    margin: 2px 0;
+}
+
+.sidebar-toc nav#TableOfContents a {
+    display: block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--primary);
+    text-decoration: none;
+    transition: background 0.15s ease;
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+}
+
+.sidebar-toc nav#TableOfContents a:hover {
+    background: var(--tertiary);
+    border-left-color: var(--secondary);
+}
+
+/* 二级标题缩进 */
+.sidebar-toc nav#TableOfContents ul ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 14px;
+}
+
+.sidebar-toc nav#TableOfContents ul ul a {
+    font-size: 12px;
+    padding: 4px 12px;
+    color: var(--secondary);
+}
+
+/* 三级及更深标题 */
+.sidebar-toc nav#TableOfContents ul ul ul {
+    padding-left: 12px;
+}
+
+.sidebar-toc nav#TableOfContents ul ul ul a {
+    font-size: 11px;
+    padding: 3px 12px;
+}
+
+/* TOC 空状态提示 */
+.sidebar-toc-empty {
+    padding: 20px 16px;
+    text-align: center;
+    color: var(--secondary);
+    font-size: 13px;
+}
+
+.sidebar-toc-empty p {
+    margin: 0;
+}
+
+/* 高亮当前可视标题（可选，通过 JS 实现）*/
+.sidebar-toc nav#TableOfContents a.active-toc {
+    background: var(--primary);
+    color: var(--theme);
+    border-left-color: var(--primary);
 }
 
 /* 响应式 - 小屏幕隐藏侧边栏 */

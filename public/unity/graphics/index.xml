@@ -6,6 +6,25 @@
     <description>Recent content in 图形渲染 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Sun, 14 Jun 2026 22:26:27 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/unity/graphics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shader Test</title>
+      <link>http://localhost:1313/unity/graphics/shader-test/</link>
+      <pubDate>Sun, 14 Jun 2026 22:26:27 +0800</pubDate>
+      <guid>http://localhost:1313/unity/graphics/shader-test/</guid>
+      <description>&lt;h2 id=&#34;基础概念&#34;&gt;基础概念&lt;/h2&gt;
+&lt;p&gt;Shader 的一些基础概念介绍。&lt;/p&gt;
+&lt;h3 id=&#34;顶点着色器&#34;&gt;顶点着色器&lt;/h3&gt;
+&lt;p&gt;顶点着色器处理每个顶点的数据。&lt;/p&gt;
+&lt;h3 id=&#34;片元着色器&#34;&gt;片元着色器&lt;/h3&gt;
+&lt;p&gt;片元着色器处理每个像素的颜色。&lt;/p&gt;
+&lt;h2 id=&#34;高级用法&#34;&gt;高级用法&lt;/h2&gt;
+&lt;p&gt;更高级的 Shader 技巧。&lt;/p&gt;
+&lt;h3 id=&#34;自定义光照&#34;&gt;自定义光照&lt;/h3&gt;
+&lt;p&gt;实现自定义光照模型。&lt;/p&gt;
+&lt;h3 id=&#34;后处理效果&#34;&gt;后处理效果&lt;/h3&gt;
+&lt;p&gt;屏幕后处理特效的实现方式。&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

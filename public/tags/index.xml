@@ -43,5 +43,19 @@
       <guid>http://localhost:1313/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Shader</title>
+      <link>http://localhost:1313/tags/shader/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/shader/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Unity</title>
+      <link>http://localhost:1313/tags/unity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/unity/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
