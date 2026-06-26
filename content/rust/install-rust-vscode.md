@@ -1,6 +1,6 @@
 ---
 title: "安装 Rust 编译环境 — VSCode 篇"
-date: 2026-06-26T12:00:00+08:00
+date: 2026-06-25T20:00:00+08:00
 weight: 1
 draft: false
 tags: ["Rust", "VSCode", "开发环境", "rust-analyzer"]
