@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>图形渲染 | hantaikeju 的技术博客</title>
-<meta name="keywords" content="">
-<meta name="description" content="Unity 图形渲染相关">
+<title>分析第一个Rust项目 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="Rust, 标准库">
+<meta name="description" content="分析 Rust 中的 mut 可修改修饰符，解析第一个 Rust 项目的代码结构、crate 类型与标准库使用。">
 <meta name="author" content="hantaikeju">
-<link rel="canonical" href="http://localhost:1313/unity/graphics/">
+<link rel="canonical" href="http://localhost:1313/rust/first-rust-project/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/unity/graphics/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/unity/graphics/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/rust/first-rust-project/">
 <noscript>
     <style>
         #theme-toggle,
@@ -36,7 +35,7 @@
 
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -98,54 +97,28 @@
             <div id="sidebarSearchResults" class="sidebar-search-results"></div>
         </div>
         
-        <div class="sidebar-header">
-            <h3>📂 文章分类</h3>
+        <div class="sidebar-breadcrumb">
+            <a href="/" class="sidebar-breadcrumb-link" title="返回首页">🏠</a>
+                <span class="sidebar-breadcrumb-sep">›</span>
+                <a href="/rust/" class="sidebar-breadcrumb-link" title="返回 Rust">Rust</a>
         </div>
-        <nav class="sidebar-nav" id="sidebarNav">
-            <ul class="sidebar-categories">
-                <li class="sidebar-category">
-                    <a href="/rust/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">2</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/unity/" class="sidebar-category-link active">
-                        <span class="sidebar-category-name">Unity开发</span>
-                        <span class="sidebar-count">1</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/dev-env/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">开发环境</span>
-                        <span class="sidebar-count">1</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/csharp/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">C#开发</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/devops/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">DevOps</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/notes/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">学习笔记</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/servers/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">服务器开发</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-            </ul>
+
+        
+        <div class="sidebar-header">
+            <h3>📑 文章目录</h3>
+        </div>
+        <nav class="sidebar-nav sidebar-toc" id="sidebarNav">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码结构">代码结构</a></li>
+    <li><a href="#crate">Crate</a></li>
+    <li><a href="#修改代码">修改代码</a>
+      <ul>
+        <li><a href="#逐行解析">逐行解析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
         </nav>
     </div>
 </aside>
@@ -184,38 +157,78 @@ window.__sidebarPosts = [
 ];
 </script>
 
-        <main class="main"> 
-<header class="page-header">
-  <h1>
-    图形渲染
-  </h1>
-  <div class="post-description">
-    Unity 图形渲染相关
-  </div>
-</header>
-<div class="post-content md-content"><p>Unity 图形渲染相关文章。</p>
+        <main class="main">
 
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      分析第一个Rust项目
+    </h1>
+    <div class="post-description">
+      分析 Rust 中的 mut 可修改修饰符，解析第一个 Rust 项目的代码结构、crate 类型与标准库使用。
+    </div>
+    <div class="post-meta">
+
+<span title='2026-06-26 10:00:00 +0800 CST'>June 26, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
 
 </div>
+  </header> 
+  <div class="post-content md-content"><h2 id="代码结构">代码结构<a hidden class="anchor" aria-hidden="true" href="#代码结构">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="crate">Crate<a hidden class="anchor" aria-hidden="true" href="#crate">#</a></h2>
+<ul>
+<li><strong>library crate</strong> —— 只可以有一个</li>
+<li><strong>binary crate</strong> —— 任意多个</li>
+</ul>
+<hr>
+<h2 id="修改代码">修改代码<a hidden class="anchor" aria-hidden="true" href="#修改代码">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::io::stdin;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> msg: String <span style="color:#f92672">=</span> String::new();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Enter a message: &#34;</span>);
+</span></span><span style="display:flex;"><span>    stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> msg).unwrap();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You entered: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, msg.trim());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="逐行解析">逐行解析<a hidden class="anchor" aria-hidden="true" href="#逐行解析">#</a></h3>
+<p><strong><code>use std::io::stdin;</code></strong></p>
+<p><code>std::io::stdin</code> 是标准库中的模块。如果是 prelude 部分（预编译在代码中），可以直接使用，无需 <code>use</code> 引入。</p>
+<p><strong><code>::</code></strong></p>
+<p>用于访问模块中公开使用的 API。</p>
+<p><strong><code>;</code></strong></p>
+<p>结束任何语句的符号。</p>
+<p><strong><code>let mut msg: String = String::new();</code></strong></p>
+<ul>
+<li><code>let</code> —— 声明变量</li>
+<li><code>mut</code> —— 可修改修饰符，表示变量可变。Rust 中变量默认不可变，加 <code>mut</code> 后才允许修改</li>
+<li><code>msg: String</code> —— 变量名 <code>msg</code>，类型为 <code>String</code></li>
+<li><code>String::new()</code> —— 创建一个空字符串</li>
+</ul>
+<p><strong><code>stdin().read_line(&amp;mut msg).unwrap();</code></strong></p>
+<ul>
+<li><code>stdin()</code> —— 获取标准输入句柄</li>
+<li><code>read_line(&amp;mut msg)</code> —— 读取一行输入，追加到 <code>msg</code> 中。<code>&amp;mut msg</code> 表示传入可变引用</li>
+<li><code>unwrap()</code> —— 处理可能出现的错误，出错时程序直接 panic</li>
+</ul>
+<p><strong><code>println!(&quot;You entered: {}&quot;, msg.trim());</code></strong></p>
+<ul>
+<li><code>{}</code> —— 占位符，用 <code>msg.trim()</code> 的值替换</li>
+<li><code>trim()</code> —— 去掉字符串首尾的空白字符（包括换行符）</li>
+</ul>
 
-<article class="post-entry"> 
-   <header class="entry-header">
-     <h2 class="entry-hint-parent">Shader Test
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>基础概念 Shader 的一些基础概念介绍。
-顶点着色器 顶点着色器处理每个顶点的数据。
-片元着色器 片元着色器处理每个像素的颜色。
-高级用法 更高级的 Shader 技巧。
-自定义光照 实现自定义光照模型。
-后处理效果 屏幕后处理特效的实现方式。
-</p>
+
   </div>
-  <footer class="entry-footer">
 
-<span title='2026-06-14 22:26:27 +0800 CST'>June 14, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
-  <a class="entry-link" aria-label="post link to Shader Test" href="http://localhost:1313/unity/graphics/shader-test/"></a>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/rust/">Rust</a></li>
+      <li><a href="http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/">标准库</a></li>
+    </ul>
+
+  </footer>
 </article>
         </main>
     </div>

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Rust on hantaikeju 的技术博客</title>
-    <link>http://localhost:1313/categories/rust/</link>
-    <description>Recent content in Rust on hantaikeju 的技术博客</description>
+    <title>标准库 on hantaikeju 的技术博客</title>
+    <link>http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/</link>
+    <description>Recent content in 标准库 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 26 Jun 2026 10:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/rust/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>安装 Rust 编译环境 — VSCode 篇</title>
-      <link>http://localhost:1313/rust/install-rust-vscode/</link>
-      <pubDate>Thu, 25 Jun 2026 20:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/rust/install-rust-vscode/</guid>
-      <description>在 Windows 上安装 Rust 编译环境，配置 MSVC / GNU 工具链，搭配 VSCode &#43; rust-analyzer 创建第一个 Rust 项目。</description>
-    </item>
+    <atom:link href="http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>分析第一个Rust项目</title>
       <link>http://localhost:1313/rust/first-rust-project/</link>

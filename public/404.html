@@ -105,7 +105,7 @@
                 <li class="sidebar-category">
                     <a href="/rust/" class="sidebar-category-link ">
                         <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">1</span>
+                        <span class="sidebar-count">2</span>
                     </a>
                 </li>
                 <li class="sidebar-category">
@@ -165,6 +165,13 @@ window.__sidebarPosts = [
         summary: "基础概念 Shader 的一些基础概念介绍。\n顶点着色器 顶点着色器处理每个顶点的数据。\n片元着色器 片元着色器处理每个像素的颜色。\n高级用法 更高级的 Shader 技巧。\n自定义光照 实现自定义光照模型。\n后处理效果 屏幕后处理特效的实现方式。\n",
         tags: ["shader","unity"],
         categories: ["unity"]
+    },
+    {
+        title: "分析第一个Rust项目",
+        permalink: "/rust/first-rust-project/",
+        summary: "代码结构 fn main() { println!(\u0026#34;Hello, world!\u0026#34;); } Crate library crate —— 只可以有一个 binary crate —— 任意多个 修改代码 use std::io::stdin; fn main() { let mut msg: String = String::new(); println!(\u0026#34;Enter a message: \u0026#34;); stdin().read_line(\u0026amp;mut msg).unwrap(); println!(\u0026#34;You entered: {}\u0026#34;, msg.trim()); } 逐行解析 use std::io::stdin;\nstd::io::stdin 是标准库中的模块。如果是 prelude 部分（预编译在代码中），可以直接使用，无需 use 引入。\n::\n用于访问模块中公开使用的 API。\n;\n结束任何语句的符号。\nlet mut msg: String = String::new();\nlet —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rust 中变量默认不可变，加 mut 后才允许修改 msg: String —— 变量名 msg，类型为 String String::new() —— 创建一个空字符串 stdin().read_line(\u0026amp;mut msg).unwrap();\n",
+        tags: ["Rust","标准库"],
+        categories: ["rust"]
     },
     {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",

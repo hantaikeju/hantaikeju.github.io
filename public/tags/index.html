@@ -106,7 +106,7 @@
                 <li class="sidebar-category">
                     <a href="/rust/" class="sidebar-category-link ">
                         <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">1</span>
+                        <span class="sidebar-count">2</span>
                     </a>
                 </li>
                 <li class="sidebar-category">
@@ -168,6 +168,13 @@ window.__sidebarPosts = [
         categories: ["unity"]
     },
     {
+        title: "分析第一个Rust项目",
+        permalink: "/rust/first-rust-project/",
+        summary: "代码结构 fn main() { println!(\u0026#34;Hello, world!\u0026#34;); } Crate library crate —— 只可以有一个 binary crate —— 任意多个 修改代码 use std::io::stdin; fn main() { let mut msg: String = String::new(); println!(\u0026#34;Enter a message: \u0026#34;); stdin().read_line(\u0026amp;mut msg).unwrap(); println!(\u0026#34;You entered: {}\u0026#34;, msg.trim()); } 逐行解析 use std::io::stdin;\nstd::io::stdin 是标准库中的模块。如果是 prelude 部分（预编译在代码中），可以直接使用，无需 use 引入。\n::\n用于访问模块中公开使用的 API。\n;\n结束任何语句的符号。\nlet mut msg: String = String::new();\nlet —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rust 中变量默认不可变，加 mut 后才允许修改 msg: String —— 变量名 msg，类型为 String String::new() —— 创建一个空字符串 stdin().read_line(\u0026amp;mut msg).unwrap();\n",
+        tags: ["Rust","标准库"],
+        categories: ["rust"]
+    },
+    {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",
         permalink: "/dev-env/vscode-copilot-deepseek/",
         summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
@@ -193,7 +200,7 @@ window.__sidebarPosts = [
                 <a href="http://localhost:1313/tags/deepseek/">DeepSeek <sup><strong><sup>1</sup></strong></sup> </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/rust/">Rust <sup><strong><sup>1</sup></strong></sup> </a>
+                <a href="http://localhost:1313/tags/rust/">Rust <sup><strong><sup>2</sup></strong></sup> </a>
             </li>
             <li>
                 <a href="http://localhost:1313/tags/rust-analyzer/">Rust-Analyzer <sup><strong><sup>1</sup></strong></sup> </a>
@@ -209,6 +216,9 @@ window.__sidebarPosts = [
             </li>
             <li>
                 <a href="http://localhost:1313/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境 <sup><strong><sup>2</sup></strong></sup> </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/">标准库 <sup><strong><sup>1</sup></strong></sup> </a>
             </li>
 </ul>
         </main>

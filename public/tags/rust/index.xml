@@ -6,7 +6,7 @@
     <description>Recent content in Rust on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Jun 2026 20:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 10:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安装 Rust 编译环境 — VSCode 篇</title>
@@ -14,6 +14,13 @@
       <pubDate>Thu, 25 Jun 2026 20:00:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/install-rust-vscode/</guid>
       <description>在 Windows 上安装 Rust 编译环境，配置 MSVC / GNU 工具链，搭配 VSCode &#43; rust-analyzer 创建第一个 Rust 项目。</description>
+    </item>
+    <item>
+      <title>分析第一个Rust项目</title>
+      <link>http://localhost:1313/rust/first-rust-project/</link>
+      <pubDate>Fri, 26 Jun 2026 10:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/first-rust-project/</guid>
+      <description>分析 Rust 中的 mut 可修改修饰符，解析第一个 Rust 项目的代码结构、crate 类型与标准库使用。</description>
     </item>
   </channel>
 </rss>
