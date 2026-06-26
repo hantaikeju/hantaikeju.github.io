@@ -6,8 +6,15 @@
     <description>Recent content on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:26:27 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 20:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安装 Rust 编译环境 — VSCode 篇</title>
+      <link>http://localhost:1313/rust/install-rust-vscode/</link>
+      <pubDate>Thu, 25 Jun 2026 20:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/install-rust-vscode/</guid>
+      <description>在 Windows 上安装 Rust 编译环境，配置 MSVC / GNU 工具链，搭配 VSCode &#43; rust-analyzer 创建第一个 Rust 项目。</description>
+    </item>
     <item>
       <title>Shader Test</title>
       <link>http://localhost:1313/unity/graphics/shader-test/</link>
