@@ -148,6 +148,13 @@ window.__sidebarPosts = [
         categories: ["rust"]
     },
     {
+        title: "Rust：VsCode 快速修复异常排查",
+        permalink: "/rust/vscode-quickfix-troubleshoot/",
+        summary: "问题现象 编译器报错（如 cannot find function stdin in this scope），波浪线正常显示 按 Ctrl+. / 灯泡图标，只显示一两个通用选项，没有自动导入补全 即使编译器给出了 help: consider importing this function 建议，也无法一键应用 本案例真实根因 核心问题：系统存在多个 Rust 安装，rust-analyzer 选错了 本机同时存在两套 Rust：\n来源 路径 有无 rust-src 官方安装包（系统级） C:\\Program Files\\Rust stable GNU 1.96 ❌ 无 rustup 管理 C:\\Users\\Administrator\\.rustup\\toolchains\\stable-x86_64-pc-windows-gnu ✅ 有 rust-analyzer 默认使用了系统安装的 Rust（无 rust-src），导致它无法加载 std 等标准库源码，所有自动导入、类型推导等 Code Action 全部失效。\n验证命令 rust-analyzer analysis-stats \u0026lt;项目路径\u0026gt; 2\u0026gt;\u0026amp;1 如果输出包含下面这行，说明命中了这个根因：\nERROR can\u0026#39;t load standard library, try installing `rust-src`\rsysroot_path=C:\\Program Files\\Rust stable GNU 1.96 ← 用的是系统 Rust 实际修复方案（按优先级） 方案 1：符号链接（本案例生效的方案）⭐ 用管理员 PowerShell，把系统 Rust 的 src 目录链接到 rustup 工具链中已有的 rust-src：\n",
+        tags: ["Rust","VSCode","rust-analyzer","故障排查"],
+        categories: ["rust"]
+    },
+    {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",
         permalink: "/dev-env/vscode-copilot-deepseek/",
         summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",

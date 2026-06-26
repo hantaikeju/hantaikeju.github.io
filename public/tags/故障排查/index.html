@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>VSCode | hantaikeju 的技术博客</title>
+<title>故障排查 | hantaikeju 的技术博客</title>
 <meta name="keywords" content="">
 <meta name="description" content="记录技术成长，分享开发经验">
 <meta name="author" content="hantaikeju">
-<link rel="canonical" href="http://localhost:1313/tags/vscode/">
+<link rel="canonical" href="http://localhost:1313/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/vscode/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/vscode/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/">
 <noscript>
     <style>
         #theme-toggle,
@@ -194,50 +194,9 @@ window.__sidebarPosts = [
         <main class="main"> 
 <header class="page-header">
   <h1>
-    VSCode
+    故障排查
   </h1>
 </header>
-
-<article class="post-entry tag-entry"> 
-   <header class="entry-header">
-     <h2 class="entry-hint-parent">VSCode 配置 Copilot &#43; OAI &#43; DeepSeek
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。
-第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。
-安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。
-第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl&#43;Shift&#43;P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-06-13 18:23:00 +0800 CST'>June 13, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
-  <a class="entry-link" aria-label="post link to VSCode 配置 Copilot &#43; OAI &#43; DeepSeek" href="http://localhost:1313/dev-env/vscode-copilot-deepseek/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-   <header class="entry-header">
-     <h2 class="entry-hint-parent">安装 Rust 编译环境 — VSCode 篇
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The Rust Programming Language 官方在线文档链接
-Rust 版本 Edition – 大版本如 2021、2024
-Version – 小版本编号，如 1.56.0 → 1.81.0
-Rust 优势 高性能 高度安全性，内存高限制 开发者友好 健壮的生态系统 —— Cargo 包管理器 Rust 可编写更快、更可靠的软件，兼具高层次的易用性和低层次的控制力。
-Rust 历史 2006：个人项目起源 2009：Mozilla 赞助 2015：第一个稳定版本 2021：Rust 基金会，Rust Edition 2021 发布 2022：用于 Linux Kernel 开发 Rust 安装 Windows 安装 Visual Studio C&#43;&#43;。
-Rust 安装链接，选择对应的 rustup-init.exe 进行安装。
-Windows 下 Rust 有两套编译工具链：
-x86_64-pc-windows-msvc：微软 MSVC ABI（官方默认） x86_64-pc-windows-gnu：MinGW-w64 &#43; GCC ABI 默认是 msvc 方式。
-两种方式的区别 工具链 x86_64-pc-windows-msvc（默认工具链）必须提前安装 Visual Studio Build Tools 并勾选 C&#43;&#43; 开发组件，提供微软原生 link.exe 链接器、UCRT 运行库。
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-06-25 20:00:00 +0800 CST'>June 25, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
-  <a class="entry-link" aria-label="post link to 安装 Rust 编译环境 — VSCode 篇" href="http://localhost:1313/rust/install-rust-vscode/"></a>
-</article>
 
 <article class="post-entry tag-entry"> 
    <header class="entry-header">

@@ -6,7 +6,7 @@
     <description>Recent content in Rust on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Jun 2026 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 11:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安装 Rust 编译环境 — VSCode 篇</title>
@@ -21,6 +21,13 @@
       <pubDate>Fri, 26 Jun 2026 10:00:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/first-rust-project/</guid>
       <description>分析 Rust 中的 mut 可修改修饰符，解析第一个 Rust 项目的代码结构、crate 类型与标准库使用。</description>
+    </item>
+    <item>
+      <title>Rust：VsCode 快速修复异常排查</title>
+      <link>http://localhost:1313/rust/vscode-quickfix-troubleshoot/</link>
+      <pubDate>Fri, 26 Jun 2026 11:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/vscode-quickfix-troubleshoot/</guid>
+      <description>排查 rust-analyzer 波浪线正常但 Ctrl&#43;. 无自动导入补全的问题，多套 Rust 环境冲突的根因分析与修复方案。</description>
     </item>
   </channel>
 </rss>
