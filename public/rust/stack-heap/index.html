@@ -445,15 +445,14 @@ window.__sidebarPosts = [
 			</tr>
 	</tbody>
 </table>
-<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TB
-    subgraph 手动管理
-        C1[&#34;malloc()&#34;] --&gt; C2[&#34;使用&#34;] --&gt; C3[&#34;free()&#34;]
-        C3 -.-&gt;|忘记 free| C4[&#34;❌ 内存泄漏&#34;]
-        C3 -.-&gt;|过早 free| C5[&#34;❌ 悬垂指针&#34;]
-    end
-    subgraph 所有权系统
-        R1[&#34;声明变量&#34;] --&gt; R2[&#34;编译器分析\n所有权/借用/生命周期&#34;] --&gt; R3[&#34;✅ 编译通过\n✅ 自动释放&#34;]
-    end
+<p><strong>手动管理（C/C++）：</strong></p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    C1[&#34;malloc()&#34;] --&gt; C2[&#34;使用&#34;] --&gt; C3[&#34;free()&#34;]
+    C3 -.-&gt;|忘记 free| C4[&#34;❌ 内存泄漏&#34;]
+    C3 -.-&gt;|过早 free| C5[&#34;❌ 悬垂指针&#34;]
+</code></pre><p><strong>所有权系统（Rust）：</strong></p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    R1[&#34;声明变量&#34;] --&gt; R2[&#34;编译器分析\n所有权/借用/生命周期&#34;] --&gt; R3[&#34;✅ 编译通过\n✅ 自动释放&#34;]
 </code></pre><hr>
 <h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
 <table>
