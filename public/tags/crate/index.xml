@@ -6,6 +6,14 @@
     <description>Recent content in Crate on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Jun 2026 15:54:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/crate/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust：猜数字游戏</title>
+      <link>http://localhost:1313/rust/guessing-game/</link>
+      <pubDate>Mon, 29 Jun 2026 15:54:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/guessing-game/</guid>
+      <description>用 Rust 实现一个经典的猜数字游戏：程序随机生成 1~100 的数字，用户输入猜测，程序提示大了还是小了，直至猜对。涵盖 std::io、rand crate、match 模式匹配、loop 循环与错误处理。</description>
+    </item>
   </channel>
 </rss>

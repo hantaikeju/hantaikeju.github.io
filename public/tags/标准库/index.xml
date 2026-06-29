@@ -6,7 +6,7 @@
     <description>Recent content in 标准库 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Jun 2026 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 15:54:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>分析第一个Rust项目</title>
@@ -14,6 +14,13 @@
       <pubDate>Fri, 26 Jun 2026 10:00:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/first-rust-project/</guid>
       <description>分析 Rust 中的 mut 可修改修饰符，解析第一个 Rust 项目的代码结构、crate 类型与标准库使用。</description>
+    </item>
+    <item>
+      <title>Rust：猜数字游戏</title>
+      <link>http://localhost:1313/rust/guessing-game/</link>
+      <pubDate>Mon, 29 Jun 2026 15:54:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/guessing-game/</guid>
+      <description>用 Rust 实现一个经典的猜数字游戏：程序随机生成 1~100 的数字，用户输入猜测，程序提示大了还是小了，直至猜对。涵盖 std::io、rand crate、match 模式匹配、loop 循环与错误处理。</description>
     </item>
   </channel>
 </rss>

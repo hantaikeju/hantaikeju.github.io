@@ -106,7 +106,7 @@
                 <li class="sidebar-category">
                     <a href="/rust/" class="sidebar-category-link ">
                         <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">3</span>
+                        <span class="sidebar-count">7</span>
                     </a>
                 </li>
                 <li class="sidebar-category">
@@ -182,6 +182,34 @@ window.__sidebarPosts = [
         categories: ["rust"]
     },
     {
+        title: "Rust：猜数字游戏",
+        permalink: "/rust/guessing-game/",
+        summary: "需求 程序随机在 1~100 产生一个数，用户通过输入与这个数进行比较，提示大了还是小了，直至猜对。\n允许用户输入 use std::io; fn main() { println!(\u0026#34;Please enter one number\u0026#34;); let mut input_num = String::new(); io::stdin() .read_line(\u0026amp;mut input_num) .expect(\u0026#34;Failed to read line\u0026#34;); println!(\u0026#34;You entered: {}\u0026#34;, input_num.trim()); } 代码解析 语法 说明 println! 宏，用于打印输出 let mut input_num let 声明变量，mut 让变量可重复赋值（不加则只能赋值一次） String::new() 创建空字符串 io::stdin() 获取 Stdin 实例，处理终端输入 .read_line(\u0026amp;mut input_num) 传入一个可变字符串引用（\u0026amp; 为引用），返回 Result .expect(\u0026quot;...\u0026quot;) 处理 Result 的 Err 情况，失败时 panic 并输出错误信息；不处理编译器会警告 println!(\u0026quot;{}\u0026quot;, ...) {} 为占位符，有多少个变量就有多少个占位符 生成 1~100 的随机数 第三方库 rand（crate） Rust 标准库不包含随机数生成，需要使用第三方 crate —— rand。\n",
+        tags: ["Rust","Crate","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：编译型语言 vs 解释型语言",
+        permalink: "/rust/compiled-vs-interpreted/",
+        summary: "语言执行方式 编程语言按执行方式可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。\n编译型语言 编译型语言的工作流程：\n开发者编写源代码 使用 编译器（Compiler） 将源代码一次性翻译成机器码 生成可执行文件（如 .exe、二进制文件） 将可执行文件分发给用户，用户直接运行即可 flowchart LR\rA[源代码] --\u0026gt; B[编译器 Compiler]\rB --\u0026gt; C[可执行文件]\rC --\u0026gt; D[CPU 直接执行] 特点：\n✅ 运行速度快：直接编译为机器码，无运行时翻译开销 ✅ 无需运行时环境：用户不需要安装编译器或解释器 ✅ 编译期错误检查：类型错误、语法错误在编译阶段就能发现 ❌ 编译时间较长：大型项目编译可能需要几分钟甚至更长 ❌ 平台依赖：不同操作系统/CPU 架构需分别编译 代表语言：Rust、C、C++、Go\nRust 作为编译型语言 Rust 使用 rustc 编译器（底层基于 LLVM），将源代码编译为高效的机器码：\n// main.rs fn main() { println!(\u0026#34;Hello, Rust!\u0026#34;); } # 编译 rustc main.rs # 运行生成的可执行文件 ./main # Linux/macOS main.exe # Windows Rust 的编译器不仅生成高效的机器码，还在编译期进行了大量的安全检查（所有权、借用、生命周期等），确保运行时不会出现内存安全问题。\n解释型语言 解释型语言的工作流程：\n开发者编写源代码 将源代码副本直接分发给用户 用户使用**解释器（Interpreter）**逐行翻译并执行 flowchart LR\rA[源代码] --\u0026gt; B[解释器 Interpreter]\rB --\u0026gt; C[逐行翻译 + 执行] 特点：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：静态/动态类型与强/弱类型",
+        permalink: "/rust/type-system-concepts/",
+        summary: "Rust 的语言类型 Rust 是一门 静态、强类型 语言。理解这几个概念，对于深入学习 Rust 至关重要。\n静态类型语言 vs 动态类型语言 静态类型语言 所有数据类型在编译时已知，编译器可以在编译阶段检查类型错误。\nfn main() { let x: i32 = 10; // 显式类型声明 println!(\u0026#34;{}\u0026#34;, x); } 动态类型语言 在运行时才知道数据的类型，变量类型可以在运行时动态改变。\nx = 10 # 无类型声明 print(x) x = \u0026#34;hello\u0026#34; # x 变成 string print(x) 静态 vs 动态 对比 特性 静态类型 动态类型 类型检查时机 编译时 运行时 类型安全 ✅ 高 ❌ 较低 性能 ✅ 更好的优化 ❌ 运行时开销 灵活性 ❌ 较低 ✅ 高 开发效率 ❌ 类型声明需额外代码 ✅ 写起来更快 代表语言 Rust, Java, C++ Python, JavaScript, Ruby 强类型语言 vs 弱类型语言 强类型语言 对数据类型的赋值和运算进行严格的规则约束，不允许隐式类型转换。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：Stack 与 Heap（栈与堆）",
+        permalink: "/rust/stack-heap/",
+        summary: "内存概述 程序运行时，操作系统会为它分配内存。Rust 程序使用的内存主要分为两大区域：\nStack（栈） — 局部变量、函数调用上下文 Heap（堆） — 动态分配的数据 理解两者的区别，是掌握 Rust 所有权系统的前提。\nStack（栈） 栈是一种 后进先出（LIFO） 的数据结构，就像一叠盘子：最后放上去的，最先被拿走。\nflowchart LR\rA[\u0026#34;① push(1)\u0026#34;] --\u0026gt; B[\u0026#34;② push(2)\u0026#34;] --\u0026gt; C[\u0026#34;③ push(3)\u0026#34;]\rC --\u0026gt; D[\u0026#34;④ pop() → 3\u0026#34;] --\u0026gt; E[\u0026#34;⑤ pop() → 2\u0026#34;] 栈的特点 特性 说明 分配方式 数据大小必须在编译时已知 速度 🚀 极快，CPU 直接操作栈指针 管理 自动管理，函数返回时自动释放 大小限制 相对较小（通常几 MB） 存储内容 固定大小的值：整数、浮点数、布尔、指针等 Rust 中存储在栈上的数据 fn main() { let x: i32 = 42; // i32 — 固定 4 字节，放栈上 let y: f64 = 3.14; // f64 — 固定 8 字节，放栈上 let flag: bool = true; // bool — 放栈上 // x、y、flag 都在 main() 的栈帧中 // 函数返回时自动回收 } 栈帧示意：\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",
         permalink: "/dev-env/vscode-copilot-deepseek/",
         summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
@@ -201,7 +229,7 @@ window.__sidebarPosts = [
                 <a href="http://localhost:1313/categories/dev-env/">Dev-Env <sup><strong><sup>1</sup></strong></sup> </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/rust/">Rust <sup><strong><sup>1</sup></strong></sup> </a>
+                <a href="http://localhost:1313/categories/rust/">Rust <sup><strong><sup>7</sup></strong></sup> </a>
             </li>
             <li>
                 <a href="http://localhost:1313/categories/unity/">Unity <sup><strong><sup>1</sup></strong></sup> </a>
@@ -228,6 +256,8 @@ window.__sidebarPosts = [
         <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
+
+
 
 <script>
     let menu = document.getElementById('menu');

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Rust：猜数字游戏 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="Rust, Crate, 标准库">
+<meta name="description" content="用 Rust 实现一个经典的猜数字游戏：程序随机生成 1~100 的数字，用户输入猜测，程序提示大了还是小了，直至猜对。涵盖 std::io、rand crate、match 模式匹配、loop 循环与错误处理。">
+<meta name="author" content="hantaikeju">
+<link rel="canonical" href="http://localhost:1313/rust/guessing-game/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/rust/guessing-game/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="hantaikeju 的技术博客 (Alt + H)">hantaikeju 的技术博客</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/csharp/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="sidebar-search">
+            <div class="sidebar-search-box">
+                <svg class="sidebar-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="sidebarSearchInput" class="sidebar-search-input" type="search" placeholder="搜索文章..." autocomplete="off" maxlength="64">
+            </div>
+            <div id="sidebarSearchResults" class="sidebar-search-results"></div>
+        </div>
+        
+        <div class="sidebar-breadcrumb">
+            <a href="/" class="sidebar-breadcrumb-link" title="返回首页">🏠</a>
+                <span class="sidebar-breadcrumb-sep">›</span>
+                <a href="/rust/" class="sidebar-breadcrumb-link" title="返回 Rust">Rust</a>
+        </div>
+
+        
+        <div class="sidebar-header">
+            <h3>📑 文章目录</h3>
+        </div>
+        <nav class="sidebar-nav sidebar-toc" id="sidebarNav">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#需求">需求</a></li>
+    <li><a href="#允许用户输入">允许用户输入</a>
+      <ul>
+        <li><a href="#代码解析">代码解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#生成-1100-的随机数">生成 1~100 的随机数</a>
+      <ul>
+        <li><a href="#第三方库-randcrate">第三方库 rand（crate）</a></li>
+        <li><a href="#方式一手动编辑-cargotoml">方式一：手动编辑 Cargo.toml</a></li>
+        <li><a href="#方式二使用-cargo-add-命令">方式二：使用 cargo add 命令</a></li>
+        <li><a href="#cargo-build">cargo build</a></li>
+      </ul>
+    </li>
+    <li><a href="#生成随机数代码">生成随机数代码</a>
+      <ul>
+        <li><a href="#引入-rng-trait">引入 Rng trait</a></li>
+        <li><a href="#生成-1100-的随机数-1">生成 1~100 的随机数</a></li>
+        <li><a href="#输入类型转换shadowing">输入类型转换（Shadowing）</a></li>
+        <li><a href="#使用-match-进行比较">使用 match 进行比较</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用-loop-循环">使用 loop 循环</a></li>
+    <li><a href="#处理用户输入非数字">处理用户输入非数字</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+        </nav>
+    </div>
+</aside>
+
+
+<script>
+window.__sidebarPosts = [
+    {
+        title: "安装 Rust 编译环境 — VSCode 篇",
+        permalink: "/rust/install-rust-vscode/",
+        summary: "The Rust Programming Language 官方在线文档链接\nRust 版本 Edition \u0026ndash; 大版本如 2021、2024\nVersion \u0026ndash; 小版本编号，如 1.56.0 → 1.81.0\nRust 优势 高性能 高度安全性，内存高限制 开发者友好 健壮的生态系统 —— Cargo 包管理器 Rust 可编写更快、更可靠的软件，兼具高层次的易用性和低层次的控制力。\nRust 历史 2006：个人项目起源 2009：Mozilla 赞助 2015：第一个稳定版本 2021：Rust 基金会，Rust Edition 2021 发布 2022：用于 Linux Kernel 开发 Rust 安装 Windows 安装 Visual Studio C++。\nRust 安装链接，选择对应的 rustup-init.exe 进行安装。\nWindows 下 Rust 有两套编译工具链：\nx86_64-pc-windows-msvc：微软 MSVC ABI（官方默认） x86_64-pc-windows-gnu：MinGW-w64 + GCC ABI 默认是 msvc 方式。\n两种方式的区别 工具链 x86_64-pc-windows-msvc（默认工具链）必须提前安装 Visual Studio Build Tools 并勾选 C++ 开发组件，提供微软原生 link.exe 链接器、UCRT 运行库。\n",
+        tags: ["Rust","VSCode","开发环境","rust-analyzer"],
+        categories: ["rust"]
+    },
+    {
+        title: "Shader Test",
+        permalink: "/unity/graphics/shader-test/",
+        summary: "基础概念 Shader 的一些基础概念介绍。\n顶点着色器 顶点着色器处理每个顶点的数据。\n片元着色器 片元着色器处理每个像素的颜色。\n高级用法 更高级的 Shader 技巧。\n自定义光照 实现自定义光照模型。\n后处理效果 屏幕后处理特效的实现方式。\n",
+        tags: ["shader","unity"],
+        categories: ["unity"]
+    },
+    {
+        title: "分析第一个Rust项目",
+        permalink: "/rust/first-rust-project/",
+        summary: "代码结构 fn main() { println!(\u0026#34;Hello, world!\u0026#34;); } Crate library crate —— 只可以有一个 binary crate —— 任意多个 修改代码 use std::io::stdin; fn main() { let mut msg: String = String::new(); println!(\u0026#34;Enter a message: \u0026#34;); stdin().read_line(\u0026amp;mut msg).unwrap(); println!(\u0026#34;You entered: {}\u0026#34;, msg.trim()); } 逐行解析 use std::io::stdin;\nstd::io::stdin 是标准库中的模块。如果是 prelude 部分（预编译在代码中），可以直接使用，无需 use 引入。\n::\n用于访问模块中公开使用的 API。\n;\n结束任何语句的符号。\nlet mut msg: String = String::new();\nlet —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rust 中变量默认不可变，加 mut 后才允许修改 msg: String —— 变量名 msg，类型为 String String::new() —— 创建一个空字符串 stdin().read_line(\u0026amp;mut msg).unwrap();\n",
+        tags: ["Rust","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：VsCode 快速修复异常排查",
+        permalink: "/rust/vscode-quickfix-troubleshoot/",
+        summary: "问题现象 编译器报错（如 cannot find function stdin in this scope），波浪线正常显示 按 Ctrl+. / 灯泡图标，只显示一两个通用选项，没有自动导入补全 即使编译器给出了 help: consider importing this function 建议，也无法一键应用 本案例真实根因 核心问题：系统存在多个 Rust 安装，rust-analyzer 选错了 本机同时存在两套 Rust：\n来源 路径 有无 rust-src 官方安装包（系统级） C:\\Program Files\\Rust stable GNU 1.96 ❌ 无 rustup 管理 C:\\Users\\Administrator\\.rustup\\toolchains\\stable-x86_64-pc-windows-gnu ✅ 有 rust-analyzer 默认使用了系统安装的 Rust（无 rust-src），导致它无法加载 std 等标准库源码，所有自动导入、类型推导等 Code Action 全部失效。\n验证命令 rust-analyzer analysis-stats \u0026lt;项目路径\u0026gt; 2\u0026gt;\u0026amp;1 如果输出包含下面这行，说明命中了这个根因：\nERROR can\u0026#39;t load standard library, try installing `rust-src`\rsysroot_path=C:\\Program Files\\Rust stable GNU 1.96 ← 用的是系统 Rust 实际修复方案（按优先级） 方案 1：符号链接（本案例生效的方案）⭐ 用管理员 PowerShell，把系统 Rust 的 src 目录链接到 rustup 工具链中已有的 rust-src：\n",
+        tags: ["Rust","VSCode","rust-analyzer","故障排查"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：猜数字游戏",
+        permalink: "/rust/guessing-game/",
+        summary: "需求 程序随机在 1~100 产生一个数，用户通过输入与这个数进行比较，提示大了还是小了，直至猜对。\n允许用户输入 use std::io; fn main() { println!(\u0026#34;Please enter one number\u0026#34;); let mut input_num = String::new(); io::stdin() .read_line(\u0026amp;mut input_num) .expect(\u0026#34;Failed to read line\u0026#34;); println!(\u0026#34;You entered: {}\u0026#34;, input_num.trim()); } 代码解析 语法 说明 println! 宏，用于打印输出 let mut input_num let 声明变量，mut 让变量可重复赋值（不加则只能赋值一次） String::new() 创建空字符串 io::stdin() 获取 Stdin 实例，处理终端输入 .read_line(\u0026amp;mut input_num) 传入一个可变字符串引用（\u0026amp; 为引用），返回 Result .expect(\u0026quot;...\u0026quot;) 处理 Result 的 Err 情况，失败时 panic 并输出错误信息；不处理编译器会警告 println!(\u0026quot;{}\u0026quot;, ...) {} 为占位符，有多少个变量就有多少个占位符 生成 1~100 的随机数 第三方库 rand（crate） Rust 标准库不包含随机数生成，需要使用第三方 crate —— rand。\n",
+        tags: ["Rust","Crate","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：编译型语言 vs 解释型语言",
+        permalink: "/rust/compiled-vs-interpreted/",
+        summary: "语言执行方式 编程语言按执行方式可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。\n编译型语言 编译型语言的工作流程：\n开发者编写源代码 使用 编译器（Compiler） 将源代码一次性翻译成机器码 生成可执行文件（如 .exe、二进制文件） 将可执行文件分发给用户，用户直接运行即可 flowchart LR\rA[源代码] --\u0026gt; B[编译器 Compiler]\rB --\u0026gt; C[可执行文件]\rC --\u0026gt; D[CPU 直接执行] 特点：\n✅ 运行速度快：直接编译为机器码，无运行时翻译开销 ✅ 无需运行时环境：用户不需要安装编译器或解释器 ✅ 编译期错误检查：类型错误、语法错误在编译阶段就能发现 ❌ 编译时间较长：大型项目编译可能需要几分钟甚至更长 ❌ 平台依赖：不同操作系统/CPU 架构需分别编译 代表语言：Rust、C、C++、Go\nRust 作为编译型语言 Rust 使用 rustc 编译器（底层基于 LLVM），将源代码编译为高效的机器码：\n// main.rs fn main() { println!(\u0026#34;Hello, Rust!\u0026#34;); } # 编译 rustc main.rs # 运行生成的可执行文件 ./main # Linux/macOS main.exe # Windows Rust 的编译器不仅生成高效的机器码，还在编译期进行了大量的安全检查（所有权、借用、生命周期等），确保运行时不会出现内存安全问题。\n解释型语言 解释型语言的工作流程：\n开发者编写源代码 将源代码副本直接分发给用户 用户使用**解释器（Interpreter）**逐行翻译并执行 flowchart LR\rA[源代码] --\u0026gt; B[解释器 Interpreter]\rB --\u0026gt; C[逐行翻译 + 执行] 特点：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：静态/动态类型与强/弱类型",
+        permalink: "/rust/type-system-concepts/",
+        summary: "Rust 的语言类型 Rust 是一门 静态、强类型 语言。理解这几个概念，对于深入学习 Rust 至关重要。\n静态类型语言 vs 动态类型语言 静态类型语言 所有数据类型在编译时已知，编译器可以在编译阶段检查类型错误。\nfn main() { let x: i32 = 10; // 显式类型声明 println!(\u0026#34;{}\u0026#34;, x); } 动态类型语言 在运行时才知道数据的类型，变量类型可以在运行时动态改变。\nx = 10 # 无类型声明 print(x) x = \u0026#34;hello\u0026#34; # x 变成 string print(x) 静态 vs 动态 对比 特性 静态类型 动态类型 类型检查时机 编译时 运行时 类型安全 ✅ 高 ❌ 较低 性能 ✅ 更好的优化 ❌ 运行时开销 灵活性 ❌ 较低 ✅ 高 开发效率 ❌ 类型声明需额外代码 ✅ 写起来更快 代表语言 Rust, Java, C++ Python, JavaScript, Ruby 强类型语言 vs 弱类型语言 强类型语言 对数据类型的赋值和运算进行严格的规则约束，不允许隐式类型转换。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：Stack 与 Heap（栈与堆）",
+        permalink: "/rust/stack-heap/",
+        summary: "内存概述 程序运行时，操作系统会为它分配内存。Rust 程序使用的内存主要分为两大区域：\nStack（栈） — 局部变量、函数调用上下文 Heap（堆） — 动态分配的数据 理解两者的区别，是掌握 Rust 所有权系统的前提。\nStack（栈） 栈是一种 后进先出（LIFO） 的数据结构，就像一叠盘子：最后放上去的，最先被拿走。\nflowchart LR\rA[\u0026#34;① push(1)\u0026#34;] --\u0026gt; B[\u0026#34;② push(2)\u0026#34;] --\u0026gt; C[\u0026#34;③ push(3)\u0026#34;]\rC --\u0026gt; D[\u0026#34;④ pop() → 3\u0026#34;] --\u0026gt; E[\u0026#34;⑤ pop() → 2\u0026#34;] 栈的特点 特性 说明 分配方式 数据大小必须在编译时已知 速度 🚀 极快，CPU 直接操作栈指针 管理 自动管理，函数返回时自动释放 大小限制 相对较小（通常几 MB） 存储内容 固定大小的值：整数、浮点数、布尔、指针等 Rust 中存储在栈上的数据 fn main() { let x: i32 = 42; // i32 — 固定 4 字节，放栈上 let y: f64 = 3.14; // f64 — 固定 8 字节，放栈上 let flag: bool = true; // bool — 放栈上 // x、y、flag 都在 main() 的栈帧中 // 函数返回时自动回收 } 栈帧示意：\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "VSCode 配置 Copilot + OAI + DeepSeek",
+        permalink: "/dev-env/vscode-copilot-deepseek/",
+        summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
+        tags: ["VSCode","Copilot","DeepSeek","AI","开发环境"],
+        categories: ["dev-env"]
+    },
+];
+</script>
+
+        <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Rust：猜数字游戏
+    </h1>
+    <div class="post-description">
+      用 Rust 实现一个经典的猜数字游戏：程序随机生成 1~100 的数字，用户输入猜测，程序提示大了还是小了，直至猜对。涵盖 std::io、rand crate、match 模式匹配、loop 循环与错误处理。
+    </div>
+    <div class="post-meta">
+
+<span title='2026-06-29 15:54:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h2 id="需求">需求<a hidden class="anchor" aria-hidden="true" href="#需求">#</a></h2>
+<p>程序随机在 1~100 产生一个数，用户通过输入与这个数进行比较，提示大了还是小了，直至猜对。</p>
+<hr>
+<h2 id="允许用户输入">允许用户输入<a hidden class="anchor" aria-hidden="true" href="#允许用户输入">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::io;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Please enter one number&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> input_num <span style="color:#f92672">=</span> String::new();
+</span></span><span style="display:flex;"><span>    io::stdin()
+</span></span><span style="display:flex;"><span>        .read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> input_num)
+</span></span><span style="display:flex;"><span>        .expect(<span style="color:#e6db74">&#34;Failed to read line&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You entered: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, input_num.trim());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="代码解析">代码解析<a hidden class="anchor" aria-hidden="true" href="#代码解析">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>println!</code></td>
+					<td>宏，用于打印输出</td>
+			</tr>
+			<tr>
+					<td><code>let mut input_num</code></td>
+					<td><code>let</code> 声明变量，<code>mut</code> 让变量可重复赋值（不加则只能赋值一次）</td>
+			</tr>
+			<tr>
+					<td><code>String::new()</code></td>
+					<td>创建空字符串</td>
+			</tr>
+			<tr>
+					<td><code>io::stdin()</code></td>
+					<td>获取 <code>Stdin</code> 实例，处理终端输入</td>
+			</tr>
+			<tr>
+					<td><code>.read_line(&amp;mut input_num)</code></td>
+					<td>传入一个可变字符串引用（<code>&amp;</code> 为引用），返回 <code>Result</code></td>
+			</tr>
+			<tr>
+					<td><code>.expect(&quot;...&quot;)</code></td>
+					<td>处理 <code>Result</code> 的 <code>Err</code> 情况，失败时 panic 并输出错误信息；不处理编译器会警告</td>
+			</tr>
+			<tr>
+					<td><code>println!(&quot;{}&quot;, ...)</code></td>
+					<td><code>{}</code> 为占位符，有多少个变量就有多少个占位符</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="生成-1100-的随机数">生成 1~100 的随机数<a hidden class="anchor" aria-hidden="true" href="#生成-1100-的随机数">#</a></h2>
+<h3 id="第三方库-randcrate">第三方库 rand（crate）<a hidden class="anchor" aria-hidden="true" href="#第三方库-randcrate">#</a></h3>
+<p>Rust 标准库不包含随机数生成，需要使用第三方 crate —— <code>rand</code>。</p>
+<p>cargo 的库从 <a href="https://crates.io">crates.io</a> 获取。</p>
+<h3 id="方式一手动编辑-cargotoml">方式一：手动编辑 Cargo.toml<a hidden class="anchor" aria-hidden="true" href="#方式一手动编辑-cargotoml">#</a></h3>
+<p>在 <code>Cargo.toml</code> 的 <code>[dependencies]</code> 下添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rand</span> = <span style="color:#e6db74">&#34;0.8.5&#34;</span>
+</span></span></code></pre></div><h3 id="方式二使用-cargo-add-命令">方式二：使用 cargo add 命令<a hidden class="anchor" aria-hidden="true" href="#方式二使用-cargo-add-命令">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cargo add rand@0.8.5
+</span></span></code></pre></div><p>执行后会输出：</p>
+<pre tabindex="0"><code>    Updating crates.io index
+      Adding rand v0.8.5 to dependencies
+             Features:
+             + alloc
+             + getrandom
+             + libc
+             + rand_chacha
+             + std
+             + std_rng
+             ...
+</code></pre><h3 id="cargo-build">cargo build<a hidden class="anchor" aria-hidden="true" href="#cargo-build">#</a></h3>
+<p>添加依赖后运行 <code>cargo build</code> 进行编译：</p>
+<pre tabindex="0"><code>PS D:\GuessNumber&gt; cargo build
+    Blocking waiting for file lock on build directory
+    Compiling zerocopy v0.8.52
+    Compiling cfg-if v1.0.4
+    Compiling getrandom v0.2.17
+    Compiling rand_core v0.6.4
+    Compiling ppv-lite86 v0.2.21
+    Compiling rand_chacha v0.3.1
+    Compiling rand v0.8.6
+    Compiling GuessNumber v0.1.0 (D:\GuessNumber)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.58s
+</code></pre><p>第一次执行 <code>cargo build</code> 之后会生成 <code>Cargo.lock</code> 文件，锁定依赖版本。</p>
+<hr>
+<h2 id="生成随机数代码">生成随机数代码<a hidden class="anchor" aria-hidden="true" href="#生成随机数代码">#</a></h2>
+<h3 id="引入-rng-trait">引入 Rng trait<a hidden class="anchor" aria-hidden="true" href="#引入-rng-trait">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> rand::Rng;
+</span></span></code></pre></div><p><code>trait</code> 在 Rust 中相当于 C# 的 <code>interface</code>。<code>Rng</code> 是一个 trait（<code>pub trait Rng</code>），定义了随机数生成器的行为。</p>
+<h3 id="生成-1100-的随机数-1">生成 1~100 的随机数<a hidden class="anchor" aria-hidden="true" href="#生成-1100-的随机数-1">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> secret_number <span style="color:#f92672">=</span> rand::thread_rng().gen_range(<span style="color:#ae81ff">1</span><span style="color:#f92672">..=</span><span style="color:#ae81ff">100</span>);
+</span></span></code></pre></div><ul>
+<li><code>rand::thread_rng()</code> —— 获取线程局部的随机数生成器</li>
+<li><code>gen_range(1..=100)</code> —— 生成 1 到 100（含）之间的随机数</li>
+</ul>
+<h3 id="输入类型转换shadowing">输入类型转换（Shadowing）<a hidden class="anchor" aria-hidden="true" href="#输入类型转换shadowing">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> input_num: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> input_num.trim().parse().expect(<span style="color:#e6db74">&#34;Please type a number!&#34;</span>);
+</span></span></code></pre></div><p>这里 <code>input_num</code> 变量名与之前的 <code>String</code> 类型同名，这在 Rust 中是允许的，该语法称为 <strong>shadowing（遮蔽）</strong>——新变量会&quot;遮蔽&quot;旧变量。</p>
+<h3 id="使用-match-进行比较">使用 match 进行比较<a hidden class="anchor" aria-hidden="true" href="#使用-match-进行比较">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::cmp::Ordering;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">match</span> input_num.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
+</span></span><span style="display:flex;"><span>    Ordering::Less    <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+</span></span><span style="display:flex;"><span>    Ordering::Greater <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+</span></span><span style="display:flex;"><span>    Ordering::Equal   <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>),
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><code>cmp</code> 返回 <code>Ordering</code> 枚举的三个值：<code>Less</code>、<code>Greater</code>、<code>Equal</code></li>
+<li><code>match</code> 类似 C# 的 <code>switch</code>，但更强大——必须穷举所有分支</li>
+</ul>
+<hr>
+<h2 id="使用-loop-循环">使用 loop 循环<a hidden class="anchor" aria-hidden="true" href="#使用-loop-循环">#</a></h2>
+<p><code>loop</code> 相当于 <code>while (true) {}</code>，需注意条件退出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> rand::Rng;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::{cmp::Ordering, io};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> secret_number <span style="color:#f92672">=</span> rand::thread_rng().gen_range(<span style="color:#ae81ff">1</span><span style="color:#f92672">..=</span><span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Please enter one number&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> input_num <span style="color:#f92672">=</span> String::new();
+</span></span><span style="display:flex;"><span>        io::stdin()
+</span></span><span style="display:flex;"><span>            .read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> input_num)
+</span></span><span style="display:flex;"><span>            .expect(<span style="color:#e6db74">&#34;Failed to read line&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You entered: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, input_num.trim());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> input_num: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> input_num.trim().parse().expect(<span style="color:#e6db74">&#34;Please type a number!&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">match</span> input_num.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
+</span></span><span style="display:flex;"><span>            Ordering::Less    <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+</span></span><span style="display:flex;"><span>            Ordering::Greater <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+</span></span><span style="display:flex;"><span>            Ordering::Equal   <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="处理用户输入非数字">处理用户输入非数字<a hidden class="anchor" aria-hidden="true" href="#处理用户输入非数字">#</a></h2>
+<p>当用户输入的不是数字时，<code>.expect()</code> 会导致程序崩溃。更优雅的做法是用 <code>match</code> 处理 <code>parse</code> 的 <code>Result</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> rand::Rng;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::{cmp::Ordering, io};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> secret_number <span style="color:#f92672">=</span> rand::thread_rng().gen_range(<span style="color:#ae81ff">1</span><span style="color:#f92672">..=</span><span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Please enter one number&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> input_num <span style="color:#f92672">=</span> String::new();
+</span></span><span style="display:flex;"><span>        io::stdin()
+</span></span><span style="display:flex;"><span>            .read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> input_num)
+</span></span><span style="display:flex;"><span>            .expect(<span style="color:#e6db74">&#34;Failed to read line&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You entered: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, input_num.trim());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> input_num: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> input_num.trim().parse() {
+</span></span><span style="display:flex;"><span>            Ok(num)  <span style="color:#f92672">=&gt;</span> num,
+</span></span><span style="display:flex;"><span>            Err(_)   <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Please type a valid number!&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">match</span> input_num.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
+</span></span><span style="display:flex;"><span>            Ordering::Less    <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+</span></span><span style="display:flex;"><span>            Ordering::Greater <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+</span></span><span style="display:flex;"><span>            Ordering::Equal   <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里用 <code>match</code> 替换了 <code>.expect()</code>：</p>
+<ul>
+<li><code>Ok(num)</code> —— 解析成功，将数字绑定到 <code>num</code></li>
+<li><code>Err(_)</code> —— 解析失败（<code>_</code> 表示忽略错误详情），打印提示并用 <code>continue</code> 跳回循环开头</li>
+</ul>
+<hr>
+<h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
+<p>这个猜数字游戏涵盖了 Rust 的多个核心概念：</p>
+<table>
+	<thead>
+			<tr>
+					<th>概念</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>let</code> / <code>mut</code></td>
+					<td>变量声明与可变性</td>
+			</tr>
+			<tr>
+					<td><code>String::new()</code></td>
+					<td>创建字符串实例</td>
+			</tr>
+			<tr>
+					<td><code>io::stdin()</code></td>
+					<td>标准输入处理</td>
+			</tr>
+			<tr>
+					<td><code>use</code></td>
+					<td>引入模块 / trait</td>
+			</tr>
+			<tr>
+					<td>Cargo 依赖管理</td>
+					<td><code>Cargo.toml</code>、<code>cargo add</code>、<code>cargo build</code></td>
+			</tr>
+			<tr>
+					<td><code>trait</code></td>
+					<td>类似接口，定义共享行为</td>
+			</tr>
+			<tr>
+					<td>Shadowing</td>
+					<td>同名变量遮蔽</td>
+			</tr>
+			<tr>
+					<td><code>match</code></td>
+					<td>模式匹配，穷举分支</td>
+			</tr>
+			<tr>
+					<td><code>loop</code> / <code>break</code> / <code>continue</code></td>
+					<td>循环控制</td>
+			</tr>
+			<tr>
+					<td><code>Result</code> / <code>Ok</code> / <code>Err</code></td>
+					<td>错误处理</td>
+			</tr>
+			<tr>
+					<td><code>cmp</code> / <code>Ordering</code></td>
+					<td>比较与排序枚举</td>
+			</tr>
+	</tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/rust/">Rust</a></li>
+      <li><a href="http://localhost:1313/tags/crate/">Crate</a></li>
+      <li><a href="http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/">标准库</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/rust/vscode-quickfix-troubleshoot/">
+    <span class="title">« Prev</span>
+    <span>Rust：VsCode 快速修复异常排查</span>
+  </a>
+  <a class="next" href="http://localhost:1313/rust/compiled-vs-interpreted/">
+    <span class="title">Next »</span>
+    <span>Rust 编程概念：编译型语言 vs 解释型语言</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+        </main>
+    </div>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">hantaikeju 的技术博客</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
+  if (mermaidBlocks.length === 0) return;
+
+  mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+  mermaidBlocks.forEach(function(codeBlock) {
+    const pre = codeBlock.parentElement;
+    const mermaidText = codeBlock.textContent;
+    const div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = mermaidText;
+    pre.replaceWith(div);
+  });
+
+  mermaid.run();
+})();
+</script>
+
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+    <script defer src="/js/sidebar-search.min.js"></script>
+</body>
+
+</html>

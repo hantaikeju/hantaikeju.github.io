@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>DeepSeek | hantaikeju 的技术博客</title>
-<meta name="keywords" content="">
-<meta name="description" content="记录技术成长，分享开发经验">
+<title>Rust 编程概念：静态/动态类型与强/弱类型 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="Rust, 编程基础, 类型系统">
+<meta name="description" content="深入理解 Rust 的类型系统：静态类型 vs 动态类型、强类型 vs 弱类型的概念辨析，以及 Rust 在语言安全性方面的设计取舍。">
 <meta name="author" content="hantaikeju">
-<link rel="canonical" href="http://localhost:1313/tags/deepseek/">
+<link rel="canonical" href="http://localhost:1313/rust/type-system-concepts/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/deepseek/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/deepseek/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/rust/type-system-concepts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -36,7 +35,7 @@
 
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -98,54 +97,38 @@
             <div id="sidebarSearchResults" class="sidebar-search-results"></div>
         </div>
         
-        <div class="sidebar-header">
-            <h3>📂 文章分类</h3>
+        <div class="sidebar-breadcrumb">
+            <a href="/" class="sidebar-breadcrumb-link" title="返回首页">🏠</a>
+                <span class="sidebar-breadcrumb-sep">›</span>
+                <a href="/rust/" class="sidebar-breadcrumb-link" title="返回 Rust">Rust</a>
         </div>
-        <nav class="sidebar-nav" id="sidebarNav">
-            <ul class="sidebar-categories">
-                <li class="sidebar-category">
-                    <a href="/rust/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">7</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/unity/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">Unity开发</span>
-                        <span class="sidebar-count">1</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/dev-env/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">开发环境</span>
-                        <span class="sidebar-count">1</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/csharp/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">C#开发</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/devops/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">DevOps</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/notes/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">学习笔记</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/servers/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">服务器开发</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-            </ul>
+
+        
+        <div class="sidebar-header">
+            <h3>📑 文章目录</h3>
+        </div>
+        <nav class="sidebar-nav sidebar-toc" id="sidebarNav">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rust-的语言类型">Rust 的语言类型</a></li>
+    <li><a href="#静态类型语言-vs-动态类型语言">静态类型语言 vs 动态类型语言</a>
+      <ul>
+        <li><a href="#静态类型语言">静态类型语言</a></li>
+        <li><a href="#动态类型语言">动态类型语言</a></li>
+        <li><a href="#静态-vs-动态-对比">静态 vs 动态 对比</a></li>
+      </ul>
+    </li>
+    <li><a href="#强类型语言-vs-弱类型语言">强类型语言 vs 弱类型语言</a>
+      <ul>
+        <li><a href="#强类型语言">强类型语言</a></li>
+        <li><a href="#弱类型语言">弱类型语言</a></li>
+        <li><a href="#强类型-vs-弱类型-对比">强类型 vs 弱类型 对比</a></li>
+      </ul>
+    </li>
+    <li><a href="#两个维度交叉理解">两个维度交叉理解</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
         </nav>
     </div>
 </aside>
@@ -219,29 +202,202 @@ window.__sidebarPosts = [
 ];
 </script>
 
-        <main class="main"> 
-<header class="page-header">
-  <h1>
-    DeepSeek
-  </h1>
-</header>
+        <main class="main">
 
-<article class="post-entry tag-entry"> 
-   <header class="entry-header">
-     <h2 class="entry-hint-parent">VSCode 配置 Copilot &#43; OAI &#43; DeepSeek
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。
-第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。
-安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。
-第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl&#43;Shift&#43;P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：
-...</p>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Rust 编程概念：静态/动态类型与强/弱类型
+    </h1>
+    <div class="post-description">
+      深入理解 Rust 的类型系统：静态类型 vs 动态类型、强类型 vs 弱类型的概念辨析，以及 Rust 在语言安全性方面的设计取舍。
+    </div>
+    <div class="post-meta">
+
+<span title='2026-06-29 16:30:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h2 id="rust-的语言类型">Rust 的语言类型<a hidden class="anchor" aria-hidden="true" href="#rust-的语言类型">#</a></h2>
+<p>Rust 是一门 <strong>静态、强类型</strong> 语言。理解这几个概念，对于深入学习 Rust 至关重要。</p>
+<hr>
+<h2 id="静态类型语言-vs-动态类型语言">静态类型语言 vs 动态类型语言<a hidden class="anchor" aria-hidden="true" href="#静态类型语言-vs-动态类型语言">#</a></h2>
+<h3 id="静态类型语言">静态类型语言<a hidden class="anchor" aria-hidden="true" href="#静态类型语言">#</a></h3>
+<p>所有数据类型在<strong>编译时</strong>已知，编译器可以在编译阶段检查类型错误。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> x: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;   <span style="color:#75715e">// 显式类型声明
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="动态类型语言">动态类型语言<a hidden class="anchor" aria-hidden="true" href="#动态类型语言">#</a></h3>
+<p>在<strong>运行时</strong>才知道数据的类型，变量类型可以在运行时动态改变。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>          <span style="color:#75715e"># 无类型声明</span>
+</span></span><span style="display:flex;"><span>print(x)
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>     <span style="color:#75715e"># x 变成 string</span>
+</span></span><span style="display:flex;"><span>print(x)
+</span></span></code></pre></div><h3 id="静态-vs-动态-对比">静态 vs 动态 对比<a hidden class="anchor" aria-hidden="true" href="#静态-vs-动态-对比">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>静态类型</th>
+					<th>动态类型</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>类型检查时机</td>
+					<td>编译时</td>
+					<td>运行时</td>
+			</tr>
+			<tr>
+					<td>类型安全</td>
+					<td>✅ 高</td>
+					<td>❌ 较低</td>
+			</tr>
+			<tr>
+					<td>性能</td>
+					<td>✅ 更好的优化</td>
+					<td>❌ 运行时开销</td>
+			</tr>
+			<tr>
+					<td>灵活性</td>
+					<td>❌ 较低</td>
+					<td>✅ 高</td>
+			</tr>
+			<tr>
+					<td>开发效率</td>
+					<td>❌ 类型声明需额外代码</td>
+					<td>✅ 写起来更快</td>
+			</tr>
+			<tr>
+					<td>代表语言</td>
+					<td>Rust, Java, C++</td>
+					<td>Python, JavaScript, Ruby</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="强类型语言-vs-弱类型语言">强类型语言 vs 弱类型语言<a hidden class="anchor" aria-hidden="true" href="#强类型语言-vs-弱类型语言">#</a></h2>
+<h3 id="强类型语言">强类型语言<a hidden class="anchor" aria-hidden="true" href="#强类型语言">#</a></h3>
+<p>对数据类型的赋值和运算进行<strong>严格的规则约束</strong>，不允许隐式类型转换。</p>
+<p><strong>Python（强类型）：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;20&#34;</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y   <span style="color:#75715e"># TypeError: 不允许 int + str</span>
+</span></span></code></pre></div><h3 id="弱类型语言">弱类型语言<a hidden class="anchor" aria-hidden="true" href="#弱类型语言">#</a></h3>
+<p>对数据类型的约束较少或无约束，允许隐式类型转换。</p>
+<p><strong>JavaScript（弱类型）：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>);  <span style="color:#75715e">// &#34;12&#34; —— 隐式将数字转换为字符串
+</span></span></span></code></pre></div><p><strong>C/C++（存在争议，这里归为弱类型）：</strong></p>
+<p>C/C++ 中存在指针，可以对内存做任意解释，类型约束相对松散：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span>   a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>ptr;
+</span></span><span style="display:flex;"><span>ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;  <span style="color:#75715e">// 指向 int
+</span></span></span><span style="display:flex;"><span>ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>b;  <span style="color:#75715e">// 指向 float（void* 可以指向任意类型）
+</span></span></span></code></pre></div><h3 id="强类型-vs-弱类型-对比">强类型 vs 弱类型 对比<a hidden class="anchor" aria-hidden="true" href="#强类型-vs-弱类型-对比">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>强类型</th>
+					<th>弱类型</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>类型约束</td>
+					<td>✅ 严格</td>
+					<td>❌ 宽松</td>
+			</tr>
+			<tr>
+					<td>隐式转换</td>
+					<td>❌ 禁止或不鼓励</td>
+					<td>✅ 自动进行</td>
+			</tr>
+			<tr>
+					<td>类型安全</td>
+					<td>✅ 高</td>
+					<td>❌ 低</td>
+			</tr>
+			<tr>
+					<td>灵活性</td>
+					<td>❌ 较低</td>
+					<td>✅ 高</td>
+			</tr>
+			<tr>
+					<td>潜在 Bug</td>
+					<td>✅ 少</td>
+					<td>❌ 隐式转换易出 bug</td>
+			</tr>
+			<tr>
+					<td>代表语言</td>
+					<td>Rust, Python, Java</td>
+					<td>JavaScript, PHP, C/C++</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="两个维度交叉理解">两个维度交叉理解<a hidden class="anchor" aria-hidden="true" href="#两个维度交叉理解">#</a></h2>
+<p>将静态/动态与强/弱两个维度交叉，可以构成四象限：</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>强类型</th>
+					<th>弱类型</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>静态类型</strong></td>
+					<td><strong>Rust</strong>, Java, Haskell</td>
+					<td>C/C++</td>
+			</tr>
+			<tr>
+					<td><strong>动态类型</strong></td>
+					<td>Python, Ruby</td>
+					<td>JavaScript, PHP</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li><strong>Rust</strong> 处于 <strong>静态 + 强类型</strong> 的交叉点，在编译时和运行时都给予最大程度的类型安全保障。</li>
+<li><strong>C/C++</strong> 虽然静态编译，但由于指针和强制转换的存在，类型约束相对较弱。</li>
+<li><strong>Python</strong> 在运行时严格检查类型（强类型），但变量声明灵活（动态类型）。</li>
+<li><strong>JavaScript</strong> 既动态又弱类型，隐式转换频繁，容易产生意外行为。</li>
+</ul>
+<hr>
+<h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
+<p>编程语言本质上是在<strong>安全性</strong>和<strong>灵活性</strong>之间做取舍。</p>
+<p>Rust 选择了<strong>安全性</strong>的极端——通过静态强类型系统、所有权机制、借用检查器等多重保障，将大量潜在错误消灭在编译阶段。代价是学习曲线更陡、开发时需要更谨慎地思考类型设计。</p>
+<p>而像 JavaScript、Python 之类的语言则更侧重<strong>灵活性</strong>与<strong>开发效率</strong>，把更多检查推迟到运行时或交由开发者自行注意。</p>
+<p>理解这些类型系统的差异，有助于在不同场景下选择合适的语言，也能更好地体会 Rust 的设计哲学。</p>
+
+
   </div>
-  <footer class="entry-footer">
 
-<span title='2026-06-13 18:23:00 +0800 CST'>June 13, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
-  <a class="entry-link" aria-label="post link to VSCode 配置 Copilot &#43; OAI &#43; DeepSeek" href="http://localhost:1313/dev-env/vscode-copilot-deepseek/"></a>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/rust/">Rust</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">类型系统</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/rust/compiled-vs-interpreted/">
+    <span class="title">« Prev</span>
+    <span>Rust 编程概念：编译型语言 vs 解释型语言</span>
+  </a>
+  <a class="next" href="http://localhost:1313/rust/stack-heap/">
+    <span class="title">Next »</span>
+    <span>Rust 编程概念：Stack 与 Heap（栈与堆）</span>
+  </a>
+</nav>
+
+  </footer>
 </article>
         </main>
     </div>
@@ -264,6 +420,27 @@ window.__sidebarPosts = [
         <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
+  if (mermaidBlocks.length === 0) return;
+
+  mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+  mermaidBlocks.forEach(function(codeBlock) {
+    const pre = codeBlock.parentElement;
+    const mermaidText = codeBlock.textContent;
+    const div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = mermaidText;
+    pre.replaceWith(div);
+  });
+
+  mermaid.run();
+})();
+</script>
 
 
 

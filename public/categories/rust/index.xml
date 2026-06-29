@@ -6,7 +6,7 @@
     <description>Recent content in Rust on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Jun 2026 11:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 17:37:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安装 Rust 编译环境 — VSCode 篇</title>
@@ -28,6 +28,34 @@
       <pubDate>Fri, 26 Jun 2026 11:00:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/vscode-quickfix-troubleshoot/</guid>
       <description>排查 rust-analyzer 波浪线正常但 Ctrl&#43;. 无自动导入补全的问题，多套 Rust 环境冲突的根因分析与修复方案。</description>
+    </item>
+    <item>
+      <title>Rust：猜数字游戏</title>
+      <link>http://localhost:1313/rust/guessing-game/</link>
+      <pubDate>Mon, 29 Jun 2026 15:54:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/guessing-game/</guid>
+      <description>用 Rust 实现一个经典的猜数字游戏：程序随机生成 1~100 的数字，用户输入猜测，程序提示大了还是小了，直至猜对。涵盖 std::io、rand crate、match 模式匹配、loop 循环与错误处理。</description>
+    </item>
+    <item>
+      <title>Rust 编程概念：编译型语言 vs 解释型语言</title>
+      <link>http://localhost:1313/rust/compiled-vs-interpreted/</link>
+      <pubDate>Mon, 29 Jun 2026 17:26:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/compiled-vs-interpreted/</guid>
+      <description>理解编程语言的两种主要执行方式：编译型语言、解释型语言，以及 C#/Java 的中间方法（IL &#43; JIT）。Rust 作为编译型语言在性能与安全方面的优势。</description>
+    </item>
+    <item>
+      <title>Rust 编程概念：静态/动态类型与强/弱类型</title>
+      <link>http://localhost:1313/rust/type-system-concepts/</link>
+      <pubDate>Mon, 29 Jun 2026 16:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/type-system-concepts/</guid>
+      <description>深入理解 Rust 的类型系统：静态类型 vs 动态类型、强类型 vs 弱类型的概念辨析，以及 Rust 在语言安全性方面的设计取舍。</description>
+    </item>
+    <item>
+      <title>Rust 编程概念：Stack 与 Heap（栈与堆）</title>
+      <link>http://localhost:1313/rust/stack-heap/</link>
+      <pubDate>Mon, 29 Jun 2026 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/stack-heap/</guid>
+      <description>深入理解 Rust 中 Stack（栈）与 Heap（堆）两种内存区域的核心差异、各自特性，以及 Rust 如何通过所有权系统在无需垃圾回收器的前提下确保内存安全。</description>
     </item>
   </channel>
 </rss>

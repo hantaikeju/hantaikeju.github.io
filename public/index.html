@@ -122,7 +122,7 @@
                 <p class="home-category-desc">Rust 学习笔记、环境配置与开发实践</p>
             </div>
             <div class="home-category-meta">
-                <span class="home-category-count">3 篇文章</span>
+                <span class="home-category-count">7 篇文章</span>
             </div>
         </a>
         <a href="/unity/" class="home-category-card">
@@ -256,14 +256,30 @@ Version …</p>
         <article class="home-post-card">
             <div class="home-post-card-body">
                 <div class="home-post-category">
-                    <span>开发环境</span>
+                    <span>Rust</span>
                 </div>
                 <h3 class="home-post-title">
-                    <a href="/dev-env/vscode-copilot-deepseek/">VSCode 配置 Copilot &#43; OAI &#43; DeepSeek</a>
+                    <a href="/rust/guessing-game/">Rust：猜数字游戏</a>
                 </h3>
-                <p class="home-post-summary">概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 …</p>
+                <p class="home-post-summary">需求 程序随机在 1~100 产生一个数，用户通过输入与这个数进行比较，提示大了还是小了，直至猜对。
+允许用户输入 use std::io; fn main() …</p>
                 <div class="home-post-meta">
-                    <time datetime="2026-06-13">2026-06-13</time>
+                    <time datetime="2026-06-29">2026-06-29</time>
+                </div>
+            </div>
+        </article>
+        <article class="home-post-card">
+            <div class="home-post-card-body">
+                <div class="home-post-category">
+                    <span>Rust</span>
+                </div>
+                <h3 class="home-post-title">
+                    <a href="/rust/compiled-vs-interpreted/">Rust 编程概念：编译型语言 vs 解释型语言</a>
+                </h3>
+                <p class="home-post-summary">语言执行方式 编程语言按执行方式可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。
+编译型语言 编译型 …</p>
+                <div class="home-post-meta">
+                    <time datetime="2026-06-29">2026-06-29</time>
                 </div>
             </div>
         </article>
@@ -274,11 +290,14 @@ Version …</p>
 <div class="home-section">
     <h2 class="home-section-title">🏷️ 热门标签</h2>
     <div class="home-tags">
-        <a href="/tags/rust/" class="home-tag" style="font-size: 1.2000000000000002em;">
-            Rust (3)
+        <a href="/tags/rust/" class="home-tag" style="font-size: 1.7333333333333334em;">
+            Rust (7)
         </a>
         <a href="/tags/vscode/" class="home-tag" style="font-size: 1.2000000000000002em;">
             VSCode (3)
+        </a>
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="home-tag" style="font-size: 1.2000000000000002em;">
+            编程基础 (3)
         </a>
         <a href="/tags/rust-analyzer/" class="home-tag" style="font-size: 1.0666666666666667em;">
             Rust-Analyzer (2)
@@ -286,11 +305,17 @@ Version …</p>
         <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="home-tag" style="font-size: 1.0666666666666667em;">
             开发环境 (2)
         </a>
+        <a href="/tags/%E6%A0%87%E5%87%86%E5%BA%93/" class="home-tag" style="font-size: 1.0666666666666667em;">
+            标准库 (2)
+        </a>
         <a href="/tags/ai/" class="home-tag" style="font-size: 0.9333333333333333em;">
             AI (1)
         </a>
         <a href="/tags/copilot/" class="home-tag" style="font-size: 0.9333333333333333em;">
             Copilot (1)
+        </a>
+        <a href="/tags/crate/" class="home-tag" style="font-size: 0.9333333333333333em;">
+            Crate (1)
         </a>
         <a href="/tags/deepseek/" class="home-tag" style="font-size: 0.9333333333333333em;">
             DeepSeek (1)
@@ -301,11 +326,14 @@ Version …</p>
         <a href="/tags/unity/" class="home-tag" style="font-size: 0.9333333333333333em;">
             Unity (1)
         </a>
+        <a href="/tags/%E5%86%85%E5%AD%98/" class="home-tag" style="font-size: 0.9333333333333333em;">
+            内存 (1)
+        </a>
         <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" class="home-tag" style="font-size: 0.9333333333333333em;">
             故障排查 (1)
         </a>
-        <a href="/tags/%E6%A0%87%E5%87%86%E5%BA%93/" class="home-tag" style="font-size: 0.9333333333333333em;">
-            标准库 (1)
+        <a href="/tags/%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" class="home-tag" style="font-size: 0.9333333333333333em;">
+            类型系统 (1)
         </a>
     </div>
 </div>
@@ -330,6 +358,8 @@ Version …</p>
         <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
+
+
 
 <script>
     let menu = document.getElementById('menu');

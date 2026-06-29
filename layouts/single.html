@@ -1,5 +1,9 @@
 {{- define "main" }}
 
+{{- if findRE "```mermaid" .RawContent 1 }}
+  {{- .Store.Set "hasMermaid" true }}
+{{- end }}
+
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}

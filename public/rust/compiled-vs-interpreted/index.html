@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>DeepSeek | hantaikeju 的技术博客</title>
-<meta name="keywords" content="">
-<meta name="description" content="记录技术成长，分享开发经验">
+<title>Rust 编程概念：编译型语言 vs 解释型语言 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="Rust, 编程基础">
+<meta name="description" content="理解编程语言的两种主要执行方式：编译型语言、解释型语言，以及 C#/Java 的中间方法（IL &#43; JIT）。Rust 作为编译型语言在性能与安全方面的优势。">
 <meta name="author" content="hantaikeju">
-<link rel="canonical" href="http://localhost:1313/tags/deepseek/">
+<link rel="canonical" href="http://localhost:1313/rust/compiled-vs-interpreted/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/deepseek/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/deepseek/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/rust/compiled-vs-interpreted/">
 <noscript>
     <style>
         #theme-toggle,
@@ -36,7 +35,7 @@
 
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -98,54 +97,41 @@
             <div id="sidebarSearchResults" class="sidebar-search-results"></div>
         </div>
         
-        <div class="sidebar-header">
-            <h3>📂 文章分类</h3>
+        <div class="sidebar-breadcrumb">
+            <a href="/" class="sidebar-breadcrumb-link" title="返回首页">🏠</a>
+                <span class="sidebar-breadcrumb-sep">›</span>
+                <a href="/rust/" class="sidebar-breadcrumb-link" title="返回 Rust">Rust</a>
         </div>
-        <nav class="sidebar-nav" id="sidebarNav">
-            <ul class="sidebar-categories">
-                <li class="sidebar-category">
-                    <a href="/rust/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">7</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/unity/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">Unity开发</span>
-                        <span class="sidebar-count">1</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/dev-env/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">开发环境</span>
-                        <span class="sidebar-count">1</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/csharp/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">C#开发</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/devops/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">DevOps</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/notes/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">学习笔记</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-                <li class="sidebar-category">
-                    <a href="/servers/" class="sidebar-category-link ">
-                        <span class="sidebar-category-name">服务器开发</span>
-                        <span class="sidebar-count">0</span>
-                    </a>
-                </li>
-            </ul>
+
+        
+        <div class="sidebar-header">
+            <h3>📑 文章目录</h3>
+        </div>
+        <nav class="sidebar-nav sidebar-toc" id="sidebarNav">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#语言执行方式">语言执行方式</a></li>
+    <li><a href="#编译型语言">编译型语言</a>
+      <ul>
+        <li><a href="#rust-作为编译型语言">Rust 作为编译型语言</a></li>
+      </ul>
+    </li>
+    <li><a href="#解释型语言">解释型语言</a>
+      <ul>
+        <li><a href="#python-示例">Python 示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#中间方法c--java">中间方法：C# / Java</a>
+      <ul>
+        <li><a href="#工作流程">工作流程</a></li>
+        <li><a href="#java-的类似流程">Java 的类似流程</a></li>
+        <li><a href="#中间方法的优缺点">中间方法的优缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#三种方式对比">三种方式对比</a></li>
+    <li><a href="#rust-的选择">Rust 的选择</a></li>
+  </ul>
+</nav>
         </nav>
     </div>
 </aside>
@@ -219,29 +205,240 @@ window.__sidebarPosts = [
 ];
 </script>
 
-        <main class="main"> 
-<header class="page-header">
-  <h1>
-    DeepSeek
-  </h1>
-</header>
+        <main class="main">
 
-<article class="post-entry tag-entry"> 
-   <header class="entry-header">
-     <h2 class="entry-hint-parent">VSCode 配置 Copilot &#43; OAI &#43; DeepSeek
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。
-第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。
-安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。
-第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl&#43;Shift&#43;P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：
-...</p>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Rust 编程概念：编译型语言 vs 解释型语言
+    </h1>
+    <div class="post-description">
+      理解编程语言的两种主要执行方式：编译型语言、解释型语言，以及 C#/Java 的中间方法（IL &#43; JIT）。Rust 作为编译型语言在性能与安全方面的优势。
+    </div>
+    <div class="post-meta">
+
+<span title='2026-06-29 17:26:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h2 id="语言执行方式">语言执行方式<a hidden class="anchor" aria-hidden="true" href="#语言执行方式">#</a></h2>
+<p>编程语言按<strong>执行方式</strong>可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。</p>
+<hr>
+<h2 id="编译型语言">编译型语言<a hidden class="anchor" aria-hidden="true" href="#编译型语言">#</a></h2>
+<p><strong>编译型语言</strong>的工作流程：</p>
+<ol>
+<li>开发者编写源代码</li>
+<li>使用 <strong>编译器（Compiler）</strong> 将源代码一次性翻译成机器码</li>
+<li>生成<strong>可执行文件</strong>（如 <code>.exe</code>、二进制文件）</li>
+<li>将可执行文件分发给用户，用户直接运行即可</li>
+</ol>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    A[源代码] --&gt; B[编译器 Compiler]
+    B --&gt; C[可执行文件]
+    C --&gt; D[CPU 直接执行]
+</code></pre><p><strong>特点：</strong></p>
+<ul>
+<li>✅ <strong>运行速度快</strong>：直接编译为机器码，无运行时翻译开销</li>
+<li>✅ <strong>无需运行时环境</strong>：用户不需要安装编译器或解释器</li>
+<li>✅ <strong>编译期错误检查</strong>：类型错误、语法错误在编译阶段就能发现</li>
+<li>❌ <strong>编译时间较长</strong>：大型项目编译可能需要几分钟甚至更长</li>
+<li>❌ <strong>平台依赖</strong>：不同操作系统/CPU 架构需分别编译</li>
+</ul>
+<p><strong>代表语言：Rust、C、C++、Go</strong></p>
+<h3 id="rust-作为编译型语言">Rust 作为编译型语言<a hidden class="anchor" aria-hidden="true" href="#rust-作为编译型语言">#</a></h3>
+<p>Rust 使用 <strong>rustc</strong> 编译器（底层基于 LLVM），将源代码编译为高效的机器码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Hello, Rust!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 编译</span>
+</span></span><span style="display:flex;"><span>rustc main.rs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 运行生成的可执行文件</span>
+</span></span><span style="display:flex;"><span>./main          <span style="color:#75715e"># Linux/macOS</span>
+</span></span><span style="display:flex;"><span>main.exe        <span style="color:#75715e"># Windows</span>
+</span></span></code></pre></div><p>Rust 的编译器不仅生成高效的机器码，还在编译期进行了大量的<strong>安全检查</strong>（所有权、借用、生命周期等），确保运行时不会出现内存安全问题。</p>
+<hr>
+<h2 id="解释型语言">解释型语言<a hidden class="anchor" aria-hidden="true" href="#解释型语言">#</a></h2>
+<p><strong>解释型语言</strong>的工作流程：</p>
+<ol>
+<li>开发者编写源代码</li>
+<li>将源代码副本直接分发给用户</li>
+<li>用户使用**解释器（Interpreter）**逐行翻译并执行</li>
+</ol>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    A[源代码] --&gt; B[解释器 Interpreter]
+    B --&gt; C[逐行翻译 + 执行]
+</code></pre><p><strong>特点：</strong></p>
+<ul>
+<li>✅ <strong>跨平台性好</strong>：只要有对应平台的解释器，同一份源码到处可运行</li>
+<li>✅ <strong>开发效率高</strong>：无需编译，修改代码后立刻运行</li>
+<li>✅ <strong>源码即分发</strong>：用户可以查看和修改源代码</li>
+<li>❌ <strong>运行速度较慢</strong>：每次执行都需要解释器参与翻译</li>
+<li>❌ <strong>需要运行时环境</strong>：用户必须安装对应的解释器（Python、Node.js 等）</li>
+<li>❌ <strong>运行时错误</strong>：类型错误只能在运行时发现</li>
+</ul>
+<p><strong>代表语言：Python、JavaScript、Ruby、PHP</strong></p>
+<h3 id="python-示例">Python 示例<a hidden class="anchor" aria-hidden="true" href="#python-示例">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># hello.py</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello, Python!&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 不需要编译，直接用解释器运行</span>
+</span></span><span style="display:flex;"><span>python hello.py
+</span></span></code></pre></div><p>用户必须安装 Python 解释器才能运行这段代码。</p>
+<hr>
+<h2 id="中间方法c--java">中间方法：C# / Java<a hidden class="anchor" aria-hidden="true" href="#中间方法c--java">#</a></h2>
+<p>除了纯编译和纯解释，还有一条<strong>中间路线</strong>，典型代表是 C# 和 Java。</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    A[&#34;C# 源代码&#34;] --&gt; B[&#34;编译器&#34;]
+    B --&gt; C[&#34;中间语言 IL&#34;]
+    C --&gt; D[&#34;CLR 加载程序集&#34;]
+    D --&gt; E[&#34;JIT 编译&#34;]
+    E --&gt; F[&#34;本地机器码&#34;]
+    F --&gt; G[&#34;CPU 执行&#34;]
+</code></pre><h3 id="工作流程">工作流程<a hidden class="anchor" aria-hidden="true" href="#工作流程">#</a></h3>
+<p>以 <strong>C#</strong> 为例：</p>
+<table>
+	<thead>
+			<tr>
+					<th>阶段</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>① 编译</td>
+					<td>C# 源码 → <strong>IL（Intermediate Language，中间语言）</strong></td>
+			</tr>
+			<tr>
+					<td>② 分发</td>
+					<td>将 IL 程序集（<code>.dll</code> / <code>.exe</code>）分发给用户</td>
+			</tr>
+			<tr>
+					<td>③ 加载</td>
+					<td>用户机器上的 <strong>CLR（公共语言运行时）</strong> 加载程序集</td>
+			</tr>
+			<tr>
+					<td>④ JIT</td>
+					<td><strong>JIT（Just-In-Time）编译器</strong> 将 IL 编译为本地机器码</td>
+			</tr>
+			<tr>
+					<td>⑤ 执行</td>
+					<td>CPU 直接执行本地机器码</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="java-的类似流程">Java 的类似流程<a hidden class="anchor" aria-hidden="true" href="#java-的类似流程">#</a></h3>
+<p>Java 采用类似的方式：<code>Java 源码 → 字节码（Bytecode） → JVM 加载 → JIT 编译 → 本地机器码</code></p>
+<h3 id="中间方法的优缺点">中间方法的优缺点<a hidden class="anchor" aria-hidden="true" href="#中间方法的优缺点">#</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>优点</th>
+					<th>缺点</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>✅ 一次编译，到处运行（跨平台）</td>
+					<td>❌ 需要安装运行时（CLR / JVM）</td>
+			</tr>
+			<tr>
+					<td>✅ JIT 可针对具体 CPU 优化</td>
+					<td>❌ 首次运行有预热开销</td>
+			</tr>
+			<tr>
+					<td>✅ IL 可被反编译，但比纯源码难读</td>
+					<td>❌ 内存占用比原生编译高</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="三种方式对比">三种方式对比<a hidden class="anchor" aria-hidden="true" href="#三种方式对比">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th style="text-align: center">编译型（Rust）</th>
+					<th style="text-align: center">解释型（Python）</th>
+					<th style="text-align: center">中间型（C#/Java）</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>执行速度</td>
+					<td style="text-align: center">🚀 最快</td>
+					<td style="text-align: center">🐢 较慢</td>
+					<td style="text-align: center">🚗 较快</td>
+			</tr>
+			<tr>
+					<td>启动速度</td>
+					<td style="text-align: center">⚡ 即开即用</td>
+					<td style="text-align: center">🔄 需要解释器</td>
+					<td style="text-align: center">⏳ JIT 预热</td>
+			</tr>
+			<tr>
+					<td>跨平台</td>
+					<td style="text-align: center">需分别编译</td>
+					<td style="text-align: center">✅ 源码跨平台</td>
+					<td style="text-align: center">✅ IL 跨平台</td>
+			</tr>
+			<tr>
+					<td>运行时依赖</td>
+					<td style="text-align: center">❌ 无</td>
+					<td style="text-align: center">✅ 需要解释器</td>
+					<td style="text-align: center">✅ 需要 CLR/JVM</td>
+			</tr>
+			<tr>
+					<td>编译期检查</td>
+					<td style="text-align: center">✅ 完整</td>
+					<td style="text-align: center">❌ 无</td>
+					<td style="text-align: center">✅ 部分</td>
+			</tr>
+			<tr>
+					<td>源码保护</td>
+					<td style="text-align: center">✅ 分发二进制</td>
+					<td style="text-align: center">❌ 源码暴露</td>
+					<td style="text-align: center">⚠️ IL 可反编译</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="rust-的选择">Rust 的选择<a hidden class="anchor" aria-hidden="true" href="#rust-的选择">#</a></h2>
+<p>Rust 坚定地站在<strong>编译型语言</strong>阵营，并在这一基础上做了大量创新：</p>
+<ul>
+<li><strong>零成本抽象</strong>：高级语法特性不会带来运行时开销</li>
+<li><strong>所有权系统</strong>：编译期保证内存安全，无需垃圾回收（GC）</li>
+<li><strong>LLVM 后端</strong>：享受 LLVM 多年的优化成果，生成高性能机器码</li>
+<li><strong>无运行时</strong>：生成的二进制文件不依赖任何额外运行时环境</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> numbers: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">..=</span><span style="color:#ae81ff">100</span>).collect();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> sum: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> numbers.iter().sum();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Sum: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, sum);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这段代码会被 rustc + LLVM 优化为高效的机器指令，运行时没有垃圾回收停顿，没有解释器开销——这正是 Rust 适合系统编程和高性能场景的核心原因。</p>
+
+
   </div>
-  <footer class="entry-footer">
 
-<span title='2026-06-13 18:23:00 +0800 CST'>June 13, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
-  <a class="entry-link" aria-label="post link to VSCode 配置 Copilot &#43; OAI &#43; DeepSeek" href="http://localhost:1313/dev-env/vscode-copilot-deepseek/"></a>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/rust/">Rust</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/rust/guessing-game/">
+    <span class="title">« Prev</span>
+    <span>Rust：猜数字游戏</span>
+  </a>
+  <a class="next" href="http://localhost:1313/rust/type-system-concepts/">
+    <span class="title">Next »</span>
+    <span>Rust 编程概念：静态/动态类型与强/弱类型</span>
+  </a>
+</nav>
+
+  </footer>
 </article>
         </main>
     </div>
@@ -264,6 +461,27 @@ window.__sidebarPosts = [
         <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
+  if (mermaidBlocks.length === 0) return;
+
+  mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+  mermaidBlocks.forEach(function(codeBlock) {
+    const pre = codeBlock.parentElement;
+    const mermaidText = codeBlock.textContent;
+    const div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = mermaidText;
+    pre.replaceWith(div);
+  });
+
+  mermaid.run();
+})();
+</script>
 
 
 

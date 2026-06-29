@@ -1,29 +1,373 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>编程基础 | hantaikeju 的技术博客</title><meta name=keywords content><meta name=description content="记录技术成长，分享开发经验"><meta name=author content="hantaikeju"><link rel=canonical href=https://hantaikeju.github.io/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/><link crossorigin=anonymous href=/assets/css/stylesheet.52578f064b6f197153279de892816ee8f00acf3691ef67500b2bcae1fb306bb0.css integrity="sha256-UlePBktvGXFTJ53okoFu6PAKzzaR72dQCyvK4fswa7A=" rel="preload stylesheet" as=style><link rel=icon href=https://hantaikeju.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://hantaikeju.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://hantaikeju.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://hantaikeju.github.io/apple-touch-icon.png><link rel=mask-icon href=https://hantaikeju.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://hantaikeju.github.io/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/index.xml title=rss><link rel=alternate hreflang=en href=https://hantaikeju.github.io/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://hantaikeju.github.io/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="hantaikeju 的技术博客"><meta property="og:title" content="编程基础"><meta property="og:description" content="记录技术成长，分享开发经验"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="编程基础"><meta name=twitter:description content="记录技术成长，分享开发经验"></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://hantaikeju.github.io/ accesskey=h title="hantaikeju 的技术博客 (Alt + H)">hantaikeju 的技术博客</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://hantaikeju.github.io/ title=首页><span>首页</span></a></li><li><a href=https://hantaikeju.github.io/csharp/ title=文章><span>文章</span></a></li><li><a href=https://hantaikeju.github.io/tags/ title=标签><span>标签</span></a></li></ul></nav></header><div class=container><aside class=sidebar id=sidebar><div class=sidebar-inner><div class=sidebar-search><div class=sidebar-search-box><svg class="sidebar-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-<input id=sidebarSearchInput class=sidebar-search-input type=search placeholder=搜索文章... autocomplete=off maxlength=64></div><div id=sidebarSearchResults class=sidebar-search-results></div></div><div class=sidebar-header><h3>📂 文章分类</h3></div><nav class=sidebar-nav id=sidebarNav><ul class=sidebar-categories><li class=sidebar-category><a href=/devops/ class=sidebar-category-link><span class=sidebar-category-name>DevOps</span>
-<span class=sidebar-count>1</span></a></li><li class=sidebar-category><a href=/frontend/ class=sidebar-category-link><span class=sidebar-category-name>前端开发</span>
-<span class=sidebar-count>1</span></a></li><li class=sidebar-category><a href=/csharp/ class=sidebar-category-link><span class=sidebar-category-name>C#开发</span>
-<span class=sidebar-count>1</span></a></li><li class=sidebar-category><a href=/unity/ class=sidebar-category-link><span class=sidebar-category-name>Unity开发</span>
-<span class=sidebar-count>3</span></a></li><li class=sidebar-category><a href=/notes/ class=sidebar-category-link><span class=sidebar-category-name>学习笔记</span>
-<span class=sidebar-count>1</span></a></li><li class=sidebar-category><a href=/backend/ class=sidebar-category-link><span class=sidebar-category-name>后端开发</span>
-<span class=sidebar-count>0</span></a></li></ul></nav></div></aside><script>window.__sidebarPosts=[{title:"Git 工作流最佳实践",permalink:"/devops/git-workflow/",summary:`常用的 Git 工作流 集中式工作流 适合小团队，所有成员在同一个分支上工作。
-Feature Branch 工作流 每个功能在独立的分支上开发，完成后合并到主分支。
-# 创建功能分支 git checkout -b feature/new-feature # 开发完成后合并 git checkout main git merge feature/new-feature Git Flow 工作流 适用于大型项目，包含多个长期分支：
-main：生产分支 develop：开发分支 feature/*：功能分支 release/*：发布分支 hotfix/*：热修复分支 提交信息规范 推荐使用 Conventional Commits 规范：
-feat: 添加新功能\rfix: 修复bug\rdocs: 更新文档\rrefactor: 重构代码 `,tags:["Git","版本控制","DevOps"],categories:["DevOps"]},{title:"Vue 3 Composition API 入门",permalink:"/frontend/vue3-setup/",summary:`Vue 3 的新特性 Vue 3 带来了 Composition API，让逻辑复用变得更加简单。
-基础示例 &lt;script setup&gt; import { ref, computed } from &#39;vue&#39; const count = ref(0) const doubleCount = computed(() =&gt; count.value * 2) function increment() { count.value++ } &lt;/script&gt; &lt;template&gt; &lt;div&gt; &lt;p&gt;计数: {{ count }}&lt;/p&gt; &lt;p&gt;两倍: {{ doubleCount }}&lt;/p&gt; &lt;button @click=&#34;increment&#34;&gt;+1&lt;/button&gt; &lt;/div&gt; &lt;/template&gt; 为什么使用 Composition API？ 更好的逻辑复用 更灵活的代码组织 更好的 TypeScript 支持 `,tags:["Vue","前端","JavaScript"],categories:["前端开发"]},{title:"C# 基础语法速览",permalink:"/csharp/csharp-basics/",summary:`C# 简介 C# 是微软推出的一种现代、面向对象的编程语言，运行于 .NET 平台之上。
-基本语法 变量与类型 int number = 42; string message = &#34;Hello&#34;; bool isActive = true; var inferred = &#34;自动推断类型&#34;; 面向对象 public class Person { public string Name { get; set; } public int Age { get; set; } public void SayHello() { Console.WriteLine($&#34;你好，我是 {Name}&#34;); } } 异步编程 public async Task&lt;string&gt; FetchDataAsync() { using var client = new HttpClient(); return await client.GetStringAsync(&#34;https://api.example.com/data&#34;); } 总结 C# 是一门功能强大且不断进化的语言，在游戏开发、企业应用等领域都有广泛应用。
-`,tags:["C#","编程基础",".NET"],categories:["csharp"]},{title:"Unity Shader 入门",permalink:"/unity/graphics/unity-shader/",summary:`什么是 Shader？ Shader 是运行在 GPU 上的小程序，用于控制渲染管线的各个阶段。
-基本 Shader 结构 Shader &#34;Custom/SimpleShader&#34; { Properties { _MainTex (&#34;Texture&#34;, 2D) = &#34;white&#34; {} } SubShader { Pass { CGPROGRAM #pragma vertex vert #pragma fragment frag struct appdata { float4 vertex : POSITION; float2 uv : TEXCOORD0; }; struct v2f { float2 uv : TEXCOORD0; float4 vertex : SV_POSITION; }; v2f vert (appdata v) { v2f o; o.vertex = UnityObjectToClipPos(v.vertex); o.uv = v.uv; return o; } fixed4 frag (v2f i) : SV_Target { return tex2D(_MainTex, i.uv); } ENDCG } } } `,tags:["Unity","Shader","图形学"],categories:["Unity开发"]},{title:"Unity 脚本编程基础",permalink:"/unity/scripting/unity-scripting/",summary:`MonoBehaviour 生命周期 Unity 脚本继承自 MonoBehaviour，拥有完整的生命周期方法：
-public class Example : MonoBehaviour { void Awake() { } // 场景加载时调用 void Start() { } // 第一帧之前调用 void Update() { } // 每帧调用 void FixedUpdate() { } // 固定时间间隔调用 void LateUpdate() { } // Update 之后调用 } 常用组件操作 // 获取组件 var rigidbody = GetComponent&lt;Rigidbody&gt;(); var renderer = GetComponentInChildren&lt;Renderer&gt;(); // 添加组件 gameObject.AddComponent&lt;Rigidbody&gt;(); `,tags:["Unity","C#","脚本"],categories:["unity"]},{title:"Unity 入门指南",permalink:"/unity/unity-basics/",summary:`什么是 Unity？ Unity 是一款跨平台的游戏引擎，广泛应用于游戏开发、VR/AR、影视动画等领域。
-安装与配置 下载 Unity Hub 安装 Unity Editor 创建第一个项目 基础概念 场景 (Scene)：游戏世界的容器 游戏对象 (GameObject)：场景中的每个实体 组件 (Component)：附加在游戏对象上的功能模块 脚本 (Script)：控制游戏逻辑的代码 第一个脚本 using UnityEngine; public class HelloWorld : MonoBehaviour { void Start() { Debug.Log(&#34;Hello, Unity!&#34;); } } 总结 Unity 的学习曲线相对平缓，适合初学者入门游戏开发。
-`,tags:["Unity","游戏开发","入门"],categories:["unity"]},{title:"🎉 Hello World！我的第一篇博客",permalink:"/notes/hello-world/",summary:`大家好！欢迎来到我的技术博客。
-这是我用 Hugo + PaperMod 搭建的个人博客，折腾了好几天，终于上线啦！以后会在这里分享一些学习笔记、踩坑记录和生活碎片。
-如果你也想搭一个自己的博客，这个过程虽然有点曲折，但真的很有成就感！
-`,tags:["日常","分享","Hugo"],categories:["生活记录"]}]</script><main class=main><header class=page-header><h1>编程基础</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>C# 基础语法速览</h2></header><div class=entry-content><p>C# 简介 C# 是微软推出的一种现代、面向对象的编程语言，运行于 .NET 平台之上。
-基本语法 变量与类型 int number = 42; string message = "Hello"; bool isActive = true; var inferred = "自动推断类型"; 面向对象 public class Person { public string Name { get; set; } public int Age { get; set; } public void SayHello() { Console.WriteLine($"你好，我是 {Name}"); } } 异步编程 public async Task&lt;string> FetchDataAsync() { using var client = new HttpClient(); return await client.GetStringAsync("https://api.example.com/data"); } 总结 C# 是一门功能强大且不断进化的语言，在游戏开发、企业应用等领域都有广泛应用。</p></div><footer class=entry-footer><span title='2026-06-10 21:10:00 +0800 CST'>June 10, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer><a class=entry-link aria-label="post link to C# 基础语法速览" href=https://hantaikeju.github.io/csharp/csharp-basics/></a></article></main></div><footer class=footer><span>&copy; 2026 <a href=https://hantaikeju.github.io/>hantaikeju 的技术博客</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script defer src=/js/sidebar-search.min.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>编程基础 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="">
+<meta name="description" content="记录技术成长，分享开发经验">
+<meta name="author" content="hantaikeju">
+<link rel="canonical" href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="hantaikeju 的技术博客 (Alt + H)">hantaikeju 的技术博客</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/csharp/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="sidebar-search">
+            <div class="sidebar-search-box">
+                <svg class="sidebar-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="sidebarSearchInput" class="sidebar-search-input" type="search" placeholder="搜索文章..." autocomplete="off" maxlength="64">
+            </div>
+            <div id="sidebarSearchResults" class="sidebar-search-results"></div>
+        </div>
+        
+        <div class="sidebar-header">
+            <h3>📂 文章分类</h3>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <ul class="sidebar-categories">
+                <li class="sidebar-category">
+                    <a href="/rust/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">Rust</span>
+                        <span class="sidebar-count">7</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/unity/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">Unity开发</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/dev-env/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">开发环境</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/csharp/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">C#开发</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/devops/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">DevOps</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/notes/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">学习笔记</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/servers/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">服务器开发</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+<script>
+window.__sidebarPosts = [
+    {
+        title: "安装 Rust 编译环境 — VSCode 篇",
+        permalink: "/rust/install-rust-vscode/",
+        summary: "The Rust Programming Language 官方在线文档链接\nRust 版本 Edition \u0026ndash; 大版本如 2021、2024\nVersion \u0026ndash; 小版本编号，如 1.56.0 → 1.81.0\nRust 优势 高性能 高度安全性，内存高限制 开发者友好 健壮的生态系统 —— Cargo 包管理器 Rust 可编写更快、更可靠的软件，兼具高层次的易用性和低层次的控制力。\nRust 历史 2006：个人项目起源 2009：Mozilla 赞助 2015：第一个稳定版本 2021：Rust 基金会，Rust Edition 2021 发布 2022：用于 Linux Kernel 开发 Rust 安装 Windows 安装 Visual Studio C++。\nRust 安装链接，选择对应的 rustup-init.exe 进行安装。\nWindows 下 Rust 有两套编译工具链：\nx86_64-pc-windows-msvc：微软 MSVC ABI（官方默认） x86_64-pc-windows-gnu：MinGW-w64 + GCC ABI 默认是 msvc 方式。\n两种方式的区别 工具链 x86_64-pc-windows-msvc（默认工具链）必须提前安装 Visual Studio Build Tools 并勾选 C++ 开发组件，提供微软原生 link.exe 链接器、UCRT 运行库。\n",
+        tags: ["Rust","VSCode","开发环境","rust-analyzer"],
+        categories: ["rust"]
+    },
+    {
+        title: "Shader Test",
+        permalink: "/unity/graphics/shader-test/",
+        summary: "基础概念 Shader 的一些基础概念介绍。\n顶点着色器 顶点着色器处理每个顶点的数据。\n片元着色器 片元着色器处理每个像素的颜色。\n高级用法 更高级的 Shader 技巧。\n自定义光照 实现自定义光照模型。\n后处理效果 屏幕后处理特效的实现方式。\n",
+        tags: ["shader","unity"],
+        categories: ["unity"]
+    },
+    {
+        title: "分析第一个Rust项目",
+        permalink: "/rust/first-rust-project/",
+        summary: "代码结构 fn main() { println!(\u0026#34;Hello, world!\u0026#34;); } Crate library crate —— 只可以有一个 binary crate —— 任意多个 修改代码 use std::io::stdin; fn main() { let mut msg: String = String::new(); println!(\u0026#34;Enter a message: \u0026#34;); stdin().read_line(\u0026amp;mut msg).unwrap(); println!(\u0026#34;You entered: {}\u0026#34;, msg.trim()); } 逐行解析 use std::io::stdin;\nstd::io::stdin 是标准库中的模块。如果是 prelude 部分（预编译在代码中），可以直接使用，无需 use 引入。\n::\n用于访问模块中公开使用的 API。\n;\n结束任何语句的符号。\nlet mut msg: String = String::new();\nlet —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rust 中变量默认不可变，加 mut 后才允许修改 msg: String —— 变量名 msg，类型为 String String::new() —— 创建一个空字符串 stdin().read_line(\u0026amp;mut msg).unwrap();\n",
+        tags: ["Rust","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：VsCode 快速修复异常排查",
+        permalink: "/rust/vscode-quickfix-troubleshoot/",
+        summary: "问题现象 编译器报错（如 cannot find function stdin in this scope），波浪线正常显示 按 Ctrl+. / 灯泡图标，只显示一两个通用选项，没有自动导入补全 即使编译器给出了 help: consider importing this function 建议，也无法一键应用 本案例真实根因 核心问题：系统存在多个 Rust 安装，rust-analyzer 选错了 本机同时存在两套 Rust：\n来源 路径 有无 rust-src 官方安装包（系统级） C:\\Program Files\\Rust stable GNU 1.96 ❌ 无 rustup 管理 C:\\Users\\Administrator\\.rustup\\toolchains\\stable-x86_64-pc-windows-gnu ✅ 有 rust-analyzer 默认使用了系统安装的 Rust（无 rust-src），导致它无法加载 std 等标准库源码，所有自动导入、类型推导等 Code Action 全部失效。\n验证命令 rust-analyzer analysis-stats \u0026lt;项目路径\u0026gt; 2\u0026gt;\u0026amp;1 如果输出包含下面这行，说明命中了这个根因：\nERROR can\u0026#39;t load standard library, try installing `rust-src`\rsysroot_path=C:\\Program Files\\Rust stable GNU 1.96 ← 用的是系统 Rust 实际修复方案（按优先级） 方案 1：符号链接（本案例生效的方案）⭐ 用管理员 PowerShell，把系统 Rust 的 src 目录链接到 rustup 工具链中已有的 rust-src：\n",
+        tags: ["Rust","VSCode","rust-analyzer","故障排查"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：猜数字游戏",
+        permalink: "/rust/guessing-game/",
+        summary: "需求 程序随机在 1~100 产生一个数，用户通过输入与这个数进行比较，提示大了还是小了，直至猜对。\n允许用户输入 use std::io; fn main() { println!(\u0026#34;Please enter one number\u0026#34;); let mut input_num = String::new(); io::stdin() .read_line(\u0026amp;mut input_num) .expect(\u0026#34;Failed to read line\u0026#34;); println!(\u0026#34;You entered: {}\u0026#34;, input_num.trim()); } 代码解析 语法 说明 println! 宏，用于打印输出 let mut input_num let 声明变量，mut 让变量可重复赋值（不加则只能赋值一次） String::new() 创建空字符串 io::stdin() 获取 Stdin 实例，处理终端输入 .read_line(\u0026amp;mut input_num) 传入一个可变字符串引用（\u0026amp; 为引用），返回 Result .expect(\u0026quot;...\u0026quot;) 处理 Result 的 Err 情况，失败时 panic 并输出错误信息；不处理编译器会警告 println!(\u0026quot;{}\u0026quot;, ...) {} 为占位符，有多少个变量就有多少个占位符 生成 1~100 的随机数 第三方库 rand（crate） Rust 标准库不包含随机数生成，需要使用第三方 crate —— rand。\n",
+        tags: ["Rust","Crate","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：编译型语言 vs 解释型语言",
+        permalink: "/rust/compiled-vs-interpreted/",
+        summary: "语言执行方式 编程语言按执行方式可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。\n编译型语言 编译型语言的工作流程：\n开发者编写源代码 使用 编译器（Compiler） 将源代码一次性翻译成机器码 生成可执行文件（如 .exe、二进制文件） 将可执行文件分发给用户，用户直接运行即可 flowchart LR\rA[源代码] --\u0026gt; B[编译器 Compiler]\rB --\u0026gt; C[可执行文件]\rC --\u0026gt; D[CPU 直接执行] 特点：\n✅ 运行速度快：直接编译为机器码，无运行时翻译开销 ✅ 无需运行时环境：用户不需要安装编译器或解释器 ✅ 编译期错误检查：类型错误、语法错误在编译阶段就能发现 ❌ 编译时间较长：大型项目编译可能需要几分钟甚至更长 ❌ 平台依赖：不同操作系统/CPU 架构需分别编译 代表语言：Rust、C、C++、Go\nRust 作为编译型语言 Rust 使用 rustc 编译器（底层基于 LLVM），将源代码编译为高效的机器码：\n// main.rs fn main() { println!(\u0026#34;Hello, Rust!\u0026#34;); } # 编译 rustc main.rs # 运行生成的可执行文件 ./main # Linux/macOS main.exe # Windows Rust 的编译器不仅生成高效的机器码，还在编译期进行了大量的安全检查（所有权、借用、生命周期等），确保运行时不会出现内存安全问题。\n解释型语言 解释型语言的工作流程：\n开发者编写源代码 将源代码副本直接分发给用户 用户使用**解释器（Interpreter）**逐行翻译并执行 flowchart LR\rA[源代码] --\u0026gt; B[解释器 Interpreter]\rB --\u0026gt; C[逐行翻译 + 执行] 特点：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：静态/动态类型与强/弱类型",
+        permalink: "/rust/type-system-concepts/",
+        summary: "Rust 的语言类型 Rust 是一门 静态、强类型 语言。理解这几个概念，对于深入学习 Rust 至关重要。\n静态类型语言 vs 动态类型语言 静态类型语言 所有数据类型在编译时已知，编译器可以在编译阶段检查类型错误。\nfn main() { let x: i32 = 10; // 显式类型声明 println!(\u0026#34;{}\u0026#34;, x); } 动态类型语言 在运行时才知道数据的类型，变量类型可以在运行时动态改变。\nx = 10 # 无类型声明 print(x) x = \u0026#34;hello\u0026#34; # x 变成 string print(x) 静态 vs 动态 对比 特性 静态类型 动态类型 类型检查时机 编译时 运行时 类型安全 ✅ 高 ❌ 较低 性能 ✅ 更好的优化 ❌ 运行时开销 灵活性 ❌ 较低 ✅ 高 开发效率 ❌ 类型声明需额外代码 ✅ 写起来更快 代表语言 Rust, Java, C++ Python, JavaScript, Ruby 强类型语言 vs 弱类型语言 强类型语言 对数据类型的赋值和运算进行严格的规则约束，不允许隐式类型转换。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：Stack 与 Heap（栈与堆）",
+        permalink: "/rust/stack-heap/",
+        summary: "内存概述 程序运行时，操作系统会为它分配内存。Rust 程序使用的内存主要分为两大区域：\nStack（栈） — 局部变量、函数调用上下文 Heap（堆） — 动态分配的数据 理解两者的区别，是掌握 Rust 所有权系统的前提。\nStack（栈） 栈是一种 后进先出（LIFO） 的数据结构，就像一叠盘子：最后放上去的，最先被拿走。\nflowchart LR\rA[\u0026#34;① push(1)\u0026#34;] --\u0026gt; B[\u0026#34;② push(2)\u0026#34;] --\u0026gt; C[\u0026#34;③ push(3)\u0026#34;]\rC --\u0026gt; D[\u0026#34;④ pop() → 3\u0026#34;] --\u0026gt; E[\u0026#34;⑤ pop() → 2\u0026#34;] 栈的特点 特性 说明 分配方式 数据大小必须在编译时已知 速度 🚀 极快，CPU 直接操作栈指针 管理 自动管理，函数返回时自动释放 大小限制 相对较小（通常几 MB） 存储内容 固定大小的值：整数、浮点数、布尔、指针等 Rust 中存储在栈上的数据 fn main() { let x: i32 = 42; // i32 — 固定 4 字节，放栈上 let y: f64 = 3.14; // f64 — 固定 8 字节，放栈上 let flag: bool = true; // bool — 放栈上 // x、y、flag 都在 main() 的栈帧中 // 函数返回时自动回收 } 栈帧示意：\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "VSCode 配置 Copilot + OAI + DeepSeek",
+        permalink: "/dev-env/vscode-copilot-deepseek/",
+        summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
+        tags: ["VSCode","Copilot","DeepSeek","AI","开发环境"],
+        categories: ["dev-env"]
+    },
+];
+</script>
+
+        <main class="main"> 
+<header class="page-header">
+  <h1>
+    编程基础
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust 编程概念：静态/动态类型与强/弱类型
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Rust 的语言类型 Rust 是一门 静态、强类型 语言。理解这几个概念，对于深入学习 Rust 至关重要。
+静态类型语言 vs 动态类型语言 静态类型语言 所有数据类型在编译时已知，编译器可以在编译阶段检查类型错误。
+fn main() { let x: i32 = 10; // 显式类型声明 println!(&#34;{}&#34;, x); } 动态类型语言 在运行时才知道数据的类型，变量类型可以在运行时动态改变。
+x = 10 # 无类型声明 print(x) x = &#34;hello&#34; # x 变成 string print(x) 静态 vs 动态 对比 特性 静态类型 动态类型 类型检查时机 编译时 运行时 类型安全 ✅ 高 ❌ 较低 性能 ✅ 更好的优化 ❌ 运行时开销 灵活性 ❌ 较低 ✅ 高 开发效率 ❌ 类型声明需额外代码 ✅ 写起来更快 代表语言 Rust, Java, C&#43;&#43; Python, JavaScript, Ruby 强类型语言 vs 弱类型语言 强类型语言 对数据类型的赋值和运算进行严格的规则约束，不允许隐式类型转换。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 16:30:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust 编程概念：静态/动态类型与强/弱类型" href="http://localhost:1313/rust/type-system-concepts/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust 编程概念：编译型语言 vs 解释型语言
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>语言执行方式 编程语言按执行方式可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。
+编译型语言 编译型语言的工作流程：
+开发者编写源代码 使用 编译器（Compiler） 将源代码一次性翻译成机器码 生成可执行文件（如 .exe、二进制文件） 将可执行文件分发给用户，用户直接运行即可 flowchart LRA[源代码] --&gt; B[编译器 Compiler]B --&gt; C[可执行文件]C --&gt; D[CPU 直接执行] 特点：
+✅ 运行速度快：直接编译为机器码，无运行时翻译开销 ✅ 无需运行时环境：用户不需要安装编译器或解释器 ✅ 编译期错误检查：类型错误、语法错误在编译阶段就能发现 ❌ 编译时间较长：大型项目编译可能需要几分钟甚至更长 ❌ 平台依赖：不同操作系统/CPU 架构需分别编译 代表语言：Rust、C、C&#43;&#43;、Go
+Rust 作为编译型语言 Rust 使用 rustc 编译器（底层基于 LLVM），将源代码编译为高效的机器码：
+// main.rs fn main() { println!(&#34;Hello, Rust!&#34;); } # 编译 rustc main.rs # 运行生成的可执行文件 ./main # Linux/macOS main.exe # Windows Rust 的编译器不仅生成高效的机器码，还在编译期进行了大量的安全检查（所有权、借用、生命周期等），确保运行时不会出现内存安全问题。
+解释型语言 解释型语言的工作流程：
+开发者编写源代码 将源代码副本直接分发给用户 用户使用**解释器（Interpreter）**逐行翻译并执行 flowchart LRA[源代码] --&gt; B[解释器 Interpreter]B --&gt; C[逐行翻译 &#43; 执行] 特点：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 17:26:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust 编程概念：编译型语言 vs 解释型语言" href="http://localhost:1313/rust/compiled-vs-interpreted/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust 编程概念：Stack 与 Heap（栈与堆）
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>内存概述 程序运行时，操作系统会为它分配内存。Rust 程序使用的内存主要分为两大区域：
+Stack（栈） — 局部变量、函数调用上下文 Heap（堆） — 动态分配的数据 理解两者的区别，是掌握 Rust 所有权系统的前提。
+Stack（栈） 栈是一种 后进先出（LIFO） 的数据结构，就像一叠盘子：最后放上去的，最先被拿走。
+flowchart LRA[&#34;① push(1)&#34;] --&gt; B[&#34;② push(2)&#34;] --&gt; C[&#34;③ push(3)&#34;]C --&gt; D[&#34;④ pop() → 3&#34;] --&gt; E[&#34;⑤ pop() → 2&#34;] 栈的特点 特性 说明 分配方式 数据大小必须在编译时已知 速度 🚀 极快，CPU 直接操作栈指针 管理 自动管理，函数返回时自动释放 大小限制 相对较小（通常几 MB） 存储内容 固定大小的值：整数、浮点数、布尔、指针等 Rust 中存储在栈上的数据 fn main() { let x: i32 = 42; // i32 — 固定 4 字节，放栈上 let y: f64 = 3.14; // f64 — 固定 8 字节，放栈上 let flag: bool = true; // bool — 放栈上 // x、y、flag 都在 main() 的栈帧中 // 函数返回时自动回收 } 栈帧示意：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 17:37:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust 编程概念：Stack 与 Heap（栈与堆）" href="http://localhost:1313/rust/stack-heap/"></a>
+</article>
+        </main>
+    </div>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">hantaikeju 的技术博客</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+    <script defer src="/js/sidebar-search.min.js"></script>
+</body>
+
+</html>
