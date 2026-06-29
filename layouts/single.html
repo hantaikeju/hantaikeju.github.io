@@ -1,9 +1,5 @@
 {{- define "main" }}
 
-{{- if findRE "```mermaid" .RawContent 1 }}
-  {{- .Store.Set "hasMermaid" true }}
-{{- end }}
-
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}
@@ -64,5 +60,24 @@
   {{- partial "comments.html" . }}
   {{- end }}
 </article>
+
+{{- if findRE "```mermaid" .RawContent 1 }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  var blocks = document.querySelectorAll('pre > code.language-mermaid');
+  if (!blocks.length) return;
+  mermaid.initialize({ startOnLoad: false, theme: 'default' });
+  blocks.forEach(function(code) {
+    var pre = code.parentElement;
+    var div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = code.textContent;
+    pre.replaceWith(div);
+  });
+  mermaid.run();
+})();
+</script>
+{{- end }}
 
 {{- end }}{{/* end main */}}

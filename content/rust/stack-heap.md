@@ -54,15 +54,14 @@ fn main() {
 
 栈帧示意：
 
-```
-┌────────────────┐
-│  flag: true    │ ← 高地址
-├────────────────┤
-│  y: 3.14       │
-├────────────────┤
-│  x: 42         │ ← 低地址（栈顶）
-└────────────────┘
-   main() 栈帧
+```mermaid
+flowchart TB
+    subgraph main栈帧
+        direction BT
+        X["x: i32 = 42"]
+        Y["y: f64 = 3.14"]
+        F["flag: bool = true"]
+    end
 ```
 
 ---
@@ -114,14 +113,18 @@ flowchart LR
 let s = String::from("hello");
 ```
 
-```
-Stack                        Heap
-┌──────────────┐            ┌───┬───┬───┬───┬───┐
-│ ptr ────────┐│            │ h │ e │ l │ l │ o │
-│ len:  5     ││            └───┴───┴───┴───┴───┘
-│ cap:  5     ││            堆上实际字符数据
-└──────────────┘
-  栈上 String 元数据
+```mermaid
+flowchart TB
+    subgraph Stack
+        direction LR
+        P["ptr → heap addr"]
+        L["len: 5"]
+        C["cap: 5"]
+    end
+    subgraph Heap
+        H["'h' 'e' 'l' 'l' 'o'"]
+    end
+    P -->|指向| H
 ```
 
 - **栈上**存储 String 的三个字段：指针、长度、容量（共 24 字节，固定大小）
@@ -136,20 +139,29 @@ let s2 = s1;
 // println!("{}", s1); // ❌ 编译错误：s1 所有权已转移给 s2
 ```
 
-```
-        s1 (失效)          s2
-    ┌──────────────┐  ┌──────────────┐
-    │ ptr ────X────│  │ ptr ───┐     │
-    │ len:  5      │  │ len:  5 │     │
-    │ cap:  5      │  │ cap:  5 │     │
-    └──────────────┘  └─────────┼─────┘
-                                │
-                     ┌──────────┘
-                     ▼
-               ┌───┬───┬───┬───┬───┐
-               │ h │ e │ l │ l │ o │
-               └───┴───┴───┴───┴───┘
-                    堆
+```mermaid
+flowchart TB
+    subgraph s1["s1 (失效)"]
+        direction LR
+        P1["ptr ❌"]
+        L1["len: 5"]
+        C1["cap: 5"]
+    end
+    subgraph s2["s2 (所有者)"]
+        direction LR
+        P2["ptr →"]
+        L2["len: 5"]
+        C2["cap: 5"]
+    end
+    subgraph Heap
+        H["'h' 'e' 'l' 'l' 'o'"]
+    end
+    P2 -->|指向| H
+
+    style s1 fill:#f5f5f5,stroke:#999,color:#999
+    style P1 fill:#f5f5f5,stroke:#ccc,color:#999
+    style L1 fill:#f5f5f5,stroke:#ccc,color:#999
+    style C1 fill:#f5f5f5,stroke:#ccc,color:#999
 ```
 
 Rust 通过 **move（移动）** 语义，确保同一时刻只有一份堆数据的所有者，防止双重释放（double free）。
