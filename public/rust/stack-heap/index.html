@@ -225,7 +225,7 @@ window.__sidebarPosts = [
     </div>
     <div class="post-meta">
 
-<span title='2026-06-29 17:37:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
+<span title='2026-06-29 17:37:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>hantaikeju</span>
 
 </div>
   </header> 
@@ -446,13 +446,13 @@ window.__sidebarPosts = [
 	</tbody>
 </table>
 <p><strong>手动管理（C/C++）：</strong></p>
-<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TB
     C1[&#34;malloc()&#34;] --&gt; C2[&#34;使用&#34;] --&gt; C3[&#34;free()&#34;]
-    C3 -.-&gt;|忘记 free| C4[&#34;❌ 内存泄漏&#34;]
-    C3 -.-&gt;|过早 free| C5[&#34;❌ 悬垂指针&#34;]
+    C3 -.-&gt; C4[&#34;❌ 忘记 free → 内存泄漏&#34;]
+    C3 -.-&gt; C5[&#34;❌ 过早 free → 悬垂指针&#34;]
 </code></pre><p><strong>所有权系统（Rust）：</strong></p>
-<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
-    R1[&#34;声明变量&#34;] --&gt; R2[&#34;编译器分析\n所有权/借用/生命周期&#34;] --&gt; R3[&#34;✅ 编译通过\n✅ 自动释放&#34;]
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TB
+    R1[&#34;声明变量&#34;] --&gt; R2[&#34;编译器分析所有权 / 借用 / 生命周期&#34;] --&gt; R3[&#34;✅ 编译通过，自动释放&#34;]
 </code></pre><hr>
 <h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
 <table>
