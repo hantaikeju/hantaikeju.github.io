@@ -6,7 +6,7 @@
     <description>Recent content in 编程基础 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 29 Jun 2026 17:37:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 11:26:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust 编程概念：编译型语言 vs 解释型语言</title>
@@ -28,6 +28,13 @@
       <pubDate>Mon, 29 Jun 2026 17:37:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/stack-heap/</guid>
       <description>深入理解 Rust 中 Stack（栈）与 Heap（堆）两种内存区域的核心差异、各自特性，以及 Rust 如何通过所有权系统在无需垃圾回收器的前提下确保内存安全。</description>
+    </item>
+    <item>
+      <title>Rust 基础语法：变量、常量与数据类型</title>
+      <link>http://localhost:1313/rust/basic-syntax-data-types/</link>
+      <pubDate>Tue, 30 Jun 2026 11:26:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/basic-syntax-data-types/</guid>
+      <description>掌握 Rust 的基础语法：变量声明与可变性、常量定义、变量遮蔽（Shadowing），以及标量类型（整数、浮点、布尔、字符）和复合类型（元组、数组）的完整概览。</description>
     </item>
   </channel>
 </rss>

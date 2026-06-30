@@ -196,6 +196,13 @@ window.__sidebarPosts = [
         categories: ["rust"]
     },
     {
+        title: "Rust 基础语法：变量、常量与数据类型",
+        permalink: "/rust/basic-syntax-data-types/",
+        summary: "变量 \u0026amp; 可变性 Rust 中通过 let 声明变量。默认情况下，变量是不可变的（immutable）——这是 Rust 在安全性上的重要设计决策。\nlet some_number = 1; // some_number = 2; // ❌ 编译错误：变量默认不可变 如果需要修改变量的值，必须使用 mut 关键字显式声明：\nlet mut another_number = 2; another_number = 3; // ✅ 可以修改 println!(\u0026#34;{}\u0026#34;, another_number); // 3 为什么默认不可变？ 设计考量 说明 安全性 防止意外的值修改，减少 Bug 并发友好 不可变数据天然线程安全，无需加锁 编译器优化 不可变值便于编译器做更激进的优化 可读性 一眼就能知道哪些值会变、哪些不会 常量 Constants 常量使用 const 声明，与变量的关键区别：\nconst SPECIAL_NUMBER: i32 = 3; const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3; const 与 let 的区别 特性 const let 可变性 永远不可变 默认不可变，可加 mut mut 关键词 ❌ 不可使用 ✅ 可选使用 类型标注 ✅ 必须标注类型 通常可自动推断 作用域 任意作用域（包括全局） 函数/代码块作用域 赋值表达式 仅常量表达式 任意表达式（包括运行时计算） 命名约定 SCREAMING_SNAKE_CASE snake_case 变量遮蔽 Shadowing Rust 允许用 let 重复声明同名变量，本质是创建了一个新变量，旧变量被\u0026quot;遮蔽\u0026quot;：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",
         permalink: "/dev-env/vscode-copilot-deepseek/",
         summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
