@@ -200,6 +200,13 @@ window.__sidebarPosts = [
         categories: ["rust"]
     },
     {
+        title: "Rust 基础语法：函数与控制流",
+        permalink: "/rust/functions-control-flow/",
+        summary: "函数 Rust 函数由四个要素组成：名称、参数、返回类型、函数体。使用 fn 关键字声明，命名遵循 snake_case 规范（全小写，下划线分隔）。\n基本结构 fn main() { another_function(); } fn another_function() { // 函数体 } fn — 函数声明关键字 函数名和变量名统一采用 snake_case 调用方式：func_name(); 参数 参数声明格式为 参数名: 类型，多个参数用逗号隔开：\nfn another_function(x: i32, label: \u0026amp;str) { println!(\u0026#34;{}: {}\u0026#34;, label, x); } fn main() { another_function(42, \u0026#34;答案\u0026#34;); } 语句与表达式 这是 Rust 中非常重要的概念区分：\n概念 定义 返回值 语句 Statement 执行某些操作，不返回值 ❌ 无 表达式 Expression 计算并产生一个值 ✅ 有 fn main() { let y = 6; // let y = 6; 是语句，6 是表达式 } {} 代码块也是表达式：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",
         permalink: "/dev-env/vscode-copilot-deepseek/",
         summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",

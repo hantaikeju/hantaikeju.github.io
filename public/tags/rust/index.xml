@@ -6,7 +6,7 @@
     <description>Recent content in Rust on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Jun 2026 11:26:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 17:04:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安装 Rust 编译环境 — VSCode 篇</title>
@@ -63,6 +63,13 @@
       <pubDate>Tue, 30 Jun 2026 11:26:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/basic-syntax-data-types/</guid>
       <description>掌握 Rust 的基础语法：变量声明与可变性、常量定义、变量遮蔽（Shadowing），以及标量类型（整数、浮点、布尔、字符）和复合类型（元组、数组）的完整概览。</description>
+    </item>
+    <item>
+      <title>Rust 基础语法：函数与控制流</title>
+      <link>http://localhost:1313/rust/functions-control-flow/</link>
+      <pubDate>Tue, 30 Jun 2026 17:04:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/functions-control-flow/</guid>
+      <description>掌握 Rust 的函数定义、参数、语句与表达式、返回值，以及控制流中的 if 表达式、loop / while / for 循环的完整用法。</description>
     </item>
   </channel>
 </rss>
