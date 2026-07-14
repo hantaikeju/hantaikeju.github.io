@@ -6,7 +6,7 @@
     <description>Recent content in 类型系统 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 29 Jun 2026 16:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 16:51:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust 编程概念：静态/动态类型与强/弱类型</title>
@@ -14,6 +14,34 @@
       <pubDate>Mon, 29 Jun 2026 16:30:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/type-system-concepts/</guid>
       <description>深入理解 Rust 的类型系统：静态类型 vs 动态类型、强类型 vs 弱类型的概念辨析，以及 Rust 在语言安全性方面的设计取舍。</description>
+    </item>
+    <item>
+      <title>Rust 核心：结构体（Struct）</title>
+      <link>http://localhost:1313/rust/struct/</link>
+      <pubDate>Fri, 03 Jul 2026 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/struct/</guid>
+      <description>深入理解 Rust 结构体：定义与实例化、字段初始化简写、结构体更新语法、元组结构体、Unit-Like 结构体、派生 Trait、impl 方法以及方法调用的所有权。</description>
+    </item>
+    <item>
+      <title>Rust 核心：Enum 与模式匹配</title>
+      <link>http://localhost:1313/rust/enum-pattern-matching/</link>
+      <pubDate>Mon, 06 Jul 2026 16:01:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/enum-pattern-matching/</guid>
+      <description>深入理解 Rust 枚举：定义与变体、持有数据、Option 替代 Null、match 穷尽匹配、if let 简洁语法以及模式匹配的所有权处理。</description>
+    </item>
+    <item>
+      <title>Rust：泛型数据类型</title>
+      <link>http://localhost:1313/rust/generics/</link>
+      <pubDate>Thu, 09 Jul 2026 17:31:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/generics/</guid>
+      <description>掌握 Rust 泛型：函数、结构体、枚举和方法中的泛型定义，理解单态化（monomorphization）如何保证运行时零开销。</description>
+    </item>
+    <item>
+      <title>Rust：Trait（特征）</title>
+      <link>http://localhost:1313/rust/trait/</link>
+      <pubDate>Fri, 10 Jul 2026 16:51:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/trait/</guid>
+      <description>掌握 Rust Trait：定义共享行为、为类型实现 Trait、默认实现、Trait 作为参数、Trait Bound 约束、where 子句以及孤儿规则。</description>
     </item>
   </channel>
 </rss>

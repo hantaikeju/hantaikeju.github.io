@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>测试 on hantaikeju 的技术博客</title>
+    <link>http://localhost:1313/tags/%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 测试 on hantaikeju 的技术博客</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Jul 2026 10:00:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust：控制测试执行与组织测试</title>
+      <link>http://localhost:1313/rust/control-and-organization/</link>
+      <pubDate>Tue, 14 Jul 2026 10:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/control-and-organization/</guid>
+      <description>掌握 cargo test 的进阶用法：控制测试执行（串行/并行、显示输出、按名称过滤）、忽略测试（#[ignore]），以及单元测试与集成测试的组织方式与区别。</description>
+    </item>
+  </channel>
+</rss>

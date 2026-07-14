@@ -6,7 +6,7 @@
     <description>Recent content in 故障排查 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Jun 2026 11:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 11:27:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust：VsCode 快速修复异常排查</title>
@@ -14,6 +14,13 @@
       <pubDate>Fri, 26 Jun 2026 11:00:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/vscode-quickfix-troubleshoot/</guid>
       <description>排查 rust-analyzer 波浪线正常但 Ctrl&#43;. 无自动导入补全的问题，多套 Rust 环境冲突的根因分析与修复方案。</description>
+    </item>
+    <item>
+      <title>Rust 实战：修复所有权常见错误</title>
+      <link>http://localhost:1313/rust/fix-ownership-errors/</link>
+      <pubDate>Thu, 02 Jul 2026 11:27:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/fix-ownership-errors/</guid>
+      <description>逐个击破 Rust 所有权系统中的常见编译错误：悬垂引用、权限不足、别名与可变性冲突、集合元素借用规则等，附多种修复方案对比。</description>
     </item>
   </channel>
 </rss>

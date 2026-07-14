@@ -106,7 +106,7 @@
                 <li class="sidebar-category">
                     <a href="/rust/" class="sidebar-category-link ">
                         <span class="sidebar-category-name">Rust</span>
-                        <span class="sidebar-count">9</span>
+                        <span class="sidebar-count">25</span>
                     </a>
                 </li>
                 <li class="sidebar-category">
@@ -224,6 +224,118 @@ window.__sidebarPosts = [
         categories: ["rust"]
     },
     {
+        title: "Rust 核心：所有权（Ownership）",
+        permalink: "/rust/ownership/",
+        summary: "概述 所有权（Ownership） 是 Rust 最独特的特性——它是保证程序安全的机制。\n安全 = 程序中没有未定义行为（Undefined Behavior）\n未定义行为 = 程序执行结果不可预测、且不被编程语言规范所定义\nRust 的两个核心目标：\n基础目标：确保程序永远不会有未定义行为 次要目标：在编译时而不是运行时防止未定义行为 不安全代码示例 fn read(y: bool) { if y { println!(\u0026#34;y is true\u0026#34;); } } fn main() { read(x); // ❌ x 未定义就使用 → 未定义行为！ let x = true; } 编译器会拒绝这段代码——变量在声明之前被使用，Rust 不允许。\n所有权作为内存安全的规范 变量存在于 Stack 中 更准确地说，存在于 Stack Frame（栈帧） 中。\nfn main() { let n = 5; // L1 let y = plus_one(n); // L3 println!(\u0026#34;The value of y is: {y}\u0026#34;); } fn plus_one(x: i32) -\u0026gt; i32 { x + 1 // L2 } 程序运行时，Stack Frame 的变化：\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：引用与借用（References \u0026 Borrowing）",
+        permalink: "/rust/references-borrowing/",
+        summary: "传参所有权改变 当函数参数是 String 等非 Copy 类型时，所有权会被移入函数，调用方再也无法使用：\nfn main() { let m1 = String::from(\u0026#34;Hello\u0026#34;); let m2 = String::from(\u0026#34;World\u0026#34;); greet(m1, m2); // L2 — m1, m2 所有权移入函数 let s = format!(\u0026#34;{} {}\u0026#34;, m1, m2); // ❌ Error: m1 and m2 are moved } fn greet(g1: String, g2: String) { println!(\u0026#34;{g1} {g2}!\u0026#34;); // L1 } 变通方案：把所有权归还 通过返回值把所有权\u0026quot;还给\u0026quot;调用方：\nfn main() { let m1 = String::from(\u0026#34;Hello\u0026#34;); let m2 = String::from(\u0026#34;World\u0026#34;); // L1 let (m1_again, m2_again) = greet(m1, m2); let s = format!(\u0026#34;{} {}\u0026#34;, m1_again, m2_again); // L2 ✅ } fn greet(g1: String, g2: String) -\u0026gt; (String, String) { println!(\u0026#34;{g1} {g2}!\u0026#34;); (g1, g2) } 这能工作但非常笨拙——每次调用都要把所有权传进去又传出来。\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 实战：修复所有权常见错误",
+        permalink: "/rust/fix-ownership-errors/",
+        summary: "错误 1：返回指向 Stack 内存的引用 最常见的新手错误——返回局部变量的引用：\nfn main() { let value = return_a_string(); println!(\u0026#34;{}\u0026#34;, value); } fn return_a_string() -\u0026gt; \u0026amp;String { let s = String::from(\u0026#34;Hello world\u0026#34;); \u0026amp;s // ❌ s 在函数结束时被释放，\u0026amp;s 变成悬垂指针 } 根因：引用活得比数据长，数据释放后引用指向无效内存。\n修复方案 方案 A：转移所有权（最直接） 不返回引用，直接返回 String 本身：\nfn return_a_string() -\u0026gt; String { let s = String::from(\u0026#34;Hello world\u0026#34;); s // ✅ 所有权移出，调用方接管 } 方案 B：延长数据生命周期 如果数据是编译时确定的字符串字面量，可以用 'static 生命周期：\nfn return_a_string() -\u0026gt; \u0026amp;\u0026#39;static str { \u0026#34;Hello world\u0026#34; // ✅ 字符串字面量在程序整个生命周期内有效 } 方案 C：Rc 引用计数 当需要多处共享同一数据时，用 Rc\u0026lt;T\u0026gt; 引用计数指针：\nuse std::rc::Rc; fn return_a_string() -\u0026gt; Rc\u0026lt;String\u0026gt; { let s = Rc::new(String::from(\u0026#34;Hello, world!\u0026#34;)); Rc::clone(\u0026amp;s) // ✅ 增加引用计数，共享所有权 } 方案 D：直接修改原数据 不返回新值，通过 \u0026amp;mut 在调用方数据上原地修改：\n",
+        tags: ["Rust","编程基础","内存","故障排查"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：Slice 切片",
+        permalink: "/rust/slice/",
+        summary: "为什么需要切片？ 先看一个有隐患的写法——返回索引而非引用：\nfn main() { let mut s = String::from(\u0026#34;hello world\u0026#34;); let word = first_word(\u0026amp;s); // 返回空格索引：5 s.clear(); // s 清空后，索引 5 毫无意义！ // word 变成了无效数据 } fn first_word(s: \u0026amp;String) -\u0026gt; usize { let bytes = s.as_bytes(); for (i, \u0026amp;item) in bytes.iter().enumerate() { if item == b\u0026#39; \u0026#39; { return i; } } s.len() } word 只是孤立的索引 5，和原字符串失去了关联——s.clear() 后索引成为\u0026quot;悬挂数字\u0026quot;。\n切片带来的安全绑定 把返回值改为切片引用 \u0026amp;str，让它和原字符串保持编译期关联：\nfn main() { let mut s = String::from(\u0026#34;hello world\u0026#34;); let word = first_word(\u0026amp;s); // 返回 \u0026amp;str 切片 // s.clear(); // ❌ 编译错误！ // ^^^^^^^^^ word 持有 s 的不可变借用，无法对 s 做可变操作 print!(\u0026#34;{}\u0026#34;, word); } fn first_word(s: \u0026amp;String) -\u0026gt; \u0026amp;str { let bytes = s.as_bytes(); for (i, \u0026amp;item) in bytes.iter().enumerate() { if item == b\u0026#39; \u0026#39; { return \u0026amp;s[0..i]; } } \u0026amp;s[..] } ✅ 借用检查器阻止了 s.clear() ——切片 word 持有 s 的不可变借用，s 的 W 权限被冻结。\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：结构体（Struct）",
+        permalink: "/rust/struct/",
+        summary: "概述 结构体（Struct） 是 Rust 中的自定义数据类型，可以将多个不同类型的字段组合在一起，并为每个字段命名。\nstruct User { active: bool, username: String, email: String, sign_in_count: u64, } 定义与实例化 基本定义 定义结构体使用 struct 关键字，后面跟结构体名和花括号包裹的字段列表：\nstruct User { active: bool, username: String, email: String, sign_in_count: u64, } fn main() { let user1 = User { active: true, username: String::from(\u0026#34;someusername123\u0026#34;), email: String::from(\u0026#34;1111\u0026#34;), sign_in_count: 1, }; } 可变性 使用 mut 关键字可以让整个实例可变，然后可以修改任意字段：\nfn main() { let mut user1 = User { active: true, username: String::from(\u0026#34;someusername123\u0026#34;), email: String::from(\u0026#34;1111\u0026#34;), sign_in_count: 1, }; user1.email = String::from(\u0026#34;2222\u0026#34;); // ✅ 允许修改 } ⚠️ 注意：Rust 不支持仅标记某个字段为 mut，必须是整个实例可变。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：Enum 与模式匹配",
+        permalink: "/rust/enum-pattern-matching/",
+        summary: "概述 枚举（Enum） 是 Rust 中一种定义一组可能取值的自定义类型。与结构体不同，枚举的变体（variants）不仅可以是纯标签，还可以携带不同类型和数量的数据。配合强大的 match 模式匹配，Rust 确保了所有分支都被处理，使代码更加安全和可靠。\n定义枚举 基本定义 定义枚举使用 enum 关键字，后面跟枚举名和变体列表。所有变体属于同一个类型，类型一致。\nenum IpAddrKind { V4, // Variants V6, } fn main() { let four = IpAddrKind::V4; let six = IpAddrKind::V6; route(four); route(six); } fn route(ip_type: IpAddrKind) { // ... } 变体的类型是统一的——four 和 six 都是 IpAddrKind 类型，因此可以作为同类型参数传入 route 函数。\nEnum 可持有数据 Rust 枚举的强大之处在于，每个变体可以持有不同类型、不同数量的数据，无需借助额外的结构体。\n传统方式：用 struct 包装 在别的语言中，通常需要定义一个结构体来组合枚举标签和附带数据：\nenum IpAddrKind { V4, V6, } struct IpAddr { kind: IpAddrKind, address: String, } fn main() { let home = IpAddr { kind: IpAddrKind::V4, address: String::from(\u0026#34;127.0.0.1\u0026#34;), }; let loopback = IpAddr { kind: IpAddrKind::V6, address: String::from(\u0026#34;::1\u0026#34;), }; } Rust 方式：变体直接持有数据 Rust 的枚举允许将数据直接附加到变体上，代码更简洁：\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：项目代码组织",
+        permalink: "/rust/project-code-organization/",
+        summary: "概述 Rust 的代码组织体系分为三个层级：Crate（编译单元）、Package（发布单元）和 Module（代码组织单元）。理解这三者之间的关系，是构建中大型 Rust 项目的基础。\nCrate Crate 是 Rust 编译的基本单元，分为两种类型：\n类型 说明 Crate Root Binary Crate 可执行程序，必须有 main 函数 src/main.rs Library Crate 库，无 main 函数，供其他 crate 使用 src/lib.rs 创建 cargo new crate_name # binary crate（默认） cargo new crate_name --lib # library crate Package Package 是 Cargo 的管理单元，由 一个或多个 crate 组成，包含 Cargo.toml 文件。\n规则：\n可以有多个 binary crate（放在 src/bin/ 下） 最多一个 library crate 至少一个 crate（binary 或 library） Module 模块 Module 使用 mod 关键字声明，用于将代码拆分为更小、更易管理的单元。模块支持嵌套（子模块），并且有 public / private 可见性控制。\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 集合：Vector",
+        permalink: "/rust/vector/",
+        summary: "概述 Vec\u0026lt;T\u0026gt; 是 Rust 标准库提供的动态数组，用于在单一数据结构中存储多个同类型的值，元素在内存中连续（相邻）存放。\n创建 Vector 使用 Vec::new() fn main() { let v: Vec\u0026lt;i32\u0026gt; = Vec::new(); // 需要标注类型 } 如果后续没有 push 操作，编译器无法推断类型，需要显式标注泛型参数。\n使用 vec! 宏 fn main() { let v = vec![1, 2, 3]; // 类型自动推断为 Vec\u0026lt;i32\u0026gt; } 更新元素 使用 push 方法添加元素，vector 必须声明为 mut：\nfn main() { let mut v = Vec::new(); v.push(1); v.push(2); v.push(3); } 读取元素 两种读取方式：\nfn main() { let mut v = Vec::new(); v.push(1); v.push(2); v.push(3); // 方式1：索引语法 → 返回 \u0026amp;i32，越界则 panic let third = \u0026amp;v[2]; println!(\u0026#34;The third element is {}\u0026#34;, third); // 方式2：get 方法 → 返回 Option\u0026lt;\u0026amp;i32\u0026gt;，越界返回 None let third: Option\u0026lt;\u0026amp;i32\u0026gt; = v.get(2); match third { Some(third) =\u0026gt; println!(\u0026#34;The third element is {}\u0026#34;, third), None =\u0026gt; println!(\u0026#34;There is no third element.\u0026#34;), } } 读取方式 返回类型 越界行为 \u0026amp;v[index] \u0026amp;T panic（程序崩溃） v.get(index) Option\u0026lt;\u0026amp;T\u0026gt; 返回 None（安全） Vector 的所有权 在同一作用域内，不能同时持有不可变引用并修改 vector：\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 集合：String",
+        permalink: "/rust/string/",
+        summary: "概述 Rust 中字符串相关有两种核心类型：\n类型 来源 特点 \u0026amp;str 核心语言 字符串切片，不可变引用 String 标准库 可变、可增长、拥有所有权、UTF-8 编码 String 本质是字节的集合外加一系列实用方法。\n创建 String fn main() { let mut s = String::new(); // 空字符串 let data = \u0026#34;Hello, World!\u0026#34;; let s = data.to_string(); // 字面量转 String，实现了 Display trait let s = String::from(\u0026#34;Hello, World!\u0026#34;); // 与 to_string() 等价 } 更新 String push_str —— 附加字符串切片 fn main() { let mut s = String::from(\u0026#34;foo\u0026#34;); s.push_str(\u0026#34;bar\u0026#34;); // 不获取参数所有权 println!(\u0026#34;{}\u0026#34;, s); // foobar } push_str 接收 \u0026amp;str，不会获取参数的所有权，因此传入的变量仍可继续使用：\nfn main() { let mut s = String::from(\u0026#34;foo\u0026#34;); let s2 = \u0026#34;bar\u0026#34;; s.push_str(s2); println!(\u0026#34;{s2}\u0026#34;); // s2 依旧可用 } push —— 附加单个字符 let mut s = String::from(\u0026#34;lo\u0026#34;); s.push(\u0026#39;l\u0026#39;); println!(\u0026#34;{}\u0026#34;, s); // lol 拼接 String 使用 + 运算符 fn main() { let s1 = String::from(\u0026#34;Hello\u0026#34;); let s2 = String::from(\u0026#34;World\u0026#34;); let s3 = s1 + \u0026amp;s2; // s1 所有权转移，s2 不变 println!(\u0026#34;{}\u0026#34;, s3); } + 底层调用 add 方法，签名是 fn add(self, s: \u0026amp;str) -\u0026gt; String。这意味着：\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 集合：HashMap",
+        permalink: "/rust/hashmap/",
+        summary: "概述 HashMap\u0026lt;K, V\u0026gt; 存储键值对（key-value）映射。通过 Hashing 函数将 key 映射到对应的 value，数据存储在 Heap 上。K 和 V 必须是同类型（与 Vector 一样）。\n创建 直接创建 use std::collections::HashMap; let mut scores = HashMap::new(); scores.insert(String::from(\u0026#34;Blue\u0026#34;), 10); scores.insert(String::from(\u0026#34;Yellow\u0026#34;), 50); 从迭代器创建 let vec = vec![(\u0026#34;key1\u0026#34;, \u0026#34;value1\u0026#34;), (\u0026#34;key2\u0026#34;, \u0026#34;value2\u0026#34;)]; let map: HashMap\u0026lt;_, _\u0026gt; = vec.into_iter().collect(); 访问 get 读取单个值 let team_name = String::from(\u0026#34;Blue\u0026#34;); let score = scores.get(\u0026amp;team_name).copied().unwrap_or(0); 调用链路：\n步骤 方法 说明 ① get(\u0026amp;key) 返回 Option\u0026lt;\u0026amp;V\u0026gt;，值的引用 ② copied() Option\u0026lt;\u0026amp;T\u0026gt; → Option\u0026lt;T\u0026gt;（用于 Copy 类型如 i32） ③ unwrap_or(0) 有值则返回，无值返回默认值 0 遍历 for (key, value) in \u0026amp;scores { println!(\u0026#34;{key}:{value}\u0026#34;); } HashMap 与所有权 实现了 Copy trait 的类型（如 i32）——值被复制到 map 中 拥有所有权的类型（如 String）——所有权被移动到 map 中 fn main() { let field_name = String::from(\u0026#34;Favorite color\u0026#34;); let field_value = String::from(\u0026#34;Blue\u0026#34;); let mut map = HashMap::new(); map.insert(field_name, field_value); // println!(\u0026#34;{field_name}-{field_value}\u0026#34;); // ❌ 编译错误！所有权已转移 } HashMap 更新 key 存在则替换 直接 insert 相同 key 会覆盖旧值：\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：错误处理",
+        permalink: "/rust/error-handling/",
+        summary: "错误归类 Rust 将错误分为两大类，没有\u0026quot;异常\u0026quot;机制：\n类别 说明 处理方式 不可恢复 程序 bug（如索引越界） panic! 终止程序 可恢复 预期可能发生的错误（如文件未找到） Result\u0026lt;T, E\u0026gt; 交由调用者处理 不可恢复的错误：panic! 两种触发方式 某些行为：如数组越界访问 显式调用：panic!() 宏 发生 panic 后，程序会打印失败信息、展开（unwind）并清理 Stack，然后退出。\npanic! 示例 fn main() { panic!(\u0026#34;Error\u0026#34;); } 输出：\nthread \u0026#39;main\u0026#39; panicked at src\\main.rs:2:5:\rError\rnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\rerror: process didn\u0026#39;t exit successfully: target\\debug\\TestRust.exe (exit code: 101) Panic 后的响应方式 方式 行为 配置 Unwind（默认） 展开 Stack 并清理数据 — Abort 立即终止，不做内存清理，包体更小 Cargo.toml 中设置 [profile.release] panic = \u0026#34;abort\u0026#34; Backtrace Backtrace 是到达 panic 点之前调用的所有函数的列表。需要设置环境变量：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：泛型数据类型",
+        permalink: "/rust/generics/",
+        summary: "概述 泛型是消除代码重复的工具之一，允许同一段代码代表多种不同的具体数据类型。泛型参数通常用单个字母命名（如 T），遵循 UpperCamelCase 规范。\n函数定义中使用泛型 无泛型的重复代码 fn largest_i32(list: \u0026amp;[i32]) -\u0026gt; \u0026amp;i32 { let mut largest = \u0026amp;list[0]; for item in list { if item \u0026gt; largest { largest = item; } } largest } fn largest_char(list: \u0026amp;[char]) -\u0026gt; \u0026amp;char { let mut largest = \u0026amp;list[0]; for item in list { if item \u0026gt; largest { largest = item; } } largest } fn main() { let number_list = vec![34, 50, 25, 100, 65]; let result = largest_i32(\u0026amp;number_list); println!(\u0026#34;The largest number is {result}\u0026#34;); let char_list = vec![\u0026#39;y\u0026#39;, \u0026#39;m\u0026#39;, \u0026#39;a\u0026#39;, \u0026#39;q\u0026#39;]; let result = largest_char(\u0026amp;char_list); println!(\u0026#34;The largest char is {result}\u0026#34;); } 两个函数逻辑完全相同，仅类型不同。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：Trait（特征）",
+        permalink: "/rust/trait/",
+        summary: "概述 Trait 定义了特定类型所具有的共享行为。它以一种抽象的方式规定类型必须提供的方法签名。结合 Trait Bound，可以约束泛型参数只接受实现了某些特定行为的类型。\n定义 Trait Trait 将一组方法签名组合在一起，定义一套共享行为：\npub trait Summary { fn summarize(\u0026amp;self) -\u0026gt; String; } 为类型实现 Trait pub struct NewsArticle { pub headline: String, pub location: String, pub author: String, pub content: String, } pub struct Tweet { pub username: String, pub content: String, pub reply: bool, pub retweet: bool, } impl Summary for NewsArticle { fn summarize(\u0026amp;self) -\u0026gt; String { format!(\u0026#34;{}, by {} ({})\u0026#34;, self.headline, self.author, self.location) } } impl Summary for Tweet { fn summarize(\u0026amp;self) -\u0026gt; String { format!(\u0026#34;{}: {}\u0026#34;, self.username, self.content) } } 使用 use aggregator::{Summary, Tweet}; fn main() { let tweet = Tweet { username: String::from(\u0026#34;horse_ebooks\u0026#34;), content: String::from(\u0026#34;of course, as you probably already know\u0026#34;), reply: false, retweet: false, }; print!(\u0026#34;1 new tweet: {}\u0026#34;, tweet.summarize()); } Trait 的实现规则（孤儿规则） 只要 Trait 或 类型 其中之一属于当前 crate，就可以实现该 Trait。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：生命周期",
+        permalink: "/rust/lifetime/",
+        summary: "概述 生命周期（Lifetime） 是引用有效的范围（作用域）。每个引用都有生命周期，大多数时候隐式且可被推断。当引用的生命周期可能以不同方式相关联时，必须显式标注。生命周期的主要目的是防止悬垂引用。\n悬垂引用（Dangling References） 悬垂引用指向已被释放的内存，Rust 编译器会阻止这种情况：\nfn main() { let r; { let x = 5; r = \u0026amp;x; // ❌ 编译错误！x 的寿命不够长 } // x 在此处被释放 println!(\u0026#34;r:{}\u0026#34;, r); // r 指向已释放的内存 } x 的生命周期不够长，但被 r 引用——当 x 离开作用域后，r 就成了悬垂引用。\n借用检查器（Borrow Checker） 借用检查器比较作用域，确保数据存活的时间长于其引用（Outlive）。\n// ❌ 编译失败 fn main() { let r; // ---------+-- \u0026#39;a // | { // | let x = 5; // -+-- \u0026#39;b | r = \u0026amp;x; // | | } // -+ | // | println!(\u0026#34;r: {}\u0026#34;, r); // | } // ---------+ 修正方式——确保 x 比 r 活得更久：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：编写自动化测试",
+        permalink: "/rust/automated-tests/",
+        summary: "概述 Rust 的类型系统能在编译期避免许多错误，但无法完整验证程序的逻辑正确性。自动化测试填补了这一空缺——通过编写测试函数来验证代码行为是否符合预期。\n测试函数的典型流程：\n设置所需的数据或状态 运行需要被测试的代码 断言其结果是正确的 测试函数 基本定义 测试函数使用 #[test] 属性标注，放置在 tests 模块中。运行 cargo test 即可执行所有测试。\n#[cfg(test)] mod tests { #[test] fn it_works() { let result = 2 + 2; assert_eq!(result, 4); } } #[cfg(test)] 告诉编译器该模块仅在测试时编译，不会包含在发行版本中。\ncargo test 输出 cargo test 每个测试函数单独运行 通过：ok 失败：FAILED 最后汇总通过/失败数量 assert! 宏 assert! 确保条件为 true，接收一个布尔值参数。true → 通过，false → panic 导致失败。\n#[cfg(test)] mod tests { #[test] fn larger_can_hold_smaller() { let larger = Rectangle { width: 8, height: 7 }; let smaller = Rectangle { width: 5, height: 1 }; assert!(larger.can_hold(\u0026amp;smaller)); } #[test] fn smaller_cannot_hold_larger() { let larger = Rectangle { width: 8, height: 7 }; let smaller = Rectangle { width: 5, height: 1 }; assert!(!smaller.can_hold(\u0026amp;larger)); } } 使用 use super::* 可以让模块内部调用外部代码（父模块的内容）。\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：控制测试执行与组织测试",
+        permalink: "/rust/control-and-organization/",
+        summary: "概述 cargo test 提供了丰富的命令行参数来控制测试的执行方式，同时 Rust 将测试分为单元测试和集成测试两大类，各有不同的组织方式和适用场景。本文涵盖以下内容：控制测试执行（并行/串行、输出捕获、名称过滤）、忽略测试（#[ignore]），以及单元测试与集成测试的组织方式与区别。\n控制测试执行 cargo test 在测试模式下编译运行代码，默认行为是并行运行所有测试。可以通过命令行参数来控制测试的执行方式。\n命令行参数格式 cargo test 的参数分为两类：\ncargo test [OPTIONS] [TESTNAME] [-- \u0026lt;TEST-OPTIONS\u0026gt;] cargo test 后面的参数（OPTIONS / TESTNAME）传给 cargo 本身 -- 后面的参数（TEST-OPTIONS）传给测试二进制文件 记忆技巧：cargo test -- --xxx 中，-- 之前是给 cargo 的，之后是给测试程序的。\n串行运行（单线程） 测试默认并行执行，但某些测试依赖共享状态（如读写同一文件）时可能相互干扰。使用 --test-threads=1 改为单线程：\ncargo test -- --test-threads=1 单线程运行通常更慢，但能保证测试之间不会相互影响。一般只在调试测试冲突时使用。\n显示打印输出 默认情况下，测试通过时 Rust 会捕获（吞掉）println! 等标准输出。只有当测试失败时才显示打印内容。\n想看到所有输出（包括通过测试的打印），使用 --show-output：\ncargo test -- --show-output 按名称过滤测试 运行单个测试 —— 指定完整测试函数名：\ncargo test it_works 运行多个匹配的测试 —— 指定部分名称，所有包含该字符串的测试都会运行：\ncargo test add # 会运行 add_two、add_three 等所有名称中含 \u0026#34;add\u0026#34; 的测试 测试名称是模块路径的一部分，因此也可以用模块名过滤：\n",
+        tags: ["Rust","编程基础","测试"],
+        categories: ["rust"]
+    },
+    {
         title: "VSCode 配置 Copilot + OAI + DeepSeek",
         permalink: "/dev-env/vscode-copilot-deepseek/",
         summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
@@ -277,6 +389,99 @@ let —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rus
 <span title='2026-06-29 15:54:00 +0800 CST'>June 29, 2026</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
   <a class="entry-link" aria-label="post link to Rust：猜数字游戏" href="http://localhost:1313/rust/guessing-game/"></a>
 </article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust：项目代码组织
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 Rust 的代码组织体系分为三个层级：Crate（编译单元）、Package（发布单元）和 Module（代码组织单元）。理解这三者之间的关系，是构建中大型 Rust 项目的基础。
+Crate Crate 是 Rust 编译的基本单元，分为两种类型：
+类型 说明 Crate Root Binary Crate 可执行程序，必须有 main 函数 src/main.rs Library Crate 库，无 main 函数，供其他 crate 使用 src/lib.rs 创建 cargo new crate_name # binary crate（默认） cargo new crate_name --lib # library crate Package Package 是 Cargo 的管理单元，由 一个或多个 crate 组成，包含 Cargo.toml 文件。
+规则：
+可以有多个 binary crate（放在 src/bin/ 下） 最多一个 library crate 至少一个 crate（binary 或 library） Module 模块 Module 使用 mod 关键字声明，用于将代码拆分为更小、更易管理的单元。模块支持嵌套（子模块），并且有 public / private 可见性控制。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-06 17:07:00 +0800 CST'>July 6, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust：项目代码组织" href="http://localhost:1313/rust/project-code-organization/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust 集合：Vector
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 Vec&lt;T&gt; 是 Rust 标准库提供的动态数组，用于在单一数据结构中存储多个同类型的值，元素在内存中连续（相邻）存放。
+创建 Vector 使用 Vec::new() fn main() { let v: Vec&lt;i32&gt; = Vec::new(); // 需要标注类型 } 如果后续没有 push 操作，编译器无法推断类型，需要显式标注泛型参数。
+使用 vec! 宏 fn main() { let v = vec![1, 2, 3]; // 类型自动推断为 Vec&lt;i32&gt; } 更新元素 使用 push 方法添加元素，vector 必须声明为 mut：
+fn main() { let mut v = Vec::new(); v.push(1); v.push(2); v.push(3); } 读取元素 两种读取方式：
+fn main() { let mut v = Vec::new(); v.push(1); v.push(2); v.push(3); // 方式1：索引语法 → 返回 &amp;i32，越界则 panic let third = &amp;v[2]; println!(&#34;The third element is {}&#34;, third); // 方式2：get 方法 → 返回 Option&lt;&amp;i32&gt;，越界返回 None let third: Option&lt;&amp;i32&gt; = v.get(2); match third { Some(third) =&gt; println!(&#34;The third element is {}&#34;, third), None =&gt; println!(&#34;There is no third element.&#34;), } } 读取方式 返回类型 越界行为 &amp;v[index] &amp;T panic（程序崩溃） v.get(index) Option&lt;&amp;T&gt; 返回 None（安全） Vector 的所有权 在同一作用域内，不能同时持有不可变引用并修改 vector：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-06 17:50:00 +0800 CST'>July 6, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust 集合：Vector" href="http://localhost:1313/rust/vector/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust 集合：String
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 Rust 中字符串相关有两种核心类型：
+类型 来源 特点 &amp;str 核心语言 字符串切片，不可变引用 String 标准库 可变、可增长、拥有所有权、UTF-8 编码 String 本质是字节的集合外加一系列实用方法。
+创建 String fn main() { let mut s = String::new(); // 空字符串 let data = &#34;Hello, World!&#34;; let s = data.to_string(); // 字面量转 String，实现了 Display trait let s = String::from(&#34;Hello, World!&#34;); // 与 to_string() 等价 } 更新 String push_str —— 附加字符串切片 fn main() { let mut s = String::from(&#34;foo&#34;); s.push_str(&#34;bar&#34;); // 不获取参数所有权 println!(&#34;{}&#34;, s); // foobar } push_str 接收 &amp;str，不会获取参数的所有权，因此传入的变量仍可继续使用：
+fn main() { let mut s = String::from(&#34;foo&#34;); let s2 = &#34;bar&#34;; s.push_str(s2); println!(&#34;{s2}&#34;); // s2 依旧可用 } push —— 附加单个字符 let mut s = String::from(&#34;lo&#34;); s.push(&#39;l&#39;); println!(&#34;{}&#34;, s); // lol 拼接 String 使用 &#43; 运算符 fn main() { let s1 = String::from(&#34;Hello&#34;); let s2 = String::from(&#34;World&#34;); let s3 = s1 &#43; &amp;s2; // s1 所有权转移，s2 不变 println!(&#34;{}&#34;, s3); } &#43; 底层调用 add 方法，签名是 fn add(self, s: &amp;str) -&gt; String。这意味着：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-07 15:55:00 +0800 CST'>July 7, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust 集合：String" href="http://localhost:1313/rust/string/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust 集合：HashMap
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 HashMap&lt;K, V&gt; 存储键值对（key-value）映射。通过 Hashing 函数将 key 映射到对应的 value，数据存储在 Heap 上。K 和 V 必须是同类型（与 Vector 一样）。
+创建 直接创建 use std::collections::HashMap; let mut scores = HashMap::new(); scores.insert(String::from(&#34;Blue&#34;), 10); scores.insert(String::from(&#34;Yellow&#34;), 50); 从迭代器创建 let vec = vec![(&#34;key1&#34;, &#34;value1&#34;), (&#34;key2&#34;, &#34;value2&#34;)]; let map: HashMap&lt;_, _&gt; = vec.into_iter().collect(); 访问 get 读取单个值 let team_name = String::from(&#34;Blue&#34;); let score = scores.get(&amp;team_name).copied().unwrap_or(0); 调用链路：
+步骤 方法 说明 ① get(&amp;key) 返回 Option&lt;&amp;V&gt;，值的引用 ② copied() Option&lt;&amp;T&gt; → Option&lt;T&gt;（用于 Copy 类型如 i32） ③ unwrap_or(0) 有值则返回，无值返回默认值 0 遍历 for (key, value) in &amp;scores { println!(&#34;{key}:{value}&#34;); } HashMap 与所有权 实现了 Copy trait 的类型（如 i32）——值被复制到 map 中 拥有所有权的类型（如 String）——所有权被移动到 map 中 fn main() { let field_name = String::from(&#34;Favorite color&#34;); let field_value = String::from(&#34;Blue&#34;); let mut map = HashMap::new(); map.insert(field_name, field_value); // println!(&#34;{field_name}-{field_value}&#34;); // ❌ 编译错误！所有权已转移 } HashMap 更新 key 存在则替换 直接 insert 相同 key 会覆盖旧值：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-07 18:01:00 +0800 CST'>July 7, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust 集合：HashMap" href="http://localhost:1313/rust/hashmap/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust：编写自动化测试
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 Rust 的类型系统能在编译期避免许多错误，但无法完整验证程序的逻辑正确性。自动化测试填补了这一空缺——通过编写测试函数来验证代码行为是否符合预期。
+测试函数的典型流程：
+设置所需的数据或状态 运行需要被测试的代码 断言其结果是正确的 测试函数 基本定义 测试函数使用 #[test] 属性标注，放置在 tests 模块中。运行 cargo test 即可执行所有测试。
+#[cfg(test)] mod tests { #[test] fn it_works() { let result = 2 &#43; 2; assert_eq!(result, 4); } } #[cfg(test)] 告诉编译器该模块仅在测试时编译，不会包含在发行版本中。
+cargo test 输出 cargo test 每个测试函数单独运行 通过：ok 失败：FAILED 最后汇总通过/失败数量 assert! 宏 assert! 确保条件为 true，接收一个布尔值参数。true → 通过，false → panic 导致失败。
+#[cfg(test)] mod tests { #[test] fn larger_can_hold_smaller() { let larger = Rectangle { width: 8, height: 7 }; let smaller = Rectangle { width: 5, height: 1 }; assert!(larger.can_hold(&amp;smaller)); } #[test] fn smaller_cannot_hold_larger() { let larger = Rectangle { width: 8, height: 7 }; let smaller = Rectangle { width: 5, height: 1 }; assert!(!smaller.can_hold(&amp;larger)); } } 使用 use super::* 可以让模块内部调用外部代码（父模块的内容）。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-13 11:21:00 +0800 CST'>July 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust：编写自动化测试" href="http://localhost:1313/rust/automated-tests/"></a>
+</article>
         </main>
     </div>
     
@@ -298,6 +503,7 @@ let —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rus
         <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
+
 
 <script>
     let menu = document.getElementById('menu');

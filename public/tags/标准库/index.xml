@@ -6,7 +6,7 @@
     <description>Recent content in 标准库 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 29 Jun 2026 15:54:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 11:21:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E6%A0%87%E5%87%86%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>分析第一个Rust项目</title>
@@ -21,6 +21,41 @@
       <pubDate>Mon, 29 Jun 2026 15:54:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/guessing-game/</guid>
       <description>用 Rust 实现一个经典的猜数字游戏：程序随机生成 1~100 的数字，用户输入猜测，程序提示大了还是小了，直至猜对。涵盖 std::io、rand crate、match 模式匹配、loop 循环与错误处理。</description>
+    </item>
+    <item>
+      <title>Rust：项目代码组织</title>
+      <link>http://localhost:1313/rust/project-code-organization/</link>
+      <pubDate>Mon, 06 Jul 2026 17:07:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/project-code-organization/</guid>
+      <description>理解 Rust 项目的代码组织体系：Crate、Package、Module 模块系统、路径调用、use 引用以及第三方 crate 的添加。</description>
+    </item>
+    <item>
+      <title>Rust 集合：Vector</title>
+      <link>http://localhost:1313/rust/vector/</link>
+      <pubDate>Mon, 06 Jul 2026 17:50:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/vector/</guid>
+      <description>掌握 Rust Vector 集合：创建与初始化、元素增删、索引与 get 读取、所有权规则、不可变与可变遍历。</description>
+    </item>
+    <item>
+      <title>Rust 集合：String</title>
+      <link>http://localhost:1313/rust/string/</link>
+      <pubDate>Tue, 07 Jul 2026 15:55:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/string/</guid>
+      <description>掌握 Rust String 类型：创建与初始化、push/push_str 更新、&#43; 和 format! 宏拼接、索引访问限制、chars/bytes 遍历、UTF-8 内部表示。</description>
+    </item>
+    <item>
+      <title>Rust 集合：HashMap</title>
+      <link>http://localhost:1313/rust/hashmap/</link>
+      <pubDate>Tue, 07 Jul 2026 18:01:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/hashmap/</guid>
+      <description>掌握 Rust HashMap 集合：创建与初始化、get 读取与遍历、所有权转移、entry 与 or_insert 更新策略、Hashing 函数。</description>
+    </item>
+    <item>
+      <title>Rust：编写自动化测试</title>
+      <link>http://localhost:1313/rust/automated-tests/</link>
+      <pubDate>Mon, 13 Jul 2026 11:21:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/automated-tests/</guid>
+      <description>掌握 Rust 自动化测试：test 函数定义、assert!/assert_eq!/assert_ne! 宏、should_panic 测试、自定义断言信息、Result 返回值测试以及 cargo test 命令。</description>
     </item>
   </channel>
 </rss>

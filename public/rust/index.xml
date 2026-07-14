@@ -6,7 +6,7 @@
     <description>Recent content in Rust on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Jun 2026 17:04:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 16:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安装 Rust 编译环境 — VSCode 篇</title>
@@ -70,6 +70,125 @@
       <pubDate>Tue, 30 Jun 2026 17:04:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/functions-control-flow/</guid>
       <description>掌握 Rust 的函数定义、参数、语句与表达式、返回值，以及控制流中的 if 表达式、loop / while / for 循环的完整用法。</description>
+    </item>
+    <item>
+      <title>Rust 核心：所有权（Ownership）</title>
+      <link>http://localhost:1313/rust/ownership/</link>
+      <pubDate>Wed, 01 Jul 2026 10:47:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/ownership/</guid>
+      <description>深入理解 Rust 所有权的核心机制：Stack Frame 自动管理、Box 堆分配、移动（Move）语义、以及 Clone 如何避免所有权转移。</description>
+    </item>
+    <item>
+      <title>Rust 核心：引用与借用（References &amp; Borrowing）</title>
+      <link>http://localhost:1313/rust/references-borrowing/</link>
+      <pubDate>Thu, 02 Jul 2026 10:10:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/references-borrowing/</guid>
+      <description>深入理解 Rust 的引用与借用机制：&amp;amp; 共享引用、&amp;amp;mut 可变引用、解引用、借用检查器的权限模型（R/W/O/F），以及别名与可变性不可共存的根本原因。</description>
+    </item>
+    <item>
+      <title>Rust 实战：修复所有权常见错误</title>
+      <link>http://localhost:1313/rust/fix-ownership-errors/</link>
+      <pubDate>Thu, 02 Jul 2026 11:27:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/fix-ownership-errors/</guid>
+      <description>逐个击破 Rust 所有权系统中的常见编译错误：悬垂引用、权限不足、别名与可变性冲突、集合元素借用规则等，附多种修复方案对比。</description>
+    </item>
+    <item>
+      <title>Rust 核心：Slice 切片</title>
+      <link>http://localhost:1313/rust/slice/</link>
+      <pubDate>Thu, 02 Jul 2026 14:38:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/slice/</guid>
+      <description>掌握 Rust 的 Slice 切片类型：为什么需要切片、&amp;amp;str 与 &amp;amp;[T] 的用法、Range 语法、Fat 指针的内存布局，以及切片如何通过借用检查器保护数据安全。</description>
+    </item>
+    <item>
+      <title>Rust 核心：结构体（Struct）</title>
+      <link>http://localhost:1313/rust/struct/</link>
+      <pubDate>Fri, 03 Jul 2026 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/struct/</guid>
+      <description>深入理解 Rust 结构体：定义与实例化、字段初始化简写、结构体更新语法、元组结构体、Unit-Like 结构体、派生 Trait、impl 方法以及方法调用的所有权。</description>
+    </item>
+    <item>
+      <title>Rust 核心：Enum 与模式匹配</title>
+      <link>http://localhost:1313/rust/enum-pattern-matching/</link>
+      <pubDate>Mon, 06 Jul 2026 16:01:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/enum-pattern-matching/</guid>
+      <description>深入理解 Rust 枚举：定义与变体、持有数据、Option 替代 Null、match 穷尽匹配、if let 简洁语法以及模式匹配的所有权处理。</description>
+    </item>
+    <item>
+      <title>Rust：项目代码组织</title>
+      <link>http://localhost:1313/rust/project-code-organization/</link>
+      <pubDate>Mon, 06 Jul 2026 17:07:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/project-code-organization/</guid>
+      <description>理解 Rust 项目的代码组织体系：Crate、Package、Module 模块系统、路径调用、use 引用以及第三方 crate 的添加。</description>
+    </item>
+    <item>
+      <title>Rust 集合：Vector</title>
+      <link>http://localhost:1313/rust/vector/</link>
+      <pubDate>Mon, 06 Jul 2026 17:50:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/vector/</guid>
+      <description>掌握 Rust Vector 集合：创建与初始化、元素增删、索引与 get 读取、所有权规则、不可变与可变遍历。</description>
+    </item>
+    <item>
+      <title>Rust 集合：String</title>
+      <link>http://localhost:1313/rust/string/</link>
+      <pubDate>Tue, 07 Jul 2026 15:55:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/string/</guid>
+      <description>掌握 Rust String 类型：创建与初始化、push/push_str 更新、&#43; 和 format! 宏拼接、索引访问限制、chars/bytes 遍历、UTF-8 内部表示。</description>
+    </item>
+    <item>
+      <title>Rust 集合：HashMap</title>
+      <link>http://localhost:1313/rust/hashmap/</link>
+      <pubDate>Tue, 07 Jul 2026 18:01:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/hashmap/</guid>
+      <description>掌握 Rust HashMap 集合：创建与初始化、get 读取与遍历、所有权转移、entry 与 or_insert 更新策略、Hashing 函数。</description>
+    </item>
+    <item>
+      <title>Rust：错误处理</title>
+      <link>http://localhost:1313/rust/error-handling/</link>
+      <pubDate>Wed, 08 Jul 2026 16:08:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/error-handling/</guid>
+      <description>掌握 Rust 错误处理机制：不可恢复的 panic!、可恢复的 Result 枚举、unwrap/expect 快捷方式、? 运算符传播错误，以及何时使用 panic 还是 Result。</description>
+    </item>
+    <item>
+      <title>Rust：泛型数据类型</title>
+      <link>http://localhost:1313/rust/generics/</link>
+      <pubDate>Thu, 09 Jul 2026 17:31:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/generics/</guid>
+      <description>掌握 Rust 泛型：函数、结构体、枚举和方法中的泛型定义，理解单态化（monomorphization）如何保证运行时零开销。</description>
+    </item>
+    <item>
+      <title>Rust：Trait（特征）</title>
+      <link>http://localhost:1313/rust/trait/</link>
+      <pubDate>Fri, 10 Jul 2026 16:51:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/trait/</guid>
+      <description>掌握 Rust Trait：定义共享行为、为类型实现 Trait、默认实现、Trait 作为参数、Trait Bound 约束、where 子句以及孤儿规则。</description>
+    </item>
+    <item>
+      <title>Rust：生命周期</title>
+      <link>http://localhost:1313/rust/lifetime/</link>
+      <pubDate>Fri, 10 Jul 2026 17:47:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/lifetime/</guid>
+      <description>掌握 Rust 生命周期：悬垂引用、借用检查器、函数和结构体中的生命周期标注、生命周期省略规则、静态生命周期 &amp;#39;static。</description>
+    </item>
+    <item>
+      <title>Rust：编写自动化测试</title>
+      <link>http://localhost:1313/rust/automated-tests/</link>
+      <pubDate>Mon, 13 Jul 2026 11:21:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/automated-tests/</guid>
+      <description>掌握 Rust 自动化测试：test 函数定义、assert!/assert_eq!/assert_ne! 宏、should_panic 测试、自定义断言信息、Result 返回值测试以及 cargo test 命令。</description>
+    </item>
+    <item>
+      <title>Rust：控制测试执行与组织测试</title>
+      <link>http://localhost:1313/rust/control-and-organization/</link>
+      <pubDate>Tue, 14 Jul 2026 10:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/control-and-organization/</guid>
+      <description>掌握 cargo test 的进阶用法：控制测试执行（串行/并行、显示输出、按名称过滤）、忽略测试（#[ignore]），以及单元测试与集成测试的组织方式与区别。</description>
+    </item>
+    <item>
+      <title>Rust：实战项目 MiniGrep</title>
+      <link>http://localhost:1313/rust/minigrep-project/</link>
+      <pubDate>Tue, 14 Jul 2026 16:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/minigrep-project/</guid>
+      <description>通过构建命令行搜索工具 MiniGrep，实践 Rust 核心概念：命令行参数解析、文件读取、模块化重构、Result 错误处理、TDD 测试驱动开发、环境变量以及 stderr 输出。</description>
     </item>
   </channel>
 </rss>

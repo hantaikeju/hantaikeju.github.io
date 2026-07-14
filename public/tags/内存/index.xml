@@ -6,7 +6,7 @@
     <description>Recent content in 内存 on hantaikeju 的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 29 Jun 2026 17:37:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 14:38:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E5%86%85%E5%AD%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust 编程概念：Stack 与 Heap（栈与堆）</title>
@@ -14,6 +14,34 @@
       <pubDate>Mon, 29 Jun 2026 17:37:00 +0800</pubDate>
       <guid>http://localhost:1313/rust/stack-heap/</guid>
       <description>深入理解 Rust 中 Stack（栈）与 Heap（堆）两种内存区域的核心差异、各自特性，以及 Rust 如何通过所有权系统在无需垃圾回收器的前提下确保内存安全。</description>
+    </item>
+    <item>
+      <title>Rust 核心：所有权（Ownership）</title>
+      <link>http://localhost:1313/rust/ownership/</link>
+      <pubDate>Wed, 01 Jul 2026 10:47:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/ownership/</guid>
+      <description>深入理解 Rust 所有权的核心机制：Stack Frame 自动管理、Box 堆分配、移动（Move）语义、以及 Clone 如何避免所有权转移。</description>
+    </item>
+    <item>
+      <title>Rust 核心：引用与借用（References &amp; Borrowing）</title>
+      <link>http://localhost:1313/rust/references-borrowing/</link>
+      <pubDate>Thu, 02 Jul 2026 10:10:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/references-borrowing/</guid>
+      <description>深入理解 Rust 的引用与借用机制：&amp;amp; 共享引用、&amp;amp;mut 可变引用、解引用、借用检查器的权限模型（R/W/O/F），以及别名与可变性不可共存的根本原因。</description>
+    </item>
+    <item>
+      <title>Rust 实战：修复所有权常见错误</title>
+      <link>http://localhost:1313/rust/fix-ownership-errors/</link>
+      <pubDate>Thu, 02 Jul 2026 11:27:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/fix-ownership-errors/</guid>
+      <description>逐个击破 Rust 所有权系统中的常见编译错误：悬垂引用、权限不足、别名与可变性冲突、集合元素借用规则等，附多种修复方案对比。</description>
+    </item>
+    <item>
+      <title>Rust 核心：Slice 切片</title>
+      <link>http://localhost:1313/rust/slice/</link>
+      <pubDate>Thu, 02 Jul 2026 14:38:00 +0800</pubDate>
+      <guid>http://localhost:1313/rust/slice/</guid>
+      <description>掌握 Rust 的 Slice 切片类型：为什么需要切片、&amp;amp;str 与 &amp;amp;[T] 的用法、Range 语法、Fat 指针的内存布局，以及切片如何通过借用检查器保护数据安全。</description>
     </item>
   </channel>
 </rss>

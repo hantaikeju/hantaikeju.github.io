@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>实战项目 | hantaikeju 的技术博客</title>
+<meta name="keywords" content="">
+<meta name="description" content="记录技术成长，分享开发经验">
+<meta name="author" content="hantaikeju">
+<link rel="canonical" href="http://localhost:1313/tags/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e62a9a16f845d0d79c2a7a22a46956cda676450c00d0188731fdc7e6c6f24f0b.css" integrity="sha256-5iqaFvhF0NecKnoipGlWzaZ2RQwA0BiHMf3H5sbyTws=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="hantaikeju 的技术博客 (Alt + H)">hantaikeju 的技术博客</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/csharp/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="sidebar-search">
+            <div class="sidebar-search-box">
+                <svg class="sidebar-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="sidebarSearchInput" class="sidebar-search-input" type="search" placeholder="搜索文章..." autocomplete="off" maxlength="64">
+            </div>
+            <div id="sidebarSearchResults" class="sidebar-search-results"></div>
+        </div>
+        
+        <div class="sidebar-header">
+            <h3>📂 文章分类</h3>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <ul class="sidebar-categories">
+                <li class="sidebar-category">
+                    <a href="/rust/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">Rust</span>
+                        <span class="sidebar-count">26</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/unity/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">Unity开发</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/dev-env/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">开发环境</span>
+                        <span class="sidebar-count">1</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/csharp/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">C#开发</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/devops/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">DevOps</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/notes/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">学习笔记</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+                <li class="sidebar-category">
+                    <a href="/servers/" class="sidebar-category-link ">
+                        <span class="sidebar-category-name">服务器开发</span>
+                        <span class="sidebar-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+<script>
+window.__sidebarPosts = [
+    {
+        title: "安装 Rust 编译环境 — VSCode 篇",
+        permalink: "/rust/install-rust-vscode/",
+        summary: "The Rust Programming Language 官方在线文档链接\nRust 版本 Edition \u0026ndash; 大版本如 2021、2024\nVersion \u0026ndash; 小版本编号，如 1.56.0 → 1.81.0\nRust 优势 高性能 高度安全性，内存高限制 开发者友好 健壮的生态系统 —— Cargo 包管理器 Rust 可编写更快、更可靠的软件，兼具高层次的易用性和低层次的控制力。\nRust 历史 2006：个人项目起源 2009：Mozilla 赞助 2015：第一个稳定版本 2021：Rust 基金会，Rust Edition 2021 发布 2022：用于 Linux Kernel 开发 Rust 安装 Windows 安装 Visual Studio C++。\nRust 安装链接，选择对应的 rustup-init.exe 进行安装。\nWindows 下 Rust 有两套编译工具链：\nx86_64-pc-windows-msvc：微软 MSVC ABI（官方默认） x86_64-pc-windows-gnu：MinGW-w64 + GCC ABI 默认是 msvc 方式。\n两种方式的区别 工具链 x86_64-pc-windows-msvc（默认工具链）必须提前安装 Visual Studio Build Tools 并勾选 C++ 开发组件，提供微软原生 link.exe 链接器、UCRT 运行库。\n",
+        tags: ["Rust","VSCode","开发环境","rust-analyzer"],
+        categories: ["rust"]
+    },
+    {
+        title: "Shader Test",
+        permalink: "/unity/graphics/shader-test/",
+        summary: "基础概念 Shader 的一些基础概念介绍。\n顶点着色器 顶点着色器处理每个顶点的数据。\n片元着色器 片元着色器处理每个像素的颜色。\n高级用法 更高级的 Shader 技巧。\n自定义光照 实现自定义光照模型。\n后处理效果 屏幕后处理特效的实现方式。\n",
+        tags: ["shader","unity"],
+        categories: ["unity"]
+    },
+    {
+        title: "分析第一个Rust项目",
+        permalink: "/rust/first-rust-project/",
+        summary: "代码结构 fn main() { println!(\u0026#34;Hello, world!\u0026#34;); } Crate library crate —— 只可以有一个 binary crate —— 任意多个 修改代码 use std::io::stdin; fn main() { let mut msg: String = String::new(); println!(\u0026#34;Enter a message: \u0026#34;); stdin().read_line(\u0026amp;mut msg).unwrap(); println!(\u0026#34;You entered: {}\u0026#34;, msg.trim()); } 逐行解析 use std::io::stdin;\nstd::io::stdin 是标准库中的模块。如果是 prelude 部分（预编译在代码中），可以直接使用，无需 use 引入。\n::\n用于访问模块中公开使用的 API。\n;\n结束任何语句的符号。\nlet mut msg: String = String::new();\nlet —— 声明变量 mut —— 可修改修饰符，表示变量可变。Rust 中变量默认不可变，加 mut 后才允许修改 msg: String —— 变量名 msg，类型为 String String::new() —— 创建一个空字符串 stdin().read_line(\u0026amp;mut msg).unwrap();\n",
+        tags: ["Rust","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：VsCode 快速修复异常排查",
+        permalink: "/rust/vscode-quickfix-troubleshoot/",
+        summary: "问题现象 编译器报错（如 cannot find function stdin in this scope），波浪线正常显示 按 Ctrl+. / 灯泡图标，只显示一两个通用选项，没有自动导入补全 即使编译器给出了 help: consider importing this function 建议，也无法一键应用 本案例真实根因 核心问题：系统存在多个 Rust 安装，rust-analyzer 选错了 本机同时存在两套 Rust：\n来源 路径 有无 rust-src 官方安装包（系统级） C:\\Program Files\\Rust stable GNU 1.96 ❌ 无 rustup 管理 C:\\Users\\Administrator\\.rustup\\toolchains\\stable-x86_64-pc-windows-gnu ✅ 有 rust-analyzer 默认使用了系统安装的 Rust（无 rust-src），导致它无法加载 std 等标准库源码，所有自动导入、类型推导等 Code Action 全部失效。\n验证命令 rust-analyzer analysis-stats \u0026lt;项目路径\u0026gt; 2\u0026gt;\u0026amp;1 如果输出包含下面这行，说明命中了这个根因：\nERROR can\u0026#39;t load standard library, try installing `rust-src`\rsysroot_path=C:\\Program Files\\Rust stable GNU 1.96 ← 用的是系统 Rust 实际修复方案（按优先级） 方案 1：符号链接（本案例生效的方案）⭐ 用管理员 PowerShell，把系统 Rust 的 src 目录链接到 rustup 工具链中已有的 rust-src：\n",
+        tags: ["Rust","VSCode","rust-analyzer","故障排查"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：猜数字游戏",
+        permalink: "/rust/guessing-game/",
+        summary: "需求 程序随机在 1~100 产生一个数，用户通过输入与这个数进行比较，提示大了还是小了，直至猜对。\n允许用户输入 use std::io; fn main() { println!(\u0026#34;Please enter one number\u0026#34;); let mut input_num = String::new(); io::stdin() .read_line(\u0026amp;mut input_num) .expect(\u0026#34;Failed to read line\u0026#34;); println!(\u0026#34;You entered: {}\u0026#34;, input_num.trim()); } 代码解析 语法 说明 println! 宏，用于打印输出 let mut input_num let 声明变量，mut 让变量可重复赋值（不加则只能赋值一次） String::new() 创建空字符串 io::stdin() 获取 Stdin 实例，处理终端输入 .read_line(\u0026amp;mut input_num) 传入一个可变字符串引用（\u0026amp; 为引用），返回 Result .expect(\u0026quot;...\u0026quot;) 处理 Result 的 Err 情况，失败时 panic 并输出错误信息；不处理编译器会警告 println!(\u0026quot;{}\u0026quot;, ...) {} 为占位符，有多少个变量就有多少个占位符 生成 1~100 的随机数 第三方库 rand（crate） Rust 标准库不包含随机数生成，需要使用第三方 crate —— rand。\n",
+        tags: ["Rust","Crate","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：编译型语言 vs 解释型语言",
+        permalink: "/rust/compiled-vs-interpreted/",
+        summary: "语言执行方式 编程语言按执行方式可以分为两大类：编译型语言和解释型语言。理解这一区别，有助于我们把握 Rust 在性能和部署方面的设计理念。\n编译型语言 编译型语言的工作流程：\n开发者编写源代码 使用 编译器（Compiler） 将源代码一次性翻译成机器码 生成可执行文件（如 .exe、二进制文件） 将可执行文件分发给用户，用户直接运行即可 flowchart LR\rA[源代码] --\u0026gt; B[编译器 Compiler]\rB --\u0026gt; C[可执行文件]\rC --\u0026gt; D[CPU 直接执行] 特点：\n✅ 运行速度快：直接编译为机器码，无运行时翻译开销 ✅ 无需运行时环境：用户不需要安装编译器或解释器 ✅ 编译期错误检查：类型错误、语法错误在编译阶段就能发现 ❌ 编译时间较长：大型项目编译可能需要几分钟甚至更长 ❌ 平台依赖：不同操作系统/CPU 架构需分别编译 代表语言：Rust、C、C++、Go\nRust 作为编译型语言 Rust 使用 rustc 编译器（底层基于 LLVM），将源代码编译为高效的机器码：\n// main.rs fn main() { println!(\u0026#34;Hello, Rust!\u0026#34;); } # 编译 rustc main.rs # 运行生成的可执行文件 ./main # Linux/macOS main.exe # Windows Rust 的编译器不仅生成高效的机器码，还在编译期进行了大量的安全检查（所有权、借用、生命周期等），确保运行时不会出现内存安全问题。\n解释型语言 解释型语言的工作流程：\n开发者编写源代码 将源代码副本直接分发给用户 用户使用**解释器（Interpreter）**逐行翻译并执行 flowchart LR\rA[源代码] --\u0026gt; B[解释器 Interpreter]\rB --\u0026gt; C[逐行翻译 + 执行] 特点：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：静态/动态类型与强/弱类型",
+        permalink: "/rust/type-system-concepts/",
+        summary: "Rust 的语言类型 Rust 是一门 静态、强类型 语言。理解这几个概念，对于深入学习 Rust 至关重要。\n静态类型语言 vs 动态类型语言 静态类型语言 所有数据类型在编译时已知，编译器可以在编译阶段检查类型错误。\nfn main() { let x: i32 = 10; // 显式类型声明 println!(\u0026#34;{}\u0026#34;, x); } 动态类型语言 在运行时才知道数据的类型，变量类型可以在运行时动态改变。\nx = 10 # 无类型声明 print(x) x = \u0026#34;hello\u0026#34; # x 变成 string print(x) 静态 vs 动态 对比 特性 静态类型 动态类型 类型检查时机 编译时 运行时 类型安全 ✅ 高 ❌ 较低 性能 ✅ 更好的优化 ❌ 运行时开销 灵活性 ❌ 较低 ✅ 高 开发效率 ❌ 类型声明需额外代码 ✅ 写起来更快 代表语言 Rust, Java, C++ Python, JavaScript, Ruby 强类型语言 vs 弱类型语言 强类型语言 对数据类型的赋值和运算进行严格的规则约束，不允许隐式类型转换。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 编程概念：Stack 与 Heap（栈与堆）",
+        permalink: "/rust/stack-heap/",
+        summary: "内存概述 程序运行时，操作系统会为它分配内存。Rust 程序使用的内存主要分为两大区域：\nStack（栈） — 局部变量、函数调用上下文 Heap（堆） — 动态分配的数据 理解两者的区别，是掌握 Rust 所有权系统的前提。\nStack（栈） 栈是一种 后进先出（LIFO） 的数据结构，就像一叠盘子：最后放上去的，最先被拿走。\nflowchart LR\rA[\u0026#34;① push(1)\u0026#34;] --\u0026gt; B[\u0026#34;② push(2)\u0026#34;] --\u0026gt; C[\u0026#34;③ push(3)\u0026#34;]\rC --\u0026gt; D[\u0026#34;④ pop() → 3\u0026#34;] --\u0026gt; E[\u0026#34;⑤ pop() → 2\u0026#34;] 栈的特点 特性 说明 分配方式 数据大小必须在编译时已知 速度 🚀 极快，CPU 直接操作栈指针 管理 自动管理，函数返回时自动释放 大小限制 相对较小（通常几 MB） 存储内容 固定大小的值：整数、浮点数、布尔、指针等 Rust 中存储在栈上的数据 fn main() { let x: i32 = 42; // i32 — 固定 4 字节，放栈上 let y: f64 = 3.14; // f64 — 固定 8 字节，放栈上 let flag: bool = true; // bool — 放栈上 // x、y、flag 都在 main() 的栈帧中 // 函数返回时自动回收 } 栈帧示意：\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 基础语法：变量、常量与数据类型",
+        permalink: "/rust/basic-syntax-data-types/",
+        summary: "变量 \u0026amp; 可变性 Rust 中通过 let 声明变量。默认情况下，变量是不可变的（immutable）——这是 Rust 在安全性上的重要设计决策。\nlet some_number = 1; // some_number = 2; // ❌ 编译错误：变量默认不可变 如果需要修改变量的值，必须使用 mut 关键字显式声明：\nlet mut another_number = 2; another_number = 3; // ✅ 可以修改 println!(\u0026#34;{}\u0026#34;, another_number); // 3 为什么默认不可变？ 设计考量 说明 安全性 防止意外的值修改，减少 Bug 并发友好 不可变数据天然线程安全，无需加锁 编译器优化 不可变值便于编译器做更激进的优化 可读性 一眼就能知道哪些值会变、哪些不会 常量 Constants 常量使用 const 声明，与变量的关键区别：\nconst SPECIAL_NUMBER: i32 = 3; const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3; const 与 let 的区别 特性 const let 可变性 永远不可变 默认不可变，可加 mut mut 关键词 ❌ 不可使用 ✅ 可选使用 类型标注 ✅ 必须标注类型 通常可自动推断 作用域 任意作用域（包括全局） 函数/代码块作用域 赋值表达式 仅常量表达式 任意表达式（包括运行时计算） 命名约定 SCREAMING_SNAKE_CASE snake_case 变量遮蔽 Shadowing Rust 允许用 let 重复声明同名变量，本质是创建了一个新变量，旧变量被\u0026quot;遮蔽\u0026quot;：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 基础语法：函数与控制流",
+        permalink: "/rust/functions-control-flow/",
+        summary: "函数 Rust 函数由四个要素组成：名称、参数、返回类型、函数体。使用 fn 关键字声明，命名遵循 snake_case 规范（全小写，下划线分隔）。\n基本结构 fn main() { another_function(); } fn another_function() { // 函数体 } fn — 函数声明关键字 函数名和变量名统一采用 snake_case 调用方式：func_name(); 参数 参数声明格式为 参数名: 类型，多个参数用逗号隔开：\nfn another_function(x: i32, label: \u0026amp;str) { println!(\u0026#34;{}: {}\u0026#34;, label, x); } fn main() { another_function(42, \u0026#34;答案\u0026#34;); } 语句与表达式 这是 Rust 中非常重要的概念区分：\n概念 定义 返回值 语句 Statement 执行某些操作，不返回值 ❌ 无 表达式 Expression 计算并产生一个值 ✅ 有 fn main() { let y = 6; // let y = 6; 是语句，6 是表达式 } {} 代码块也是表达式：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：所有权（Ownership）",
+        permalink: "/rust/ownership/",
+        summary: "概述 所有权（Ownership） 是 Rust 最独特的特性——它是保证程序安全的机制。\n安全 = 程序中没有未定义行为（Undefined Behavior）\n未定义行为 = 程序执行结果不可预测、且不被编程语言规范所定义\nRust 的两个核心目标：\n基础目标：确保程序永远不会有未定义行为 次要目标：在编译时而不是运行时防止未定义行为 不安全代码示例 fn read(y: bool) { if y { println!(\u0026#34;y is true\u0026#34;); } } fn main() { read(x); // ❌ x 未定义就使用 → 未定义行为！ let x = true; } 编译器会拒绝这段代码——变量在声明之前被使用，Rust 不允许。\n所有权作为内存安全的规范 变量存在于 Stack 中 更准确地说，存在于 Stack Frame（栈帧） 中。\nfn main() { let n = 5; // L1 let y = plus_one(n); // L3 println!(\u0026#34;The value of y is: {y}\u0026#34;); } fn plus_one(x: i32) -\u0026gt; i32 { x + 1 // L2 } 程序运行时，Stack Frame 的变化：\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：引用与借用（References \u0026 Borrowing）",
+        permalink: "/rust/references-borrowing/",
+        summary: "传参所有权改变 当函数参数是 String 等非 Copy 类型时，所有权会被移入函数，调用方再也无法使用：\nfn main() { let m1 = String::from(\u0026#34;Hello\u0026#34;); let m2 = String::from(\u0026#34;World\u0026#34;); greet(m1, m2); // L2 — m1, m2 所有权移入函数 let s = format!(\u0026#34;{} {}\u0026#34;, m1, m2); // ❌ Error: m1 and m2 are moved } fn greet(g1: String, g2: String) { println!(\u0026#34;{g1} {g2}!\u0026#34;); // L1 } 变通方案：把所有权归还 通过返回值把所有权\u0026quot;还给\u0026quot;调用方：\nfn main() { let m1 = String::from(\u0026#34;Hello\u0026#34;); let m2 = String::from(\u0026#34;World\u0026#34;); // L1 let (m1_again, m2_again) = greet(m1, m2); let s = format!(\u0026#34;{} {}\u0026#34;, m1_again, m2_again); // L2 ✅ } fn greet(g1: String, g2: String) -\u0026gt; (String, String) { println!(\u0026#34;{g1} {g2}!\u0026#34;); (g1, g2) } 这能工作但非常笨拙——每次调用都要把所有权传进去又传出来。\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 实战：修复所有权常见错误",
+        permalink: "/rust/fix-ownership-errors/",
+        summary: "错误 1：返回指向 Stack 内存的引用 最常见的新手错误——返回局部变量的引用：\nfn main() { let value = return_a_string(); println!(\u0026#34;{}\u0026#34;, value); } fn return_a_string() -\u0026gt; \u0026amp;String { let s = String::from(\u0026#34;Hello world\u0026#34;); \u0026amp;s // ❌ s 在函数结束时被释放，\u0026amp;s 变成悬垂指针 } 根因：引用活得比数据长，数据释放后引用指向无效内存。\n修复方案 方案 A：转移所有权（最直接） 不返回引用，直接返回 String 本身：\nfn return_a_string() -\u0026gt; String { let s = String::from(\u0026#34;Hello world\u0026#34;); s // ✅ 所有权移出，调用方接管 } 方案 B：延长数据生命周期 如果数据是编译时确定的字符串字面量，可以用 'static 生命周期：\nfn return_a_string() -\u0026gt; \u0026amp;\u0026#39;static str { \u0026#34;Hello world\u0026#34; // ✅ 字符串字面量在程序整个生命周期内有效 } 方案 C：Rc 引用计数 当需要多处共享同一数据时，用 Rc\u0026lt;T\u0026gt; 引用计数指针：\nuse std::rc::Rc; fn return_a_string() -\u0026gt; Rc\u0026lt;String\u0026gt; { let s = Rc::new(String::from(\u0026#34;Hello, world!\u0026#34;)); Rc::clone(\u0026amp;s) // ✅ 增加引用计数，共享所有权 } 方案 D：直接修改原数据 不返回新值，通过 \u0026amp;mut 在调用方数据上原地修改：\n",
+        tags: ["Rust","编程基础","内存","故障排查"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：Slice 切片",
+        permalink: "/rust/slice/",
+        summary: "为什么需要切片？ 先看一个有隐患的写法——返回索引而非引用：\nfn main() { let mut s = String::from(\u0026#34;hello world\u0026#34;); let word = first_word(\u0026amp;s); // 返回空格索引：5 s.clear(); // s 清空后，索引 5 毫无意义！ // word 变成了无效数据 } fn first_word(s: \u0026amp;String) -\u0026gt; usize { let bytes = s.as_bytes(); for (i, \u0026amp;item) in bytes.iter().enumerate() { if item == b\u0026#39; \u0026#39; { return i; } } s.len() } word 只是孤立的索引 5，和原字符串失去了关联——s.clear() 后索引成为\u0026quot;悬挂数字\u0026quot;。\n切片带来的安全绑定 把返回值改为切片引用 \u0026amp;str，让它和原字符串保持编译期关联：\nfn main() { let mut s = String::from(\u0026#34;hello world\u0026#34;); let word = first_word(\u0026amp;s); // 返回 \u0026amp;str 切片 // s.clear(); // ❌ 编译错误！ // ^^^^^^^^^ word 持有 s 的不可变借用，无法对 s 做可变操作 print!(\u0026#34;{}\u0026#34;, word); } fn first_word(s: \u0026amp;String) -\u0026gt; \u0026amp;str { let bytes = s.as_bytes(); for (i, \u0026amp;item) in bytes.iter().enumerate() { if item == b\u0026#39; \u0026#39; { return \u0026amp;s[0..i]; } } \u0026amp;s[..] } ✅ 借用检查器阻止了 s.clear() ——切片 word 持有 s 的不可变借用，s 的 W 权限被冻结。\n",
+        tags: ["Rust","编程基础","内存"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：结构体（Struct）",
+        permalink: "/rust/struct/",
+        summary: "概述 结构体（Struct） 是 Rust 中的自定义数据类型，可以将多个不同类型的字段组合在一起，并为每个字段命名。\nstruct User { active: bool, username: String, email: String, sign_in_count: u64, } 定义与实例化 基本定义 定义结构体使用 struct 关键字，后面跟结构体名和花括号包裹的字段列表：\nstruct User { active: bool, username: String, email: String, sign_in_count: u64, } fn main() { let user1 = User { active: true, username: String::from(\u0026#34;someusername123\u0026#34;), email: String::from(\u0026#34;1111\u0026#34;), sign_in_count: 1, }; } 可变性 使用 mut 关键字可以让整个实例可变，然后可以修改任意字段：\nfn main() { let mut user1 = User { active: true, username: String::from(\u0026#34;someusername123\u0026#34;), email: String::from(\u0026#34;1111\u0026#34;), sign_in_count: 1, }; user1.email = String::from(\u0026#34;2222\u0026#34;); // ✅ 允许修改 } ⚠️ 注意：Rust 不支持仅标记某个字段为 mut，必须是整个实例可变。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 核心：Enum 与模式匹配",
+        permalink: "/rust/enum-pattern-matching/",
+        summary: "概述 枚举（Enum） 是 Rust 中一种定义一组可能取值的自定义类型。与结构体不同，枚举的变体（variants）不仅可以是纯标签，还可以携带不同类型和数量的数据。配合强大的 match 模式匹配，Rust 确保了所有分支都被处理，使代码更加安全和可靠。\n定义枚举 基本定义 定义枚举使用 enum 关键字，后面跟枚举名和变体列表。所有变体属于同一个类型，类型一致。\nenum IpAddrKind { V4, // Variants V6, } fn main() { let four = IpAddrKind::V4; let six = IpAddrKind::V6; route(four); route(six); } fn route(ip_type: IpAddrKind) { // ... } 变体的类型是统一的——four 和 six 都是 IpAddrKind 类型，因此可以作为同类型参数传入 route 函数。\nEnum 可持有数据 Rust 枚举的强大之处在于，每个变体可以持有不同类型、不同数量的数据，无需借助额外的结构体。\n传统方式：用 struct 包装 在别的语言中，通常需要定义一个结构体来组合枚举标签和附带数据：\nenum IpAddrKind { V4, V6, } struct IpAddr { kind: IpAddrKind, address: String, } fn main() { let home = IpAddr { kind: IpAddrKind::V4, address: String::from(\u0026#34;127.0.0.1\u0026#34;), }; let loopback = IpAddr { kind: IpAddrKind::V6, address: String::from(\u0026#34;::1\u0026#34;), }; } Rust 方式：变体直接持有数据 Rust 的枚举允许将数据直接附加到变体上，代码更简洁：\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：项目代码组织",
+        permalink: "/rust/project-code-organization/",
+        summary: "概述 Rust 的代码组织体系分为三个层级：Crate（编译单元）、Package（发布单元）和 Module（代码组织单元）。理解这三者之间的关系，是构建中大型 Rust 项目的基础。\nCrate Crate 是 Rust 编译的基本单元，分为两种类型：\n类型 说明 Crate Root Binary Crate 可执行程序，必须有 main 函数 src/main.rs Library Crate 库，无 main 函数，供其他 crate 使用 src/lib.rs 创建 cargo new crate_name # binary crate（默认） cargo new crate_name --lib # library crate Package Package 是 Cargo 的管理单元，由 一个或多个 crate 组成，包含 Cargo.toml 文件。\n规则：\n可以有多个 binary crate（放在 src/bin/ 下） 最多一个 library crate 至少一个 crate（binary 或 library） Module 模块 Module 使用 mod 关键字声明，用于将代码拆分为更小、更易管理的单元。模块支持嵌套（子模块），并且有 public / private 可见性控制。\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 集合：Vector",
+        permalink: "/rust/vector/",
+        summary: "概述 Vec\u0026lt;T\u0026gt; 是 Rust 标准库提供的动态数组，用于在单一数据结构中存储多个同类型的值，元素在内存中连续（相邻）存放。\n创建 Vector 使用 Vec::new() fn main() { let v: Vec\u0026lt;i32\u0026gt; = Vec::new(); // 需要标注类型 } 如果后续没有 push 操作，编译器无法推断类型，需要显式标注泛型参数。\n使用 vec! 宏 fn main() { let v = vec![1, 2, 3]; // 类型自动推断为 Vec\u0026lt;i32\u0026gt; } 更新元素 使用 push 方法添加元素，vector 必须声明为 mut：\nfn main() { let mut v = Vec::new(); v.push(1); v.push(2); v.push(3); } 读取元素 两种读取方式：\nfn main() { let mut v = Vec::new(); v.push(1); v.push(2); v.push(3); // 方式1：索引语法 → 返回 \u0026amp;i32，越界则 panic let third = \u0026amp;v[2]; println!(\u0026#34;The third element is {}\u0026#34;, third); // 方式2：get 方法 → 返回 Option\u0026lt;\u0026amp;i32\u0026gt;，越界返回 None let third: Option\u0026lt;\u0026amp;i32\u0026gt; = v.get(2); match third { Some(third) =\u0026gt; println!(\u0026#34;The third element is {}\u0026#34;, third), None =\u0026gt; println!(\u0026#34;There is no third element.\u0026#34;), } } 读取方式 返回类型 越界行为 \u0026amp;v[index] \u0026amp;T panic（程序崩溃） v.get(index) Option\u0026lt;\u0026amp;T\u0026gt; 返回 None（安全） Vector 的所有权 在同一作用域内，不能同时持有不可变引用并修改 vector：\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 集合：String",
+        permalink: "/rust/string/",
+        summary: "概述 Rust 中字符串相关有两种核心类型：\n类型 来源 特点 \u0026amp;str 核心语言 字符串切片，不可变引用 String 标准库 可变、可增长、拥有所有权、UTF-8 编码 String 本质是字节的集合外加一系列实用方法。\n创建 String fn main() { let mut s = String::new(); // 空字符串 let data = \u0026#34;Hello, World!\u0026#34;; let s = data.to_string(); // 字面量转 String，实现了 Display trait let s = String::from(\u0026#34;Hello, World!\u0026#34;); // 与 to_string() 等价 } 更新 String push_str —— 附加字符串切片 fn main() { let mut s = String::from(\u0026#34;foo\u0026#34;); s.push_str(\u0026#34;bar\u0026#34;); // 不获取参数所有权 println!(\u0026#34;{}\u0026#34;, s); // foobar } push_str 接收 \u0026amp;str，不会获取参数的所有权，因此传入的变量仍可继续使用：\nfn main() { let mut s = String::from(\u0026#34;foo\u0026#34;); let s2 = \u0026#34;bar\u0026#34;; s.push_str(s2); println!(\u0026#34;{s2}\u0026#34;); // s2 依旧可用 } push —— 附加单个字符 let mut s = String::from(\u0026#34;lo\u0026#34;); s.push(\u0026#39;l\u0026#39;); println!(\u0026#34;{}\u0026#34;, s); // lol 拼接 String 使用 + 运算符 fn main() { let s1 = String::from(\u0026#34;Hello\u0026#34;); let s2 = String::from(\u0026#34;World\u0026#34;); let s3 = s1 + \u0026amp;s2; // s1 所有权转移，s2 不变 println!(\u0026#34;{}\u0026#34;, s3); } + 底层调用 add 方法，签名是 fn add(self, s: \u0026amp;str) -\u0026gt; String。这意味着：\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust 集合：HashMap",
+        permalink: "/rust/hashmap/",
+        summary: "概述 HashMap\u0026lt;K, V\u0026gt; 存储键值对（key-value）映射。通过 Hashing 函数将 key 映射到对应的 value，数据存储在 Heap 上。K 和 V 必须是同类型（与 Vector 一样）。\n创建 直接创建 use std::collections::HashMap; let mut scores = HashMap::new(); scores.insert(String::from(\u0026#34;Blue\u0026#34;), 10); scores.insert(String::from(\u0026#34;Yellow\u0026#34;), 50); 从迭代器创建 let vec = vec![(\u0026#34;key1\u0026#34;, \u0026#34;value1\u0026#34;), (\u0026#34;key2\u0026#34;, \u0026#34;value2\u0026#34;)]; let map: HashMap\u0026lt;_, _\u0026gt; = vec.into_iter().collect(); 访问 get 读取单个值 let team_name = String::from(\u0026#34;Blue\u0026#34;); let score = scores.get(\u0026amp;team_name).copied().unwrap_or(0); 调用链路：\n步骤 方法 说明 ① get(\u0026amp;key) 返回 Option\u0026lt;\u0026amp;V\u0026gt;，值的引用 ② copied() Option\u0026lt;\u0026amp;T\u0026gt; → Option\u0026lt;T\u0026gt;（用于 Copy 类型如 i32） ③ unwrap_or(0) 有值则返回，无值返回默认值 0 遍历 for (key, value) in \u0026amp;scores { println!(\u0026#34;{key}:{value}\u0026#34;); } HashMap 与所有权 实现了 Copy trait 的类型（如 i32）——值被复制到 map 中 拥有所有权的类型（如 String）——所有权被移动到 map 中 fn main() { let field_name = String::from(\u0026#34;Favorite color\u0026#34;); let field_value = String::from(\u0026#34;Blue\u0026#34;); let mut map = HashMap::new(); map.insert(field_name, field_value); // println!(\u0026#34;{field_name}-{field_value}\u0026#34;); // ❌ 编译错误！所有权已转移 } HashMap 更新 key 存在则替换 直接 insert 相同 key 会覆盖旧值：\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：错误处理",
+        permalink: "/rust/error-handling/",
+        summary: "错误归类 Rust 将错误分为两大类，没有\u0026quot;异常\u0026quot;机制：\n类别 说明 处理方式 不可恢复 程序 bug（如索引越界） panic! 终止程序 可恢复 预期可能发生的错误（如文件未找到） Result\u0026lt;T, E\u0026gt; 交由调用者处理 不可恢复的错误：panic! 两种触发方式 某些行为：如数组越界访问 显式调用：panic!() 宏 发生 panic 后，程序会打印失败信息、展开（unwind）并清理 Stack，然后退出。\npanic! 示例 fn main() { panic!(\u0026#34;Error\u0026#34;); } 输出：\nthread \u0026#39;main\u0026#39; panicked at src\\main.rs:2:5:\rError\rnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\rerror: process didn\u0026#39;t exit successfully: target\\debug\\TestRust.exe (exit code: 101) Panic 后的响应方式 方式 行为 配置 Unwind（默认） 展开 Stack 并清理数据 — Abort 立即终止，不做内存清理，包体更小 Cargo.toml 中设置 [profile.release] panic = \u0026#34;abort\u0026#34; Backtrace Backtrace 是到达 panic 点之前调用的所有函数的列表。需要设置环境变量：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：泛型数据类型",
+        permalink: "/rust/generics/",
+        summary: "概述 泛型是消除代码重复的工具之一，允许同一段代码代表多种不同的具体数据类型。泛型参数通常用单个字母命名（如 T），遵循 UpperCamelCase 规范。\n函数定义中使用泛型 无泛型的重复代码 fn largest_i32(list: \u0026amp;[i32]) -\u0026gt; \u0026amp;i32 { let mut largest = \u0026amp;list[0]; for item in list { if item \u0026gt; largest { largest = item; } } largest } fn largest_char(list: \u0026amp;[char]) -\u0026gt; \u0026amp;char { let mut largest = \u0026amp;list[0]; for item in list { if item \u0026gt; largest { largest = item; } } largest } fn main() { let number_list = vec![34, 50, 25, 100, 65]; let result = largest_i32(\u0026amp;number_list); println!(\u0026#34;The largest number is {result}\u0026#34;); let char_list = vec![\u0026#39;y\u0026#39;, \u0026#39;m\u0026#39;, \u0026#39;a\u0026#39;, \u0026#39;q\u0026#39;]; let result = largest_char(\u0026amp;char_list); println!(\u0026#34;The largest char is {result}\u0026#34;); } 两个函数逻辑完全相同，仅类型不同。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：Trait（特征）",
+        permalink: "/rust/trait/",
+        summary: "概述 Trait 定义了特定类型所具有的共享行为。它以一种抽象的方式规定类型必须提供的方法签名。结合 Trait Bound，可以约束泛型参数只接受实现了某些特定行为的类型。\n定义 Trait Trait 将一组方法签名组合在一起，定义一套共享行为：\npub trait Summary { fn summarize(\u0026amp;self) -\u0026gt; String; } 为类型实现 Trait pub struct NewsArticle { pub headline: String, pub location: String, pub author: String, pub content: String, } pub struct Tweet { pub username: String, pub content: String, pub reply: bool, pub retweet: bool, } impl Summary for NewsArticle { fn summarize(\u0026amp;self) -\u0026gt; String { format!(\u0026#34;{}, by {} ({})\u0026#34;, self.headline, self.author, self.location) } } impl Summary for Tweet { fn summarize(\u0026amp;self) -\u0026gt; String { format!(\u0026#34;{}: {}\u0026#34;, self.username, self.content) } } 使用 use aggregator::{Summary, Tweet}; fn main() { let tweet = Tweet { username: String::from(\u0026#34;horse_ebooks\u0026#34;), content: String::from(\u0026#34;of course, as you probably already know\u0026#34;), reply: false, retweet: false, }; print!(\u0026#34;1 new tweet: {}\u0026#34;, tweet.summarize()); } Trait 的实现规则（孤儿规则） 只要 Trait 或 类型 其中之一属于当前 crate，就可以实现该 Trait。\n",
+        tags: ["Rust","编程基础","类型系统"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：生命周期",
+        permalink: "/rust/lifetime/",
+        summary: "概述 生命周期（Lifetime） 是引用有效的范围（作用域）。每个引用都有生命周期，大多数时候隐式且可被推断。当引用的生命周期可能以不同方式相关联时，必须显式标注。生命周期的主要目的是防止悬垂引用。\n悬垂引用（Dangling References） 悬垂引用指向已被释放的内存，Rust 编译器会阻止这种情况：\nfn main() { let r; { let x = 5; r = \u0026amp;x; // ❌ 编译错误！x 的寿命不够长 } // x 在此处被释放 println!(\u0026#34;r:{}\u0026#34;, r); // r 指向已释放的内存 } x 的生命周期不够长，但被 r 引用——当 x 离开作用域后，r 就成了悬垂引用。\n借用检查器（Borrow Checker） 借用检查器比较作用域，确保数据存活的时间长于其引用（Outlive）。\n// ❌ 编译失败 fn main() { let r; // ---------+-- \u0026#39;a // | { // | let x = 5; // -+-- \u0026#39;b | r = \u0026amp;x; // | | } // -+ | // | println!(\u0026#34;r: {}\u0026#34;, r); // | } // ---------+ 修正方式——确保 x 比 r 活得更久：\n",
+        tags: ["Rust","编程基础"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：编写自动化测试",
+        permalink: "/rust/automated-tests/",
+        summary: "概述 Rust 的类型系统能在编译期避免许多错误，但无法完整验证程序的逻辑正确性。自动化测试填补了这一空缺——通过编写测试函数来验证代码行为是否符合预期。\n测试函数的典型流程：\n设置所需的数据或状态 运行需要被测试的代码 断言其结果是正确的 测试函数 基本定义 测试函数使用 #[test] 属性标注，放置在 tests 模块中。运行 cargo test 即可执行所有测试。\n#[cfg(test)] mod tests { #[test] fn it_works() { let result = 2 + 2; assert_eq!(result, 4); } } #[cfg(test)] 告诉编译器该模块仅在测试时编译，不会包含在发行版本中。\ncargo test 输出 cargo test 每个测试函数单独运行 通过：ok 失败：FAILED 最后汇总通过/失败数量 assert! 宏 assert! 确保条件为 true，接收一个布尔值参数。true → 通过，false → panic 导致失败。\n#[cfg(test)] mod tests { #[test] fn larger_can_hold_smaller() { let larger = Rectangle { width: 8, height: 7 }; let smaller = Rectangle { width: 5, height: 1 }; assert!(larger.can_hold(\u0026amp;smaller)); } #[test] fn smaller_cannot_hold_larger() { let larger = Rectangle { width: 8, height: 7 }; let smaller = Rectangle { width: 5, height: 1 }; assert!(!smaller.can_hold(\u0026amp;larger)); } } 使用 use super::* 可以让模块内部调用外部代码（父模块的内容）。\n",
+        tags: ["Rust","编程基础","标准库"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：控制测试执行与组织测试",
+        permalink: "/rust/control-and-organization/",
+        summary: "概述 cargo test 提供了丰富的命令行参数来控制测试的执行方式，同时 Rust 将测试分为单元测试和集成测试两大类，各有不同的组织方式和适用场景。本文涵盖以下内容：控制测试执行（并行/串行、输出捕获、名称过滤）、忽略测试（#[ignore]），以及单元测试与集成测试的组织方式与区别。\n控制测试执行 cargo test 在测试模式下编译运行代码，默认行为是并行运行所有测试。可以通过命令行参数来控制测试的执行方式。\n命令行参数格式 cargo test 的参数分为两类：\ncargo test [OPTIONS] [TESTNAME] [-- \u0026lt;TEST-OPTIONS\u0026gt;] cargo test 后面的参数（OPTIONS / TESTNAME）传给 cargo 本身 -- 后面的参数（TEST-OPTIONS）传给测试二进制文件 记忆技巧：cargo test -- --xxx 中，-- 之前是给 cargo 的，之后是给测试程序的。\n串行运行（单线程） 测试默认并行执行，但某些测试依赖共享状态（如读写同一文件）时可能相互干扰。使用 --test-threads=1 改为单线程：\ncargo test -- --test-threads=1 单线程运行通常更慢，但能保证测试之间不会相互影响。一般只在调试测试冲突时使用。\n显示打印输出 默认情况下，测试通过时 Rust 会捕获（吞掉）println! 等标准输出。只有当测试失败时才显示打印内容。\n想看到所有输出（包括通过测试的打印），使用 --show-output：\ncargo test -- --show-output 按名称过滤测试 运行单个测试 —— 指定完整测试函数名：\ncargo test it_works 运行多个匹配的测试 —— 指定部分名称，所有包含该字符串的测试都会运行：\ncargo test add # 会运行 add_two、add_three 等所有名称中含 \u0026#34;add\u0026#34; 的测试 测试名称是模块路径的一部分，因此也可以用模块名过滤：\n",
+        tags: ["Rust","编程基础","测试"],
+        categories: ["rust"]
+    },
+    {
+        title: "Rust：实战项目 MiniGrep",
+        permalink: "/rust/minigrep-project/",
+        summary: "概述 通过构建一个命令行工具来实践 Rust 的相关概念。该工具类似于经典的 grep：能够在指定文件中搜索指定字符串，并输出匹配的行。\ncargo run -- the poem.txt # 在 poem.txt 中搜索包含 \u0026#34;the\u0026#34; 的行 创建 Minigrep 接受命令行参数 使用 std::env::args() 获取命令行参数，返回一个迭代器，通过 .collect() 转为 Vec\u0026lt;String\u0026gt;：\nuse std::env; fn main() { let args: Vec\u0026lt;String\u0026gt; = env::args().collect(); dbg!(args); } 运行：\ncargo run # [src\\main.rs:5:5] args = [ # \u0026#34;target\\\\debug\\\\minigrep.exe\u0026#34;, # ] args() 的第一个元素总是程序的路径，真正的参数从 args[1] 开始。\n取出所需参数 use std::env; fn main() { let args: Vec\u0026lt;String\u0026gt; = env::args().collect(); let query = \u0026amp;args[1]; // 搜索的字符串 let file_path = \u0026amp;args[2]; // 目标文件路径 println!(\u0026#34;Searching for {query}\u0026#34;); println!(\u0026#34;In file {file_path}\u0026#34;); } cargo run -- test sample.txt # Searching for test # In file sample.txt 注意 cargo run -- 中 -- 的作用：-- 之前的参数传给 cargo，之后的传给程序本身。\n",
+        tags: ["Rust","编程基础","实战项目","测试"],
+        categories: ["rust"]
+    },
+    {
+        title: "VSCode 配置 Copilot + OAI + DeepSeek",
+        permalink: "/dev-env/vscode-copilot-deepseek/",
+        summary: "概述 通过 OAI (Open AI Compatible) 扩展，可以在 VSCode 中将 DeepSeek 等第三方模型接入 Copilot，享受更灵活的 AI 辅助编程体验。\n第一步：安装扩展 安装 Copilot 在 VSCode 扩展市场搜索 Copilot，安装并完成 GitHub 登录授权。\n安装 OAI 在 VSCode 扩展市场搜索 OAI，直接安装。如果提示 VSCode 版本不符合，先更新 VSCode 到最新版本即可。\n第二步：配置 Provider Management 打开 OAI 配置面板（Ctrl+Shift+P → 搜索 OAI Configuration） 点击 Add Provider，填写以下信息： 参数 值 Provider ID 自行命名（如 deepseek） URL https://api.deepseek.com API Key 在 DeepSeek 官网 → API Keys 中创建 填写完成后点击 Save。 第三步：配置 Model Management 在 Provider 创建完成后，添加模型配置：\n",
+        tags: ["VSCode","Copilot","DeepSeek","AI","开发环境"],
+        categories: ["dev-env"]
+    },
+];
+</script>
+
+        <main class="main"> 
+<header class="page-header">
+  <h1>
+    实战项目
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+   <header class="entry-header">
+     <h2 class="entry-hint-parent">Rust：实战项目 MiniGrep
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 通过构建一个命令行工具来实践 Rust 的相关概念。该工具类似于经典的 grep：能够在指定文件中搜索指定字符串，并输出匹配的行。
+cargo run -- the poem.txt # 在 poem.txt 中搜索包含 &#34;the&#34; 的行 创建 Minigrep 接受命令行参数 使用 std::env::args() 获取命令行参数，返回一个迭代器，通过 .collect() 转为 Vec&lt;String&gt;：
+use std::env; fn main() { let args: Vec&lt;String&gt; = env::args().collect(); dbg!(args); } 运行：
+cargo run # [src\main.rs:5:5] args = [ # &#34;target\\debug\\minigrep.exe&#34;, # ] args() 的第一个元素总是程序的路径，真正的参数从 args[1] 开始。
+取出所需参数 use std::env; fn main() { let args: Vec&lt;String&gt; = env::args().collect(); let query = &amp;args[1]; // 搜索的字符串 let file_path = &amp;args[2]; // 目标文件路径 println!(&#34;Searching for {query}&#34;); println!(&#34;In file {file_path}&#34;); } cargo run -- test sample.txt # Searching for test # In file sample.txt 注意 cargo run -- 中 -- 的作用：-- 之前的参数传给 cargo，之后的传给程序本身。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-14 16:00:00 +0800 CST'>July 14, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>hantaikeju</span></footer>
+  <a class="entry-link" aria-label="post link to Rust：实战项目 MiniGrep" href="http://localhost:1313/rust/minigrep-project/"></a>
+</article>
+        </main>
+    </div>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">hantaikeju 的技术博客</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+    <script defer src="/js/sidebar-search.min.js"></script>
+</body>
+
+</html>
