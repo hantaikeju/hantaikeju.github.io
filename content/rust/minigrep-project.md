@@ -3,9 +3,9 @@ title: "Rust：实战项目 MiniGrep"
 date: 2026-07-14T16:00:00+08:00
 weight: 26
 draft: false
-tags: ["Rust", "编程基础", "实战项目", "测试"]
+tags: ["Rust", "编程基础", "实战项目", "测试", "迭代器", "闭包"]
 categories: ["rust"]
-description: "通过构建命令行搜索工具 MiniGrep，实践 Rust 核心概念：命令行参数解析、文件读取、模块化重构、Result 错误处理、TDD 测试驱动开发、环境变量以及 stderr 输出。"
+description: "通过构建命令行搜索工具 MiniGrep，实践 Rust 核心概念：命令行参数解析、文件读取、模块化重构、Result 错误处理、TDD 测试驱动开发、环境变量、stderr 输出，以及使用迭代器与闭包对代码进行函数式优化。"
 ---
 
 ## 概述
@@ -395,7 +395,225 @@ cargo run -- the poem.txt > results.txt
 
 ---
 
-## 总结
+## 使用闭包和迭代器进行优化
+
+之前的实现虽然能正常工作，但可以通过 Rust 的**迭代器**和**闭包**特性进一步优化：消除不必要的中间分配，使代码更简洁和函数式。
+
+### 优化 main.rs：直接传递迭代器
+
+在之前的版本中，`env::args()` 被 `.collect()` 为 `Vec<String>`，然后传入 `Config::build(&args)`。实际上 `env::args()` 本身返回的就是一个迭代器，可以直接传递：
+
+```rust
+use std::env;
+use std::process;
+use minigrep::Config;
+
+fn main() {
+    // 不再收集为 Vec，直接把迭代器传进去
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments:{}", err);
+        process::exit(1);
+    });
+
+    if let Err(e) = minigrep::run(config) {
+        eprintln!("Application error:{}", e);
+        process::exit(1);
+    }
+}
+```
+
+> 好处：避免了 `Vec<String>` 的堆分配，参数被逐个消费而非全部暂存。
+
+### 优化 Config::build：接受迭代器
+
+将 `build` 方法的签名从 `&[String]` 改为 `impl Iterator<Item = String>`，用 `next()` 逐个取出参数：
+
+```rust
+use std::fs;
+use std::{env, error::Error};
+
+pub struct Config {
+    pub query: String,
+    pub file_path: String,
+    pub ignore_case: bool,
+}
+
+impl Config {
+    pub fn build(
+        mut args: impl Iterator<Item = String>,
+    ) -> Result<Config, &'static str> {
+        args.next();  // 跳过程序名
+
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
+
+        let file_path = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a file name"),
+        };
+
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
+
+        Ok(Config {
+            query,
+            file_path,
+            ignore_case,
+        })
+    }
+}
+```
+
+> 关键变化：
+> - `args: impl Iterator<Item = String>` — 接受任何返回 `String` 的迭代器
+> - `mut args` — 迭代器需要可变引用以调用 `next()`
+> - `args.next()` 跳过第一个元素（程序路径）
+> - `match` 精确处理缺失参数的错误信息（而不是笼统的 "Not enough arguments"）
+
+### 优化 search：使用迭代器适配器
+
+将 `for` 循环 + `Vec::push` 模式替换为 `filter` + `collect` 组合：
+
+```rust
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
+}
+
+pub fn search_case_insensitive<'a>(
+    query: &str,
+    contents: &'a str,
+) -> Vec<&'a str> {
+    let query = query.to_lowercase();
+    contents
+        .lines()
+        .filter(|line| line.to_lowercase().contains(&query))
+        .collect()
+}
+```
+
+> `filter` 接受一个闭包 `|line| line.contains(query)`，只保留返回 `true` 的行。
+
+### 完整优化后的 lib.rs
+
+```rust
+use std::fs;
+use std::{env, error::Error};
+
+pub struct Config {
+    pub query: String,
+    pub file_path: String,
+    pub ignore_case: bool,
+}
+
+impl Config {
+    pub fn build(
+        mut args: impl Iterator<Item = String>,
+    ) -> Result<Config, &'static str> {
+        args.next();
+
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
+
+        let file_path = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a file name"),
+        };
+
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
+
+        Ok(Config {
+            query,
+            file_path,
+            ignore_case,
+        })
+    }
+}
+
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+    let contents = fs::read_to_string(config.file_path)?;
+
+    let result = if !config.ignore_case {
+        search(&config.query, &contents)
+    } else {
+        search_case_insensitive(&config.query, &contents)
+    };
+
+    for line in result {
+        println!("{line}");
+    }
+
+    Ok(())
+}
+
+pub fn search_case_insensitive<'a>(
+    query: &str,
+    contents: &'a str,
+) -> Vec<&'a str> {
+    let query = query.to_lowercase();
+    contents
+        .lines()
+        .filter(|line| line.to_lowercase().contains(&query))
+        .collect()
+}
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn case_sensitive() {
+        let query = "duct";
+        let content = "\
+Rust:
+safe, fast, productive.
+Pick three.
+Duct tape.";
+        assert_eq!(vec!["safe, fast, productive."], search(query, content));
+    }
+
+    #[test]
+    fn case_insensitive() {
+        let query = "rUsT";
+        let content = "\
+Rust:
+safe, fast, productive.
+Pick three.
+Trust me.";
+        assert_eq!(
+            vec!["Rust:", "Trust me."],
+            search_case_insensitive(query, content)
+        );
+    }
+}
+```
+
+### 优化前后对比
+
+| 方面 | 优化前 | 优化后 |
+|------|--------|--------|
+| `main.rs` 传参 | `env::args().collect::<Vec<String>>()` | 直接传 `env::args()` 迭代器 |
+| `build` 签名 | `args: &[String]` | `args: impl Iterator<Item = String>` |
+| 参数提取 | `args[1].clone()`、`args[2].clone()` | `args.next()` 逐个消费 |
+| 错误信息 | 笼统的 "Not enough arguments" | 精确区分 query/file_path 缺失 |
+| `search` 实现 | `for` 循环 + `Vec::push` | `.lines().filter(...).collect()` |
+| 内存分配 | 需要 `Vec<String>` 堆分配 | 零额外分配（惰性迭代） |
+
+> 优化之后代码更加 Rust 化：利用迭代器的**惰性求值**和**零成本抽象**，既简洁又高效。
+
+---
 
 | 要点 | 说明 |
 |------|------|
@@ -409,3 +627,5 @@ cargo run -- the poem.txt > results.txt
 | **环境变量** | `env::var("IGNORE_CASE")` 控制大小写敏感 |
 | **stderr** | `eprintln!` 输出错误信息，不被 `>` 重定向 |
 | **`?` 运算符** | `run` 中 `read_to_string(...)?` 传播错误 |
+| **迭代器优化** | `Config::build` 接受 `impl Iterator<Item = String>`，避免 `Vec` 堆分配 |
+| **闭包 + 迭代器** | `filter(\|line\| ...)` + `collect()` 替代 `for` 循环，代码更函数式 |
