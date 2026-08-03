@@ -1,7 +1,7 @@
 ---
 title: "Rust 并发：消息传递（Channel）"
 date: 2026-08-03T10:30:00+08:00
-weight: 38
+weight: 39
 draft: false
 tags: ["Rust", "并发", "标准库"]
 categories: ["rust"]
